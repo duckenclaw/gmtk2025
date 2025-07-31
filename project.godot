@@ -12,8 +12,14 @@ config_version=5
 
 config/name="gmtk2025"
 run/main_scene="uid://ihpur1o3hacr"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Random="*res://src/utils/math/random.gd"
+Ref="*res://src/ref.gd"
+State="*res://src/game/state.gd"
 
 [rendering]
 

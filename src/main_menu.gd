@@ -1,6 +1,6 @@
 extends Control
 
-@export var start_scene: PackedScene =preload("res://scenes/test_scene.tscn")
+@export var start_scene: PackedScene = preload("res://src/tests/test_scene.tscn")
 
 @onready var title_screen: MarginContainer = $TitleScreen
 @onready var options_screen: MarginContainer = $OptionsScreen
