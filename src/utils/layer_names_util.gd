@@ -23,4 +23,3 @@ func get_collision_mask(names: Array) -> int:
 			push_error("Wrong layer name: " + name)
 		mask += pow(2, layers.find(name) - 1)
 	return mask
-

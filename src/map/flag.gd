@@ -1,0 +1,25 @@
+extends Area2D
+
+@export var max_health: float = 100.0
+@export var current_health: float
+
+@onready var invincibility_timer = $InvincibilityTimer
+var is_invincible: bool = false
+
+func _ready():
+	current_health = max_health
+
+
+func _on_invincibility_timer_timeout():
+	print("flag not invincible")
+	is_invincible = false
+	invincibility_timer.stop()
+	
+func take_damage(damage: float):
+	current_health -= damage
+	print("FLAG TOOK: " + str(damage))
+	print("CURRENT HEALTH: " + str(current_health) + "/" + str(max_health))
+	is_invincible = true
+	invincibility_timer.start(3)
+	print("flag invincible")
+	

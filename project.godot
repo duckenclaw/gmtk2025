@@ -21,6 +21,11 @@ Random="*res://src/utils/math/random.gd"
 Ref="*res://src/ref.gd"
 State="*res://src/game/state.gd"
 
+[global_group]
+
+enemy=""
+loopOrigin=""
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
