@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cbwl1aq14xykv" path="res://assets/art/testing/flag.png" id="2_tfdso"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ljfuh"]
-radius = 70.66
+radius = 16.0
 
 [node name="LoopOrigin" type="Area2D" groups=["loopOrigin"]]
 script = ExtResource("1_iprmj")

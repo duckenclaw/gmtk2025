@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WaveConfig" load_steps=4 format=3 uid="uid://bktkemr278g2d"]
+
+[ext_resource type="Script" uid="uid://hbxxlijgke2g" path="res://src/resources/enemy_type.gd" id="1_uttyj"]
+[ext_resource type="Resource" uid="uid://crf6ltt5cmtey" path="res://src/resources/enemy_types/heavy_enemy.tres" id="2_uttyj"]
+[ext_resource type="Script" uid="uid://vkq5h0d44gc8" path="res://src/resources/wave_config.gd" id="3_ih5b6"]
+
+[resource]
+script = ExtResource("3_ih5b6")
+wave_name = "Wave heavy"
+wave_number = 2
+spawner_directions = Array[String](["west", "east"])
+enemy_types = Array[ExtResource("1_uttyj")]([ExtResource("2_uttyj")])
+enemy_type_weights = Array[float]([1.0])
+spawn_interval = 4.0
+total_enemies = 6
+enemies_per_spawner = 3
+metadata/_custom_type_script = "uid://vkq5h0d44gc8"

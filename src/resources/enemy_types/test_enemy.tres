@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyType" load_steps=3 format=3 uid="uid://bdblhdo83ukl6"]
+
+[ext_resource type="Script" uid="uid://hbxxlijgke2g" path="res://src/resources/enemy_type.gd" id="1_jn1va"]
+[ext_resource type="Texture2D" uid="uid://nsl84b5jq2rn" path="res://assets/art/testing/white.png" id="2_jn1va"]
+
+[resource]
+script = ExtResource("1_jn1va")
+name = "Test Enemy"
+texture = ExtResource("2_jn1va")
+speed = 25.0
+max_health = 5.0
+damage = 5.0
+metadata/_custom_type_script = "uid://hbxxlijgke2g"
