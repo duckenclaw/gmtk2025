@@ -1,11 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://ce880iha75f3d"]
+[gd_scene load_steps=3 format=3 uid="uid://ce880iha75f3d"]
 
 [ext_resource type="Script" uid="uid://dbejkj7uymni8" path="res://src/ui/game_ui.gd" id="1_jlfe0"]
+[ext_resource type="PackedScene" uid="uid://b0wa65js18xls" path="res://src/ui/progress_bar/progress_bar.tscn" id="2_r30kv"]
 
 [node name="GameUi" type="CanvasLayer"]
 script = ExtResource("1_jlfe0")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Actions" type="HBoxContainer" parent="."]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -13,5 +14,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer"]
+[node name="TextureButton" type="TextureButton" parent="Actions"]
+layout_mode = 2
+
+[node name="Copies" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthContainer" type="VBoxContainer" parent="."]
+offset_left = 35.0
+offset_top = 41.0
+offset_right = 530.0
+offset_bottom = 98.0
+
+[node name="Label" type="Label" parent="HealthContainer"]
+layout_mode = 2
+text = "Health"
+
+[node name="ProgressBar" parent="HealthContainer" instance=ExtResource("2_r30kv")]
 layout_mode = 2

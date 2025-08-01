@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0wa65js18xls"]
+
+[ext_resource type="Script" uid="uid://dtg3plw431qxi" path="res://src/ui/progress_bar/progress_bar.gd" id="1_7w4ie"]
+
+[node name="ProgressBar" type="ProgressBar"]
+custom_minimum_size = Vector2(0, 30)
+offset_right = 476.0
+offset_bottom = 30.0
+step = 0.0
+value = 50.0
+show_percentage = false
+script = ExtResource("1_7w4ie")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 479.0
+offset_bottom = 40.0
+alignment = 1
+
+[node name="ValueLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "165212121"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Slash" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "/"
+
+[node name="GoalLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "125182581752817"
+vertical_alignment = 1
