@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://coeskkfvneigs"]
+[gd_scene load_steps=19 format=3 uid="uid://coeskkfvneigs"]
 
 [ext_resource type="PackedScene" uid="uid://cgpkr8nvf4qyk" path="res://src/enemies/enemy.tscn" id="1_c04iw"]
 [ext_resource type="Script" uid="uid://ce14hx2k4slhj" path="res://src/map/game_map.gd" id="1_s4k8m"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://cov5v1yloo3ev" path="res://src/map/flag.tscn" id="4_c04iw"]
 [ext_resource type="Resource" uid="uid://bktkemr278g2d" path="res://src/resources/waves/wave_heavy.tres" id="4_jt6ke"]
 [ext_resource type="Resource" uid="uid://bmlldxi7p35u5" path="res://src/resources/waves/wave_fast.tres" id="5_0yb6h"]
-[ext_resource type="Texture2D" uid="uid://cgg7fpi7fpmto" path="res://assets/art/testing/blue.png" id="5_fdrke"]
 [ext_resource type="Resource" uid="uid://b0f6p300g2kgj" path="res://src/resources/waves/wave_mixed.tres" id="6_4r6xi"]
 [ext_resource type="PackedScene" uid="uid://cni2a6p1fkqef" path="res://src/player/player.tscn" id="8_4im40"]
 [ext_resource type="Script" uid="uid://hbxxlijgke2g" path="res://src/resources/enemy_type.gd" id="11_yimol"]
@@ -45,7 +44,6 @@ position = Vector2(79, -3)
 position = Vector2(2, -797)
 script = ExtResource("3_qq67j")
 enemy_scene = ExtResource("1_c04iw")
-spawn_texture = ExtResource("5_fdrke")
 current_enemy_types = Array[ExtResource("11_yimol")]([ExtResource("12_4im40"), ExtResource("13_ydoxh"), ExtResource("14_j2nwg"), ExtResource("15_34bvs")])
 enemy_type_weights = Array[float]([5.0, 3.0, 1.0, 0.5])
 spawn_count = 0
@@ -62,7 +60,6 @@ wait_time = 2.0
 position = Vector2(-4, 835)
 script = ExtResource("3_qq67j")
 enemy_scene = ExtResource("1_c04iw")
-spawn_texture = ExtResource("5_fdrke")
 current_enemy_types = Array[ExtResource("11_yimol")]([ExtResource("12_4im40"), ExtResource("13_ydoxh"), ExtResource("14_j2nwg"), ExtResource("15_34bvs")])
 enemy_type_weights = Array[float]([5.0, 3.0, 1.0, 0.5])
 spawn_count = 0
@@ -79,7 +76,6 @@ wait_time = 2.0
 position = Vector2(1036, 4)
 script = ExtResource("3_qq67j")
 enemy_scene = ExtResource("1_c04iw")
-spawn_texture = ExtResource("5_fdrke")
 current_enemy_types = Array[ExtResource("11_yimol")]([ExtResource("12_4im40"), ExtResource("13_ydoxh"), ExtResource("14_j2nwg"), ExtResource("15_34bvs")])
 enemy_type_weights = Array[float]([5.0, 3.0, 1.0, 0.5])
 spawn_count = 0
@@ -96,7 +92,6 @@ wait_time = 2.0
 position = Vector2(-1040, 2)
 script = ExtResource("3_qq67j")
 enemy_scene = ExtResource("1_c04iw")
-spawn_texture = ExtResource("5_fdrke")
 current_enemy_types = Array[ExtResource("11_yimol")]([ExtResource("12_4im40"), ExtResource("13_ydoxh"), ExtResource("14_j2nwg"), ExtResource("15_34bvs")])
 enemy_type_weights = Array[float]([5.0, 3.0, 1.0, 0.5])
 spawn_count = 0
