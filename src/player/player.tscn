@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cni2a6p1fkqef"]
+[gd_scene load_steps=5 format=3 uid="uid://cni2a6p1fkqef"]
 
 [ext_resource type="Script" uid="uid://cwhyfhc6c1nya" path="res://src/player/player.gd" id="1_4anbu"]
+[ext_resource type="Script" uid="uid://bhn3toge8b57u" path="res://src/player/actions/action.gd" id="2_mf2ua"]
 [ext_resource type="Script" uid="uid://co86e1n8ijmiw" path="res://src/player/actions/fire_action.gd" id="2_rxibo"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_rxibo"]
@@ -17,6 +18,7 @@ offset_right = 14.0
 [node name="Actions" type="Node2D" parent="."]
 
 [node name="NoneAction" type="Node2D" parent="Actions"]
+script = ExtResource("2_mf2ua")
 
 [node name="FireAction" type="Node2D" parent="Actions"]
 script = ExtResource("2_rxibo")

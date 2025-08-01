@@ -15,6 +15,8 @@ func _ready() -> void:
 
 func accept_command(command: Command):
 	if command is CommandMouse:
+		area_2d.rotation = command.direction.angle()
+		
 		if command.is_pressed:
 			for enemy in targets_in_area:
 				enemy.take_damage(FIRE_DAMAGE)

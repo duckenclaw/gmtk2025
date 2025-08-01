@@ -1,8 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://dg38jrcdqfrrh"]
+[gd_scene load_steps=3 format=3 uid="uid://dg38jrcdqfrrh"]
 
 [ext_resource type="PackedScene" uid="uid://cni2a6p1fkqef" path="res://src/player/player.tscn" id="1_5gv50"]
+[ext_resource type="PackedScene" uid="uid://cgpkr8nvf4qyk" path="res://src/enemies/enemy.tscn" id="2_pp32a"]
 
 [node name="PlayerTest" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_5gv50")]
 position = Vector2(684, 380)
+
+[node name="Enemy" parent="." instance=ExtResource("2_pp32a")]
+position = Vector2(378, 179)
+
+[node name="Enemy2" parent="." instance=ExtResource("2_pp32a")]
+position = Vector2(287, 289)
+
+[node name="Enemy3" parent="." instance=ExtResource("2_pp32a")]
+position = Vector2(307, 370)
+
+[node name="Enemy4" parent="." instance=ExtResource("2_pp32a")]
+position = Vector2(394, 418)
+
+[node name="Enemy5" parent="." instance=ExtResource("2_pp32a")]
+position = Vector2(536, 231)
+
+[node name="Enemy6" parent="." instance=ExtResource("2_pp32a")]
+position = Vector2(658, 155)
+
+[node name="Enemy7" parent="." instance=ExtResource("2_pp32a")]
+position = Vector2(658, 155)

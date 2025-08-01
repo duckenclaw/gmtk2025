@@ -13,7 +13,7 @@ var is_recording: bool = false
 var start_of_recording: float = 0.0
 
 var actions: Array[Action]
-@onready var current_action: Action = $Actions/NoneAction
+var current_action: Action
 
 var max_health := 100.0
 var health := 100.0
@@ -23,6 +23,8 @@ var health := 100.0
 
 func _ready() -> void:
 	actions.append_array(actions_node.get_children())
+	current_action = $Actions/NoneAction
+	current_action = actions[1]
 
 
 
