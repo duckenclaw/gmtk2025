@@ -21,6 +21,7 @@ Random="*res://src/utils/math/random.gd"
 Ref="*res://src/ref.gd"
 State="*res://src/game/state.gd"
 ParticlePool="*res://src/ui/numbers/particle_pool.gd"
+WaitUtil="*res://src/utils/wait_util.gd"
 
 [display]
 
@@ -33,10 +34,11 @@ window/stretch/mode="viewport"
 enemy=""
 loopOrigin=""
 player=""
+center_area=""
 
 [gui]
 
-theme/custom="uid://k2ln5rsbwqg8"
+theme/custom="uid://c8qwnhn2pdfrw"
 
 [input]
 

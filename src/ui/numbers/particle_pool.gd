@@ -23,6 +23,8 @@ func spawn_number_particle(g_pos: Vector2, res: ParticleType, amount: float):
 
 func create_number_particle(res: ParticleType, amount: float) -> NumberChangeParticle:
 	var particle: NumberChangeParticle = NUMBER_CHANGE_PARTICLE.instantiate()
+	if Ref.particle_layer == null:
+		return
 	Ref.particle_layer.add_child(particle)
 	particle.was_stashed.connect(_change_particle_was_stashed.bind(particle))
 	return particle

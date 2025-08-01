@@ -1,7 +1,35 @@
 extends Node
 #class_name State # Autoload
 
+const LOOP_TIME: float = 10.0
+
+signal loop_restarted
+signal loop_progress(value: float, seconds: float) # 0 to 1
+
 var player_max_health: float = 100.0
 var flag_max_health: float = 300.0
 
-# Upgrades go here
+var max_copies: int = 5
+var current_copies: int = 0
+var all_time_copies: int = 0
+
+var player_is_home: bool = false
+
+
+func _ready() -> void:
+	pass
+
+func start_loop():
+	var tween = create_tween()
+	tween.set_loops()
+	tween.tween_method(on_loop_progress, 0.0, 1.0, LOOP_TIME)
+	tween.loop_finished.connect(on_loop_restarted)
+	on_loop_restarted(0)
+
+func on_loop_restarted(loop: int):
+	print("LOOP RESTARTED: " + str(loop))
+	loop_restarted.emit()
+
+func on_loop_progress(value: float):
+	#print("LOOP PROGRESS: " + str(value))
+	loop_progress.emit(value, value * LOOP_TIME)

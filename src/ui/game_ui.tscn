@@ -6,26 +6,11 @@
 [node name="GameUi" type="CanvasLayer"]
 script = ExtResource("1_jlfe0")
 
-[node name="Actions" type="HBoxContainer" parent="."]
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="TextureButton" type="TextureButton" parent="Actions"]
-layout_mode = 2
-
-[node name="Copies" type="HBoxContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="HealthContainer" type="VBoxContainer" parent="."]
 offset_left = 35.0
 offset_top = 41.0
 offset_right = 530.0
-offset_bottom = 98.0
+offset_bottom = 159.0
 
 [node name="FlagHealthLabel" type="Label" parent="HealthContainer"]
 layout_mode = 2
@@ -40,3 +25,37 @@ text = "Player health"
 
 [node name="PlayerProgressBar" parent="HealthContainer" instance=ExtResource("2_r30kv")]
 layout_mode = 2
+
+[node name="Actions" type="HBoxContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 399.0
+offset_top = -103.0
+offset_right = -380.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="FireButton" type="Button" parent="Actions"]
+layout_mode = 2
+text = "Fire
+"
+
+[node name="BlackHoleButton" type="Button" parent="Actions"]
+layout_mode = 2
+text = "Black hole"
+
+[node name="Copies" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CreateCopyButton" type="Button" parent="."]
+offset_left = 1440.0
+offset_top = 864.0
+offset_right = 1448.0
+offset_bottom = 904.0
+text = "Create copy"
+
+[connection signal="pressed" from="CreateCopyButton" to="." method="_on_create_copy_button_pressed"]

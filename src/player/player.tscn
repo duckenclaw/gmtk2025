@@ -1,13 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://cni2a6p1fkqef"]
+[gd_scene load_steps=11 format=3 uid="uid://cni2a6p1fkqef"]
 
 [ext_resource type="Script" uid="uid://cwhyfhc6c1nya" path="res://src/player/player.gd" id="1_4anbu"]
 [ext_resource type="Script" uid="uid://bhn3toge8b57u" path="res://src/player/actions/action.gd" id="2_mf2ua"]
-[ext_resource type="Script" uid="uid://co86e1n8ijmiw" path="res://src/player/actions/fire_action.gd" id="2_rxibo"]
+[ext_resource type="Script" uid="uid://co86e1n8ijmiw" path="res://src/player/actions/wave/fire_action.gd" id="2_rxibo"]
+[ext_resource type="Script" uid="uid://dnl5urnuxsdd2" path="res://src/player/actions/black_hole/black_hole_action.gd" id="4_5f2sf"]
+[ext_resource type="Script" uid="uid://deye6blic5qq" path="res://src/player/actions/wave/wave_action.gd" id="5_jiejy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5f2sf"]
+radius = 12.0
+height = 36.0
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_rxibo"]
 points = PackedVector2Array(0, 0, 150, -50, 180, 0, 150, 50)
 
-[node name="Player" type="Node2D" groups=["player"]]
+[sub_resource type="Curve" id="Curve_jiejy"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 100), 0.0, 0.0, 0, 0, Vector2(0.98120296, 100), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_5f2sf"]
+_data = [Vector2(0, 0.29271293), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5f2sf"]
+radius = 200.0
+
+[node name="Player" type="Area2D" groups=["player"]]
 script = ExtResource("1_4anbu")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -15,7 +33,12 @@ offset_left = -14.0
 offset_top = -40.0
 offset_right = 14.0
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -21)
+shape = SubResource("CapsuleShape2D_5f2sf")
+
 [node name="Actions" type="Node2D" parent="."]
+position = Vector2(0, -21)
 
 [node name="NoneAction" type="Node2D" parent="Actions"]
 script = ExtResource("2_mf2ua")
@@ -27,3 +50,33 @@ script = ExtResource("2_rxibo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actions/FireAction/Area2D"]
 shape = SubResource("ConvexPolygonShape2D_rxibo")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Actions/FireAction/Area2D"]
+amount = 200
+lifetime = 0.32
+speed_scale = 1.45
+spread = 18.09
+gravity = Vector2(0, 10)
+initial_velocity_min = 886.86
+initial_velocity_max = 886.86
+damping_min = 24.634
+damping_max = 24.634
+damping_curve = SubResource("Curve_jiejy")
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_5f2sf")
+
+[node name="BlackHoleAction" type="Node2D" parent="Actions"]
+script = ExtResource("4_5f2sf")
+
+[node name="Area2D" type="Area2D" parent="Actions/BlackHoleAction"]
+
+[node name="PreviewArea" type="CollisionShape2D" parent="Actions/BlackHoleAction/Area2D"]
+visible = false
+shape = SubResource("CircleShape2D_5f2sf")
+
+[node name="WaveAction" type="Node2D" parent="Actions"]
+script = ExtResource("5_jiejy")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

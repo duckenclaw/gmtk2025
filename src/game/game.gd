@@ -3,12 +3,34 @@ class_name Game
 
 @onready var game_map: GameMap = $GameMap
 @onready var game_ui: GameUi = $GameUi
+@onready var camera: Camera2D = $Camera2D
+
+@onready var player: Player = $GameMap/Player
+@onready var flag: Area2D = $GameMap/Flag
+
+@onready var recorder_area: RecorderArea = $RecorderArea
+@onready var particle_layer: Node2D = $ParticleLayer
 
 
 func _ready() -> void:
-	Ref.particle_layer = $ParticleLayer
+	Ref.particle_layer = particle_layer
+	Ref.recorder = recorder_area
 	
-	game_map.player.player_health_changed.connect(game_ui.player_health_changed)
-	game_map.player.player_died
+	player.player_health_changed.connect(game_ui.player_health_changed)
+	player.player_died
 	
-	game_map.flag.origin_health_changed.connect(game_ui.flag_health_changed)
+	flag.origin_health_changed.connect(game_ui.flag_health_changed)
+	
+	State.start_loop()
+
+func _process(delta: float) -> void:
+	var target = player.global_position / 4.0
+	var distance = target.distance_to(camera.global_position)
+	camera.global_position = lerp(camera.global_position, target, 0.0001 * distance)
+
+
+func _on_game_ui_create_copy_pressed() -> void:
+	if State.current_copies < State.max_copies:
+		State.current_copies += 1
+		State.all_time_copies += 1
+		recorder_area.save_recording(player, State.all_time_copies)

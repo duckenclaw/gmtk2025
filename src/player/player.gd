@@ -8,6 +8,7 @@ var is_copy: bool = false
 signal player_died
 signal player_health_changed(health: float)
 
+var position_history: PackedVector2Array
 var history: Array[SavedCommand]
 var is_recording: bool = false
 var start_of_recording: float = 0.0
@@ -22,9 +23,27 @@ var health := State.player_max_health
 
 func _ready() -> void:
 	actions.append_array(actions_node.get_children())
-	current_action = $Actions/NoneAction
-	current_action = actions[1]
+	set_action(actions[1])
+	State.loop_restarted.connect(loop_restarted)
 
+func loop_restarted():
+	if is_copy: return
+	
+	global_position = Vector2.ZERO
+	stop_recording()
+	start_recording()
+
+func set_action(action: Action):
+	for other in actions:
+		other.visible = false
+		other.active = false
+	current_action = action
+	current_action.visible = true
+	current_action.active = true
+
+func _process(delta: float) -> void:
+	if is_recording:
+		Ref.recorder.display_path(position_history, Color.WEB_MAROON, "player")
 
 
 func _physics_process(delta: float) -> void:
@@ -42,6 +61,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_released("mouse_click"):
 		var command_click := CommandMouseReleased.new(mouse_direction, mouse_pos)
 		accept_command(command_click)
+	
+	if is_recording:
+		position_history.append(global_position)
 
 
 func accept_command(command: Command): 
@@ -66,9 +88,12 @@ func take_damage(damage: float):
 func take_impulse(impulse: Vector2):
 	pass
 
-
-
 func start_recording():
+	Ref.recorder.remove_path("player")
+	history = []
+	position_history = []
+	position_history.append(Vector2.ZERO)
+	
 	start_of_recording = get_ticks_sec()
 	is_recording = true
 
@@ -78,3 +103,14 @@ func stop_recording():
 
 func get_ticks_sec() -> float:
 	return Time.get_ticks_msec() / 1000.0
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("center_area"):
+		State.player_is_home = true
+
+
+func _on_area_exited(area: Area2D) -> void:
+	if area.is_in_group("center_area"):
+		#State.player_is_home = false
+		pass
