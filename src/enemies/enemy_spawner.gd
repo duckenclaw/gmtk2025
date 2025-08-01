@@ -13,7 +13,8 @@ var active_enemy_type: EnemyType
 # Spawning parameters
 @onready var spawn_timer: Timer = $SpawnTimer
 @export var spawn_count: int = 5
-@export var spawn_radius: float = 20.0
+@export var enemy_pack_count: int = 1
+@export var spawn_radius: float = 60.0
 @export var spawn_interval: float = 2.0
 
 # Target for enemies to move towards
@@ -217,6 +218,7 @@ func configure_from_wave(wave_config: WaveConfig):
 	# Set enemy types
 	set_enemy_types(wave_config.enemy_types, wave_config.enemy_type_weights)
 	spawn_count = wave_config.enemies_per_spawner
+	enemy_pack_count = wave_config.enemy_pack_count
 	
 	print(spawn_count)
 	
@@ -227,7 +229,7 @@ func configure_from_wave(wave_config: WaveConfig):
 
 # Spawn an enemy with a specific type
 func spawn_typed_enemy_at_position(pos: Vector2, enemy_type: EnemyType) -> Enemy:
-	var enemy = spawn_enemy_at_position(pos)
+	var enemy = spawn_circle_formation(pos, spawn_radius, enemy_pack_count)
 	if enemy and enemy_type:
 		configure_enemy_with_type(enemy_type)
 	return enemy

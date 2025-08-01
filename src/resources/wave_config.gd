@@ -17,6 +17,7 @@ class_name WaveConfig
 # Enemy counts
 @export var total_enemies: int = 5  # Total enemies to spawn (-1 for infinite)
 @export var enemies_per_spawner: int = -1  # Enemies per spawner (-1 for auto-distribute)
+@export var enemy_pack_count: int = 1
 
 # Wave behavior
 @export var is_repeating: bool = false  # Does this wave repeat?
