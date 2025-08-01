@@ -15,8 +15,7 @@ var start_of_recording: float = 0.0
 var actions: Array[Action]
 var current_action: Action
 
-var max_health := 100.0
-var health := 100.0
+var health := State.player_max_health
 
 @onready var actions_node: Node2D = $Actions
 
@@ -39,13 +38,10 @@ func _physics_process(delta: float) -> void:
 	var mouse_direction: Vector2 = (mouse_pos - global_position).normalized()
 	var command_mouse := CommandMouse.new(mouse_direction, mouse_pos, Input.is_action_pressed("mouse_click"))
 	accept_command(command_mouse)
-
 	
 	if Input.is_action_just_released("mouse_click"):
 		var command_click := CommandMouseReleased.new(mouse_direction, mouse_pos)
 		accept_command(command_click)
-		
-
 
 
 func accept_command(command: Command): 
@@ -67,6 +63,8 @@ func take_damage(damage: float):
 	else:
 		player_health_changed.emit(health)
 
+func take_impulse(impulse: Vector2):
+	pass
 
 
 

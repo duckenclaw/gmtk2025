@@ -1,12 +1,15 @@
 extends Action
 class_name FireAction
 
-const FIRE_DAMAGE = 1.0
+const FIRE_DAMAGE: float = 1.0
+const DAMAGE_TIMEOUT: float = 150 # msec
 
 @onready var area_2d: Area2D = $Area2D
 
 var target_group: String = "enemy"
 var targets_in_area: Array
+
+var last_damage_time: float = 0.0
 
 
 func _ready() -> void:
@@ -16,6 +19,9 @@ func _ready() -> void:
 func accept_command(command: Command):
 	if command is CommandMouse:
 		area_2d.rotation = command.direction.angle()
+		
+		area_2d.visible = command.is_pressed
+		if Time.get_ticks_msec() - last_damage_time < DAMAGE_TIMEOUT: return
 		
 		if command.is_pressed:
 			for enemy in targets_in_area:

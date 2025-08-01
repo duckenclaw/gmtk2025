@@ -8,14 +8,14 @@ extends Node2D
 
 func _physics_process(_delta):
 	for area in hitbox.get_overlapping_areas():
-		if !area.is_invincible and area.is_in_group(target_group):
+		if area.is_in_group(target_group):
 			area.take_damage(damage)
 
 func _on_area_2d_body_entered(body):
-	if body.is_in_group(target_group) and !body.is_invincible:
+	if body.is_in_group(target_group):
 		body.take_damage(damage)
 
 
 func _on_area_2d_area_entered(area):
-	if area.is_in_group(target_group) and !area.is_invincible:
+	if area.is_in_group(target_group):
 		area.take_damage(damage)

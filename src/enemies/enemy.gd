@@ -6,7 +6,7 @@ class_name Enemy
 @export var max_health: float = 100.0
 @export var damage: float = 25.0
 @export var enemy_texture: CompressedTexture2D
-@export var target_group: String = "loopOrigin"  # Groups that this enemy can damage
+@export var target_groups: Array[String] = ["loopOrigin", "player"]  # Groups that this enemy can damage
 
 # Current state
 var current_health: float
@@ -27,7 +27,16 @@ func _ready():
 	current_health = max_health
 
 func _physics_process(delta):
-	if is_dead or not is_moving:
+	if is_dead:
+		return
+	
+	# Attack 
+	for area in get_overlapping_areas():
+		if NodeUtils.has_intersecting_groups(area, target_groups):
+			area.take_damage(damage)
+			enemy_dealt_damage.emit(area, damage)
+	
+	if not is_moving:
 		return
 	
 	# Move towards target position
@@ -52,24 +61,30 @@ func take_damage(incoming_damage: float):
 		return false
 	
 	current_health -= incoming_damage
+	ParticlePool.spawn_number_particle(
+		global_position, 
+		ParticlePool.ParticleType.ENEMY_TAKES_DAMAGE, 
+		incoming_damage
+		)
+	
 	if current_health <= 0:
 		is_dead = true
 		print(name + " ENEMY DEAD")
 		enemy_died.emit(self)
 		queue_free()
-	is_invincible = true
-	invincibility_timer.start(3)
-	print(name + " invincible")
 	return true
 
-func _on_body_entered(body):
-	if body.is_in_group(target_group):
+func take_impulse(impulse: Vector2):
+	pass
+
+func _on_body_entered(body: PhysicsBody2D):
+	if NodeUtils.has_intersecting_groups(body, target_groups):
 		body.take_damage(damage)
 		enemy_dealt_damage.emit(body, damage)
 
 
-func _on_area_entered(area):
-	if area.is_in_group(target_group):
+func _on_area_entered(area: Area2D):
+	if NodeUtils.has_intersecting_groups(area, target_groups):
 		area.take_damage(damage)
 		enemy_dealt_damage.emit(area, damage)
 

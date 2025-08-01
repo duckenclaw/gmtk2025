@@ -35,6 +35,10 @@ class WaveData:
 		spawners = spawner_list
 		next_spawn_time =  config.spawn_interval
 
+@onready var player: Player = $Player
+@onready var flag: Area2D = $Flag
+
+
 func _ready():
 	setup_timers()
 	

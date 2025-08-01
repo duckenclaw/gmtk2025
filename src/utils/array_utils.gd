@@ -35,6 +35,12 @@ static func first(array: Array[Variant], condition: Callable) -> Variant:
 			return item
 	return null
 
+static func intersect(array1: Array, array2: Array):
+	var intersection = []
+	for item in array1:
+		if array2.has(item):
+			intersection.append(item)
+	return intersection
 
 
 #static func map(array: Array, map_function: FuncRef) -> Array:

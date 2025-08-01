@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Random="*res://src/utils/math/random.gd"
 Ref="*res://src/ref.gd"
 State="*res://src/game/state.gd"
+ParticlePool="*res://src/ui/numbers/particle_pool.gd"
 
 [display]
 

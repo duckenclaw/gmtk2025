@@ -27,9 +27,16 @@ offset_top = 41.0
 offset_right = 530.0
 offset_bottom = 98.0
 
-[node name="Label" type="Label" parent="HealthContainer"]
+[node name="FlagHealthLabel" type="Label" parent="HealthContainer"]
 layout_mode = 2
-text = "Health"
+text = "Flag health"
 
-[node name="ProgressBar" parent="HealthContainer" instance=ExtResource("2_r30kv")]
+[node name="FlagProgressBar" parent="HealthContainer" instance=ExtResource("2_r30kv")]
+layout_mode = 2
+
+[node name="PlayerHealthLabel" type="Label" parent="HealthContainer"]
+layout_mode = 2
+text = "Player health"
+
+[node name="PlayerProgressBar" parent="HealthContainer" instance=ExtResource("2_r30kv")]
 layout_mode = 2
