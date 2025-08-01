@@ -1,11 +1,11 @@
 [gd_resource type="Theme" load_steps=9 format=3 uid="uid://c8qwnhn2pdfrw"]
 
-[ext_resource type="StyleBox" uid="uid://bnc5n0yi6oy25" path="res://assets/theme/button_hover_style_box_flat.tres" id="1_10c53"]
-[ext_resource type="StyleBox" uid="uid://brhmiog8uev15" path="res://assets/theme/button_disabled_style_box_flat.tres" id="1_r3vf3"]
-[ext_resource type="StyleBox" uid="uid://b8p11lhb0vyc7" path="res://assets/theme/button_normal_style_box_flat.tres" id="2_r3vf3"]
-[ext_resource type="StyleBox" uid="uid://db4tctjy07qwi" path="res://assets/theme/progressbar_base_style_box_flat.tres" id="3_abxy8"]
-[ext_resource type="StyleBox" uid="uid://cd2hf2ifh7fe0" path="res://assets/theme/button_pressed_style_box_flat.tres" id="4_abxy8"]
-[ext_resource type="StyleBox" uid="uid://dor8y701r1diw" path="res://assets/theme/progressbar_fill_style_box_flat.tres" id="4_hfrb8"]
+[ext_resource type="StyleBox" path="res://assets/theme/button_hover_style_box_flat.tres" id="1_10c53"]
+[ext_resource type="StyleBox" path="res://assets/theme/button_disabled_style_box_flat.tres" id="1_r3vf3"]
+[ext_resource type="StyleBox" path="res://assets/theme/button_normal_style_box_flat.tres" id="2_r3vf3"]
+[ext_resource type="StyleBox" path="res://assets/theme/progressbar_base_style_box_flat.tres" id="3_abxy8"]
+[ext_resource type="StyleBox" path="res://assets/theme/button_pressed_style_box_flat.tres" id="4_abxy8"]
+[ext_resource type="StyleBox" path="res://assets/theme/progressbar_fill_style_box_flat.tres" id="4_hfrb8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_10c53"]
 

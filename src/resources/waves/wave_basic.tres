@@ -8,5 +8,6 @@
 script = ExtResource("3_aiaim")
 wave_name = "Wave basic"
 enemy_types = Array[ExtResource("1_pb2hb")]([ExtResource("2_pb2hb")])
-enemies_per_spawner = 5
+total_enemies = 10
+enemies_per_spawner = 3
 metadata/_custom_type_script = "uid://vkq5h0d44gc8"

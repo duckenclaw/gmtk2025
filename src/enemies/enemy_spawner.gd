@@ -29,10 +29,6 @@ signal all_enemies_dead()
 func _ready():
 	spawn_timer.wait_time = spawn_interval
 	
-	# Load default enemy scene if not provided
-	if not enemy_scene:
-		enemy_scene = preload("res://src/enemies/enemy.tscn")
-		
 	#start_spawning()
 
 # Start spawning enemies
@@ -91,7 +87,6 @@ func spawn_enemy_random() -> Enemy:
 
 # Handle enemy death
 func _on_enemy_died(enemy: Enemy):
-	spawn_count -= 1
 	
 	# Check if all enemies are dead
 	if spawn_count <= 0:
@@ -147,7 +142,7 @@ func _on_spawn_timer_timeout():
 		stop_spawning()
 		return
 	
-	spawn_enemy_random()
+	spawn_enemy_random_typed()
 
 # ========== ENEMY TYPE CONFIGURATION ==========
 
@@ -202,9 +197,10 @@ func configure_enemy_with_type(enemy_type: EnemyType):
 	enemy.max_health = enemy_type.max_health
 	enemy.current_health = enemy_type.max_health
 	enemy.damage = enemy_type.damage
-	enemy.target_group = enemy_type.target_group
+	enemy.target_groups = enemy_type.target_groups
 	
 	# Apply visual properties
+	spawn_texture = enemy_type.texture
 	if enemy_type.texture and enemy.sprite:
 		enemy.enemy_texture = spawn_texture
 		enemy.sprite.texture = spawn_texture
@@ -246,5 +242,6 @@ func spawn_enemy_random_typed() -> Enemy:
 	var angle = randf() * TAU
 	var distance = randf_range(spawn_radius * 0.5, spawn_radius)
 	var spawn_pos = global_position + Vector2(cos(angle), sin(angle)) * distance
+	spawn_count -= 1
 	
 	return spawn_random_typed_enemy_at_position(spawn_pos)
