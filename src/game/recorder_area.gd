@@ -7,8 +7,7 @@ const PLAYER = preload("uid://cni2a6p1fkqef")
 @onready var game_map: GameMap = $"../GameMap"
 
 
-var records: Array[Record]
-var copies: Dictionary # id to Player
+
 var lines: Dictionary # id to Line2D
 
 var tween: Tween
@@ -19,11 +18,11 @@ func _ready() -> void:
 	State.loop_progress.connect(on_loop_progress)
 
 func restart_copies():
-	for copy in copies.values():
+	for copy in State.copies.values():
 		copy.queue_free()
-	copies.clear()
+	State.copies.clear()
 	
-	for record in records:
+	for record in State.records:
 		record.reset()
 		
 		var copy = PLAYER.instantiate()
@@ -31,7 +30,7 @@ func restart_copies():
 		copy.player_config = record.player_config
 		copy.selected_action_index = record.selected_action_index
 		
-		copies[record.id] = copy
+		State.copies[record.id] = copy
 		game_map.add_child(copy)
 		
 		remove_path(record.id)
@@ -39,9 +38,9 @@ func restart_copies():
 		print("Created player copy: " + record.id + " action " + str(record.selected_action_index))
 
 func on_loop_progress(_value: float, seconds: float):
-	for id in copies.keys(): 
-		var record = get_record(id)
-		var copy = copies[id]
+	for id in State.copies.keys(): 
+		var record = State.get_record(id)
+		var copy = State.copies[id]
 		
 		var iteration := 0
 		while true:
@@ -90,9 +89,10 @@ func save_recording(player: Player, id: int):
 		player.history, 
 		player.position_history,
 		copied_config,
-		player.selected_action_index
+		player.selected_action_index,
+		get_record_color(id)
 		)
-	records.append(record)
+	State.records.append(record)
 
-func get_record(id: String) -> Record:
-	return records[records.find_custom(func (record): return record.id == id)]
+func get_record_color(index: int) -> Color:
+	return Random.color(0.5, 1.0)
