@@ -13,7 +13,10 @@ var is_invincible: bool = false
 func _on_invincibility_timer_timeout():
 	#print("flag not invincible")
 	is_invincible = false
-	
+
+func _process(delta: float) -> void:
+	current_health += State.flag_regen * delta
+
 func take_damage(incoming_damage: float):
 	if is_invincible:
 		return false

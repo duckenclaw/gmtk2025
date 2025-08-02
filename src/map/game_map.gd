@@ -2,6 +2,7 @@ extends Node2D
 class_name GameMap
 
 # ========== SPAWNER REFERENCES ==========
+@export var central_spawner: EnemySpawner
 @export var north_spawner: EnemySpawner
 @export var south_spawner: EnemySpawner
 @export var west_spawner: EnemySpawner
@@ -62,6 +63,8 @@ func setup_timers():
 
 func get_spawner_by_direction(direction: String) -> EnemySpawner:
 	match direction.to_lower():
+		"central":
+			return central_spawner
 		"north":
 			return north_spawner
 		"south":
@@ -96,6 +99,7 @@ func start_wave(wave_index: int) -> bool:
 	var spawners: Array[EnemySpawner] = []
 	for direction in wave_config.spawner_directions:
 		var spawner = get_spawner_by_direction(direction)
+		print(spawner)
 		if spawner:
 			spawners.append(spawner)
 	
@@ -202,7 +206,7 @@ func get_active_wave_count() -> int:
 
 func get_total_living_enemies() -> int:
 	var total = 0
-	var spawners = [north_spawner, south_spawner, west_spawner, east_spawner]
+	var spawners = [central_spawner, north_spawner, south_spawner, west_spawner, east_spawner]
 	for spawner in spawners:
 		if spawner:
 			total += spawner.get_living_enemy_count()
@@ -212,7 +216,7 @@ func get_total_living_enemies() -> int:
 
 func print_wave_status():
 	print("=== WAVE STATUS ===")
-	print("Active waves: ", active_waves.size())
+	print("Active wave: ", active_waves)
 	for wave_data in active_waves:
 		print("  - ", wave_data.config.wave_name, " (", wave_data.enemies_spawned, " spawned)")
 	print("Total enemies: ", get_total_living_enemies())
@@ -220,6 +224,7 @@ func print_wave_status():
 
 func _on_enemy_spawned(enemy: Enemy):
 	active_waves[0].enemies_spawned += 1
+	print("spawned enemy: " + enemy.name)
 
 func _on_wave_timer_timeout():
 	if get_total_living_enemies() <= 0:

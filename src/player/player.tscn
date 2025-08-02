@@ -1,15 +1,20 @@
-[gd_scene load_steps=14 format=3 uid="uid://cni2a6p1fkqef"]
+[gd_scene load_steps=19 format=3 uid="uid://cni2a6p1fkqef"]
 
 [ext_resource type="Script" uid="uid://cwhyfhc6c1nya" path="res://src/player/player.gd" id="1_4anbu"]
+[ext_resource type="Texture2D" uid="uid://u2xov25lfo1c" path="res://assets/art/player/player_front.PNG" id="2_o822w"]
 [ext_resource type="Script" uid="uid://co86e1n8ijmiw" path="res://src/player/actions/fire/fire_action.gd" id="2_rxibo"]
+[ext_resource type="Texture2D" uid="uid://bd2unw7kylwxh" path="res://assets/art/player/left_hand_back.PNG" id="2_ylhto"]
+[ext_resource type="Texture2D" uid="uid://c5rh8kvo0xlig" path="res://assets/art/player/right_hand_back.PNG" id="3_cwolq"]
+[ext_resource type="Texture2D" uid="uid://cmrjf4p5xyg8j" path="res://assets/art/player/left_hand_front.PNG" id="3_x42xx"]
 [ext_resource type="Script" uid="uid://dnl5urnuxsdd2" path="res://src/player/actions/black_hole/black_hole_action.gd" id="4_5f2sf"]
+[ext_resource type="Texture2D" uid="uid://cw7irwvgn2fk" path="res://assets/art/player/right_hand_front.PNG" id="4_l271a"]
 [ext_resource type="Script" uid="uid://deye6blic5qq" path="res://src/player/actions/wave/wave_action.gd" id="5_jiejy"]
 [ext_resource type="Script" uid="uid://hdqpwg5uj86i" path="res://src/player/pick_up_area.gd" id="6_jiejy"]
 [ext_resource type="Script" uid="uid://qqqwdbse05x" path="res://src/player/actions/laser/laser_action.gd" id="6_x42xx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5f2sf"]
-radius = 12.0
-height = 36.0
+radius = 14.0
+height = 70.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o822w"]
 
@@ -26,7 +31,7 @@ point_count = 2
 radius = 200.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jiejy"]
-size = Vector2(1000, 40)
+size = Vector2(800, 40)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jiejy"]
 radius = 100.0
@@ -36,17 +41,67 @@ collision_layer = 2
 collision_mask = 52
 script = ExtResource("1_4anbu")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -14.0
-offset_top = -40.0
-offset_right = 14.0
+[node name="HandsBottomBack" type="Node2D" parent="."]
+position = Vector2(0, -45)
+
+[node name="LeftHandBack" type="Sprite2D" parent="HandsBottomBack"]
+position = Vector2(-0.99999905, 0)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("2_ylhto")
+
+[node name="RightHandBack" type="Sprite2D" parent="HandsBottomBack"]
+position = Vector2(-4.7683716e-07, 0)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("3_cwolq")
+
+[node name="HandsBottomFront" type="Node2D" parent="."]
+position = Vector2(0, -45)
+
+[node name="LeftHandFront" type="Sprite2D" parent="HandsBottomFront"]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("3_x42xx")
+
+[node name="RightHandFront" type="Sprite2D" parent="HandsBottomFront"]
+position = Vector2(-1, 0)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("4_l271a")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+position = Vector2(-0.99999994, -37.999996)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("2_o822w")
+
+[node name="HandsTopBack" type="Node2D" parent="."]
+position = Vector2(0, -45)
+
+[node name="LeftHandBack" type="Sprite2D" parent="HandsTopBack"]
+position = Vector2(-0.99999905, 0)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("2_ylhto")
+
+[node name="RightHandBack" type="Sprite2D" parent="HandsTopBack"]
+position = Vector2(-4.7683716e-07, 0)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("3_cwolq")
+
+[node name="HandsTopFront" type="Node2D" parent="."]
+position = Vector2(0, -45)
+
+[node name="LeftHandFront" type="Sprite2D" parent="HandsTopFront"]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("3_x42xx")
+
+[node name="RightHandFront" type="Sprite2D" parent="HandsTopFront"]
+position = Vector2(-1, 0)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("4_l271a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -21)
+position = Vector2(0, -36)
 shape = SubResource("CapsuleShape2D_5f2sf")
 
 [node name="Actions" type="Node2D" parent="."]
-position = Vector2(0, -21)
+position = Vector2(0, -45)
 
 [node name="FireAction" type="Node2D" parent="Actions"]
 script = ExtResource("2_rxibo")
@@ -94,7 +149,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actions/LaserAction/LaserArea"]
-position = Vector2(519, -1)
+position = Vector2(420, 0)
 shape = SubResource("RectangleShape2D_jiejy")
 
 [node name="WaveAction" type="Node2D" parent="Actions"]

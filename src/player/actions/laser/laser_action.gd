@@ -19,11 +19,10 @@ func accept_command(command: Command):
 		laser_area.rotation = command.direction.angle()
 		laser_collider.visible = command.is_pressed
 		if Time.get_ticks_msec() - last_damage_time < DAMAGE_TIMEOUT: return
-		
+  
 		if command.is_pressed:
-			print(targets_in_area)
 			for enemy in targets_in_area:
-				enemy.take_damage(LASER_DAMAGE)
+				enemy.take_damage(player_config.laser_damage)
 				enemy.take_impulse(LASER_IMPULSE * global_position.direction_to(enemy.global_position))
 
 func is_reloading() -> bool:

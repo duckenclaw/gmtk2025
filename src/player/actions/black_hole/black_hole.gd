@@ -7,6 +7,8 @@ var player_config: PlayerConfig
 
 func _ready() -> void:
 	$CollisionShape2D.shape.radius = player_config.black_hole_radius
+	$Sprite2D.scale.x = player_config.black_hole_radius/100.0
+	$Sprite2D.scale.y = player_config.black_hole_radius/100.0
 	
 	await WaitUtil.wait(0.1)
 	for area in get_overlapping_areas():

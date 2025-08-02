@@ -78,6 +78,7 @@ func _create_enemy_at_position(pos: Vector2, enemy_type: EnemyType) -> Enemy:
 		return null
 	
 	var enemy = enemy_scene.instantiate() as Enemy
+	enemy.main_target = target_node
 	if not enemy:
 		push_error("Failed to instantiate enemy or enemy scene is not an Enemy")
 		return null
@@ -94,7 +95,7 @@ func _create_enemy_at_position(pos: Vector2, enemy_type: EnemyType) -> Enemy:
 	enemy.enemy_dealt_damage.connect(_on_enemy_dealt_damage)
 	
 	# Set target
-	if target_node:
+	if enemy.main_target:
 		enemy.set_target_position(target_node.global_position)
 	
 	# Track enemy

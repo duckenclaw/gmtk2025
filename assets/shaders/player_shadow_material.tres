@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bm2108ea6mlk5"]
+
+[ext_resource type="Shader" uid="uid://dqq61xdyviuav" path="res://assets/shaders/recolor.gdshader" id="1_vrgl2"]
+
+[resource]
+shader = ExtResource("1_vrgl2")
+shader_parameter/color = Color(0.8047426, 0.80474263, 0.8047426, 1)
