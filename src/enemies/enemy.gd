@@ -33,6 +33,7 @@ func _ready():
 	target = main_target
 
 func _physics_process(delta):
+	set_target_position(target.global_position)
 	if is_dead:
 		return
 	
@@ -114,7 +115,6 @@ func _on_detection_area_entered(area):
 	target = area
 	if NodeUtils.has_intersecting_groups(area, target_groups):
 		set_target_position(target.global_position)
-		$DetectionArea/DisinterestTimer.start(5.0)
 
 
 func _on_disinterest_timer_timeout():
@@ -123,5 +123,4 @@ func _on_disinterest_timer_timeout():
 
 
 func _on_detection_area_exited(area):
-	target = main_target
-	set_target_position(target.global_position)
+	$DetectionArea/DisinterestTimer.start(1.0)
