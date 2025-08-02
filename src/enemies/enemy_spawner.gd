@@ -85,7 +85,7 @@ func _create_enemy_at_position(pos: Vector2, enemy_type: EnemyType) -> Enemy:
 	
 	# Position and add to scene
 	enemy.global_position = pos
-	get_parent().add_child(enemy)
+	get_parent().get_parent().add_child(enemy)
 	
 	# Configure enemy with type
 	_apply_enemy_type(enemy, enemy_type)
