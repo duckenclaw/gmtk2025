@@ -14,12 +14,12 @@ signal create_copy_pressed
 
 
 func _ready() -> void:
-	player_progress_bar.value = State.player_max_health
+	player_progress_bar.value = State.player_config.max_health
 	flag_progress_bar.value = State.flag_max_health
 
 
 func _process(_delta: float) -> void:
-	player_progress_bar.max_value = State.player_max_health
+	player_progress_bar.max_value = State.player_config.max_health
 	flag_progress_bar.max_value = State.flag_max_health
 	
 	time_label.text = str(int(State.LOOP_TIME - State.loop_progress_sec + 1))

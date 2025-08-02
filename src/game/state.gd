@@ -8,19 +8,21 @@ const LOOP_TIME: float = 10.0
 signal loop_restarted
 signal loop_progress(value: float, seconds: float) # 0 to 1
 
+# LOOP
 var loop_index: int = 0
 var loop_progress_sec: float = 0.0
 var loop_value: float = 0.0 # 0 to 1
 
-var player_max_health: float = 100.0
+# FLAG
 var flag_max_health: float = 300.0
+var flag_regen: float = 20.0
 
+# COPIES
 var max_copies: int = 5
 var current_copies: int = 0
 var all_time_copies: int = 0
 
-var player_is_home: bool = false
-
+# TODO: finish this!!
 var fire_available: bool = true
 var black_hole_available: bool = false
 

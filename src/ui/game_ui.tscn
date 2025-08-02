@@ -40,10 +40,10 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 399.0
-offset_top = -103.0
-offset_right = -380.0
-offset_bottom = -41.0
+offset_left = 482.0
+offset_top = -226.0
+offset_right = -297.0
+offset_bottom = -164.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -57,8 +57,10 @@ layout_mode = 2
 text = "Black hole"
 
 [node name="Copies" type="HBoxContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 466.0
+offset_top = 986.0
+offset_right = 506.0
+offset_bottom = 1026.0
 
 [node name="CreateCopyButton" type="Button" parent="."]
 offset_left = 1440.0
