@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cni2a6p1fkqef"]
+[gd_scene load_steps=14 format=3 uid="uid://cni2a6p1fkqef"]
 
 [ext_resource type="Script" uid="uid://cwhyfhc6c1nya" path="res://src/player/player.gd" id="1_4anbu"]
 [ext_resource type="Script" uid="uid://bhn3toge8b57u" path="res://src/player/actions/action.gd" id="2_mf2ua"]
 [ext_resource type="Script" uid="uid://co86e1n8ijmiw" path="res://src/player/actions/wave/fire_action.gd" id="2_rxibo"]
 [ext_resource type="Script" uid="uid://dnl5urnuxsdd2" path="res://src/player/actions/black_hole/black_hole_action.gd" id="4_5f2sf"]
 [ext_resource type="Script" uid="uid://deye6blic5qq" path="res://src/player/actions/wave/wave_action.gd" id="5_jiejy"]
+[ext_resource type="Texture2D" uid="uid://dc66shp0a2b2h" path="res://assets/art/testing/target_aoe_undetected.png" id="5_o822w"]
 [ext_resource type="Script" uid="uid://hdqpwg5uj86i" path="res://src/player/pick_up_area.gd" id="6_jiejy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5f2sf"]
@@ -77,11 +78,16 @@ scale_amount_curve = SubResource("Curve_5f2sf")
 [node name="BlackHoleAction" type="Node2D" parent="Actions"]
 script = ExtResource("4_5f2sf")
 
-[node name="Area2D" type="Area2D" parent="Actions/BlackHoleAction"]
+[node name="PreviewArea" type="Area2D" parent="Actions/BlackHoleAction"]
+collision_layer = 2
+collision_mask = 4
 
-[node name="PreviewArea" type="CollisionShape2D" parent="Actions/BlackHoleAction/Area2D"]
-visible = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actions/BlackHoleAction/PreviewArea"]
 shape = SubResource("CircleShape2D_5f2sf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Actions/BlackHoleAction/PreviewArea"]
+scale = Vector2(2, 2)
+texture = ExtResource("5_o822w")
 
 [node name="WaveAction" type="Node2D" parent="Actions"]
 script = ExtResource("5_jiejy")
