@@ -1,6 +1,8 @@
 extends Node2D
 class_name Game
 
+
+
 @onready var game_map: GameMap = $GameMap
 @onready var game_ui: GameUi = $GameUi
 @onready var camera: Camera2D = $Camera2D
@@ -25,9 +27,18 @@ func _ready() -> void:
 	
 	State.start_loop()
 
+
+
 func _process(delta: float) -> void:
 	update_camera(delta)
 	check_next_lvl()
+	check_action_changed()
+
+func check_action_changed():
+	for i in [1, 2, 3, 4, 5]:
+		if Input.is_action_just_pressed("number_" + str(i)):
+			print("Selected action number_" + str(i))
+			State.pending_selected_action_index = i - 1
 
 func check_next_lvl():
 	if State.exp >= State.exp_to_next_lvl:

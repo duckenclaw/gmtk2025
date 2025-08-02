@@ -28,6 +28,9 @@ func restart_copies():
 		
 		var copy = PLAYER.instantiate()
 		copy.is_copy = true
+		copy.player_config = record.player_config
+		copy.selected_action_index = record.selected_action_index
+		
 		copies[record.id] = copy
 		game_map.add_child(copy)
 		
@@ -80,7 +83,16 @@ func remove_path(id: String):
 
 func save_recording(player: Player, id: int):
 	print("Added new recording")
-	records.append(Record.new(id, player.history, player.position_history))
+	var copied_config: PlayerConfig = player.player_config.duplicate()
+	copied_config.is_copy = true
+	var record = Record.new(
+		id, 
+		player.history, 
+		player.position_history,
+		copied_config,
+		player.selected_action_index
+		)
+	records.append(record)
 
 func get_record(id: String) -> Record:
 	return records[records.find_custom(func (record): return record.id == id)]

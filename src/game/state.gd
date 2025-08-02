@@ -29,7 +29,7 @@ var exp: float = 0.0
 
 # for real player
 var player_config: PlayerConfig = PlayerConfig.new()
-
+var pending_selected_action_index: int = 0
 
 func _ready() -> void:
 	pass

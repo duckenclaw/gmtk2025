@@ -13,7 +13,7 @@ class_name EnemySpawner
 @export var spawn_count: int = 5
 @export var enemy_pack_count: int = 1
 @export var spawn_radius: float = 60.0
-@export var spawn_interval: float = 2.0
+@export var spawn_interval: float = 1.0
 
 # Target for enemies to move towards
 @export var target_node: Node2D

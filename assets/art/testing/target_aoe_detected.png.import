@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cp2nin60nv84l"
-path="res://.godot/imported/target_aoe_detected.png-5e676292d5f7fda8114f7a53f7e36b40.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://assets/art/testing/target_aoe_detected.png"
-dest_files=["res://.godot/imported/target_aoe_detected.png-5e676292d5f7fda8114f7a53f7e36b40.ctex"]
 
 [params]
 

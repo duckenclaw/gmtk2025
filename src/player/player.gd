@@ -1,8 +1,6 @@
 extends Node2D
 class_name Player
 
-const MOVE_SPEED = 400.0
-
 var is_copy: bool = false
 
 signal player_died
@@ -16,7 +14,9 @@ var start_of_recording: float = 0.0
 var actions: Array[Action]
 var current_action: Action
 
-var health := State.player_max_health
+@export var selected_action_index: int = 0
+@export var player_config: PlayerConfig
+var health: float = 0.0
 
 var velocity: Vector2
 
@@ -24,14 +24,24 @@ var velocity: Vector2
 
 
 func _ready() -> void:
+	if !is_copy:
+		player_config = State.player_config
+	
+	health = player_config.max_health
+	
 	actions.append_array(actions_node.get_children())
-	set_action(actions[3])
-	print(actions[3])
+	for action in actions:
+		action.player_config = player_config
+	
+	set_action(actions[selected_action_index])
+	
 	State.loop_restarted.connect(loop_restarted)
 
 func loop_restarted():
 	if is_copy: return
 	
+	selected_action_index = State.pending_selected_action_index
+	set_action(actions[selected_action_index])
 	global_position = Vector2.ZERO
 	stop_recording()
 	start_recording()
@@ -80,8 +90,8 @@ func accept_command(command: Command):
 	current_action.accept_command(command)
 	
 	if command is CommandMove:
-		velocity += command.direction * command.delta *  MOVE_SPEED * 2.0
-		position += command.direction * command.delta *  MOVE_SPEED
+		velocity += command.direction * command.delta * player_config.speed * 2.0
+		position += command.direction * command.delta * player_config.speed
 
 func take_damage(damage: float):
 	health -= damage

@@ -9,8 +9,6 @@ extends ProgressBar
 
 func _process(_delta: float) -> void:
 	h_box_container.size = size
-	h_box_container.size.x = 150
 	
 	value_label.text = str(int(value))
 	max_label.text = str(int(max_value))
-	size.x = max_value * 3.0
