@@ -72,8 +72,8 @@ enemy_scene = ExtResource("12_28tqb")
 current_enemy_types = Array[ExtResource("14_gu4qb")]([ExtResource("15_t5ynd"), ExtResource("16_yi3n0"), ExtResource("17_c4ouk"), ExtResource("18_e3dug")])
 enemy_type_weights = Array[float]([5.0, 3.0, 1.0, 0.5])
 spawn_count = 10
-enemy_pack_count = 5
-spawn_radius = 1000.0
+enemy_pack_count = 3
+spawn_radius = 1200.0
 spawn_interval = 2.5
 target_node = NodePath("../../Flag")
 

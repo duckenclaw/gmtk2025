@@ -12,6 +12,8 @@ const EXP = preload("uid://c86ubuma3ax4m")
 
 # Current state
 var current_health: float
+var main_target: Area2D
+var target: Area2D
 var target_position: Vector2
 var is_moving: bool = true
 var is_dead: bool = false
@@ -28,6 +30,7 @@ signal enemy_dealt_damage(target: Node, damage: float)
 
 func _ready():
 	current_health = max_health
+	target = main_target
 
 func _physics_process(delta):
 	if is_dead:
@@ -105,3 +108,20 @@ func _on_invincibility_timer_timeout():
 	print(name + " not invincible")
 	is_invincible = false
 	invincibility_timer.stop()
+
+
+func _on_detection_area_entered(area):
+	target = area
+	if NodeUtils.has_intersecting_groups(area, target_groups):
+		set_target_position(target.global_position)
+		$DetectionArea/DisinterestTimer.start(5.0)
+
+
+func _on_disinterest_timer_timeout():
+	target = main_target
+	set_target_position(target.global_position)
+
+
+func _on_detection_area_exited(area):
+	target = main_target
+	set_target_position(target.global_position)
