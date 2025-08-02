@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://cgpkr8nvf4qyk"]
 
 [ext_resource type="Script" uid="uid://cm46pno826410" path="res://src/enemies/enemy.gd" id="1_8b5j4"]
-[ext_resource type="Texture2D" uid="uid://2657u5hkqr14" path="res://assets/art/testing/red.png" id="2_jg4ye"]
+[ext_resource type="Texture2D" uid="uid://bgna4jhcxa2s3" path="res://assets/art/wolf.PNG" id="2_jg4ye"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jg4ye"]
-radius = 16.0
+radius = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yvjb1"]
 radius = 60.0
@@ -19,15 +19,18 @@ damage = 5.0
 target_groups = Array[String]([])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
+position = Vector2(-0.5, -26)
+scale = Vector2(0.075, 0.075)
 texture = ExtResource("2_jg4ye")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -24)
 shape = SubResource("CircleShape2D_jg4ye")
 
 [node name="InvincibilityTimer" type="Timer" parent="."]
 
 [node name="DetectionArea" type="Area2D" parent="."]
+position = Vector2(0, -24)
 collision_layer = 0
 collision_mask = 2
 
