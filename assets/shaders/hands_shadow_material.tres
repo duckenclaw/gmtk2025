@@ -5,3 +5,4 @@
 [resource]
 shader = ExtResource("1_5o3x3")
 shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/modulate_color = Color(1, 1, 1, 1)

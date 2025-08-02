@@ -40,6 +40,7 @@ collectable=""
 [gui]
 
 theme/custom="uid://c8qwnhn2pdfrw"
+theme/custom_font="uid://spl4varvrcrw"
 
 [input]
 

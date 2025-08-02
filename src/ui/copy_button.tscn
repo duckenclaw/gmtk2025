@@ -11,40 +11,41 @@
 [node name="CopyButton" type="PanelContainer"]
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 1912.0
-offset_bottom = 1072.0
+offset_right = 628.0
+offset_bottom = 828.0
 script = ExtResource("1_6lgf1")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 
-[node name="Container" type="Container" parent="MarginContainer"]
+[node name="Container" type="CenterContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
 [node name="Player" type="TextureRect" parent="MarginContainer/Container"]
 material = ExtResource("2_d2r1c")
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("2_irau5")
 expand_mode = 1
-stretch_mode = 4
+stretch_mode = 5
 
 [node name="LeftHand" type="TextureRect" parent="MarginContainer/Container"]
 material = ExtResource("4_jyban")
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("3_tkwsb")
 expand_mode = 1
-stretch_mode = 4
+stretch_mode = 5
 
 [node name="RightHand" type="TextureRect" parent="MarginContainer/Container"]
 material = ExtResource("4_jyban")
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("4_d2r1c")
 expand_mode = 1
-stretch_mode = 4
-
-[node name="Label" type="Label" parent="MarginContainer"]
-layout_mode = 2
-text = "Recod 1"
+stretch_mode = 5
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2

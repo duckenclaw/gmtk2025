@@ -23,14 +23,14 @@ offset_bottom = 255.0
 
 [node name="FlagHealthLabel" type="Label" parent="HealthContainer"]
 layout_mode = 2
-text = "Flag health"
+text = "FLAG HEALTH"
 
 [node name="FlagProgressBar" parent="HealthContainer" instance=ExtResource("2_r30kv")]
 layout_mode = 2
 
 [node name="PlayerHealthLabel" type="Label" parent="HealthContainer"]
 layout_mode = 2
-text = "Player health"
+text = "PLAYER HEALTH"
 
 [node name="PlayerProgressBar" parent="HealthContainer" instance=ExtResource("2_r30kv")]
 layout_mode = 2
@@ -78,10 +78,15 @@ offset_right = 1947.0
 offset_bottom = 1111.0
 color = Color(0, 0, 0, 0.12156863)
 
-[node name="Copies" type="HBoxContainer" parent="."]
-offset_left = 643.0
-offset_top = 983.0
-offset_right = 683.0
-offset_bottom = 1023.0
+[node name="CopiesCenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Copies" type="HBoxContainer" parent="CopiesCenterContainer"]
+layout_mode = 2
 
 [connection signal="pressed" from="CreateCopyButton" to="." method="_on_create_copy_button_pressed"]

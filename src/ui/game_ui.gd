@@ -15,7 +15,7 @@ signal create_copy_pressed
 @onready var exp_progress_bar: ProgressBar = $ExpContainer/ProgressBar
 
 @onready var actions_container: HBoxContainer = $Actions
-@onready var copies_container: HBoxContainer = $Copies
+@onready var copies_container: HBoxContainer = $CopiesCenterContainer/Copies
 
 
 
@@ -46,8 +46,10 @@ func setup_actions():
 func setup_copies():
 	NodeUtils.queue_free_children(copies_container)
 	for i in State.max_copies:
-		var copy
-		var record = State.records.get(i)
+		var copy: Player
+		var record: Record 
+		if i < State.records.size():
+			record = State.records.get(i)
 		if record != null:
 			copy = State.copies.get(record.id)
 		

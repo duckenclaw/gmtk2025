@@ -27,6 +27,7 @@ layout_mode = 2
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Description"
+autowrap_mode = 3
 
 [node name="MousePressedListener" type="Node" parent="."]
 script = ExtResource("2_7ykpv")

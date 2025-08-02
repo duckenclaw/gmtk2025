@@ -27,6 +27,7 @@ Button/styles/focus = SubResource("StyleBoxEmpty_10c53")
 Button/styles/hover = ExtResource("1_10c53")
 Button/styles/normal = ExtResource("2_r3vf3")
 Button/styles/pressed = ExtResource("4_abxy8")
+Label/font_sizes/font_size = 32
 MarginContainer/constants/margin_bottom = 8
 MarginContainer/constants/margin_left = 8
 MarginContainer/constants/margin_right = 8

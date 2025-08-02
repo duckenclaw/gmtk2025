@@ -34,7 +34,7 @@ func restart_copies():
 		game_map.add_child(copy)
 		
 		remove_path(record.id)
-		display_path(record.position_history, Color.BLUE, record.id)
+		display_path(record.position_history, record.color, record.id)
 		print("Created player copy: " + record.id + " action " + str(record.selected_action_index))
 
 func on_loop_progress(_value: float, seconds: float):
