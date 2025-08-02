@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c4xsb2ohggau7"]
 
 [ext_resource type="Script" uid="uid://bmyvfkdchdwbs" path="res://src/player/actions/black_hole/black_hole.gd" id="1_gwcgv"]
-[ext_resource type="Texture2D" uid="uid://cp2nin60nv84l" path="res://assets/art/testing/target_aoe_detected.png" id="2_moxey"]
+[ext_resource type="Texture2D" uid="uid://dsj0ugy6xuvl4" path="res://assets/art/testing/target_aoe_detected.png" id="2_moxey"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bvt61"]
 radius = 100.0
