@@ -19,6 +19,12 @@ var all_time_copies: int = 0
 
 var player_is_home: bool = false
 
+var fire_available: bool = true
+var black_hole_available: bool = false
+
+# for real player
+var player_config: PlayerConfig = PlayerConfig.new()
+
 
 func _ready() -> void:
 	pass

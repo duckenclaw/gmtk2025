@@ -1,9 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://dpnmj3276mrri"]
 
-[ext_resource type="PackedScene" uid="uid://4qenjsgkc0ts" path="res://src/upgrades/upgrade_card.tscn" id="1_xv1g8"]
+[ext_resource type="Script" uid="uid://7e702bi56pum" path="res://src/upgrades/upgrade_menu.gd" id="1_ughgq"]
 
 [node name="UpgradeMenu" type="CanvasLayer"]
 process_mode = 3
+script = ExtResource("1_ughgq")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -36.0
@@ -24,12 +25,3 @@ offset_left = 786.0
 offset_top = 452.0
 offset_right = 1160.0
 offset_bottom = 599.0
-
-[node name="UpgradeCard" parent="HBoxContainer" instance=ExtResource("1_xv1g8")]
-layout_mode = 2
-
-[node name="UpgradeCard2" parent="HBoxContainer" instance=ExtResource("1_xv1g8")]
-layout_mode = 2
-
-[node name="UpgradeCard3" parent="HBoxContainer" instance=ExtResource("1_xv1g8")]
-layout_mode = 2

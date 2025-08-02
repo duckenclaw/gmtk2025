@@ -1,9 +1,17 @@
-[gd_scene format=3 uid="uid://4qenjsgkc0ts"]
+[gd_scene load_steps=3 format=3 uid="uid://4qenjsgkc0ts"]
+
+[ext_resource type="Script" uid="uid://e8wckeq84dyo" path="res://src/upgrades/upgrade_card.gd" id="1_lfd37"]
+[ext_resource type="Script" uid="uid://cjs56bula4a82" path="res://src/upgrades/mouse_pressed_listener.gd" id="2_7ykpv"]
 
 [node name="UpgradeCard" type="PanelContainer"]
+script = ExtResource("1_lfd37")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -19,3 +27,8 @@ layout_mode = 2
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Description"
+
+[node name="MousePressedListener" type="Node" parent="."]
+script = ExtResource("2_7ykpv")
+
+[connection signal="mouse_pressed" from="MousePressedListener" to="." method="_on_mouse_pressed_listener_mouse_pressed"]
