@@ -1,10 +1,19 @@
 extends Node2D
 class_name Player
 
+const PLAYER_BACK = preload("uid://hg2pu7k4m5nv")
+const PLAYER_FRONT = preload("uid://u2xov25lfo1c")
+const LEFT_HAND_BACK = preload("uid://bd2unw7kylwxh")
+const LEFT_HAND_FRONT = preload("uid://cmrjf4p5xyg8j")
+const RIGHT_HAND_BACK = preload("uid://c5rh8kvo0xlig")
+const RIGHT_HAND_FRONT = preload("uid://cw7irwvgn2fk")
+
 var is_copy: bool = false
 
 signal player_died
 signal player_health_changed(health: float)
+
+@export var player_config: PlayerConfig
 
 var position_history: PackedVector2Array
 var history: Array[SavedCommand]
@@ -13,19 +22,37 @@ var start_of_recording: float = 0.0
 
 var actions: Array[Action]
 var current_action: Action
-
 @export var selected_action_index: int = 0
-@export var player_config: PlayerConfig
-var health: float = 0.0
 
+var health: float = 0.0
 var velocity: Vector2
 
 @onready var actions_node: Node2D = $Actions
+
+@onready var player_sprite: Sprite2D = $PlayerSprite
+
+@onready var hands_bottom_back: Node2D = $HandsBottomBack
+@onready var hands_bottom_front: Node2D = $HandsBottomFront
+@onready var hands_top_back: Node2D = $HandsTopBack
+@onready var hands_top_front: Node2D = $HandsTopFront
+
+@onready var left_hand_back_bottom: Sprite2D = $HandsBottomBack/LeftHandBack
+@onready var right_hand_back_bottom: Sprite2D = $HandsBottomBack/RightHandBack
+@onready var left_hand_front_bottom: Sprite2D = $HandsBottomFront/LeftHandFront
+@onready var right_hand_front_bottom: Sprite2D = $HandsBottomFront/RightHandFront
+@onready var left_hand_back_top: Sprite2D = $HandsTopBack/LeftHandBack
+@onready var right_hand_back_top: Sprite2D = $HandsTopBack/RightHandBack
+@onready var left_hand_front_top: Sprite2D = $HandsTopFront/LeftHandFront
+@onready var right_hand_front_top: Sprite2D = $HandsTopFront/RightHandFront
+
+
 
 
 func _ready() -> void:
 	if !is_copy:
 		player_config = State.player_config
+	else:
+		set_shadow_colors()
 	
 	health = player_config.max_health
 	
@@ -57,7 +84,7 @@ func set_action(action: Action):
 func _process(delta: float) -> void:
 	if is_recording and not is_copy:
 		Ref.recorder.display_path(position_history, Color.WEB_MAROON, "player")
-
+	update_visuals()
 
 func _physics_process(delta: float) -> void:
 	global_position += velocity * delta
@@ -80,7 +107,6 @@ func _physics_process(delta: float) -> void:
 	
 	if is_recording:
 		position_history.append(global_position)
-
 
 func accept_command(command: Command): 
 	if is_recording:
@@ -133,3 +159,64 @@ func _on_area_exited(area: Area2D) -> void:
 	if area.is_in_group("center_area"):
 		#State.player_is_home = false
 		pass
+
+func set_shadow_colors():
+	pass
+
+func update_visuals():
+	var mouse_direction: Vector2 = (get_global_mouse_position() - hands_top_front.global_position).normalized()
+	
+	hands_bottom_back.rotation = mouse_direction.angle() + PI / 2
+	hands_top_back.rotation = mouse_direction.angle() + PI / 2
+	hands_bottom_front.rotation = mouse_direction.angle() - PI / 2
+	hands_top_front.rotation = mouse_direction.angle() - PI / 2
+	
+	var direction_rotated = mouse_direction.rotated(- PI / 2)
+	
+	var looks_up: bool = mouse_direction.y <= 0
+	var right_hand_on_top: bool = not mouse_direction.rotated(- PI / 2).angle() <= 0
+	var left_hand_on_top: bool = mouse_direction.rotated(- PI / 2).angle() <= 0
+	
+	show_left_hand(null)
+	
+	if looks_up:
+		if right_hand_on_top:
+			show_right_hand(right_hand_back_top)
+		else:
+			show_right_hand(right_hand_back_bottom)
+		if left_hand_on_top:
+			show_left_hand(left_hand_back_top)
+		else:
+			show_left_hand(left_hand_back_bottom)
+	else:
+		if right_hand_on_top:
+			show_right_hand(right_hand_front_top)
+		else:
+			show_right_hand(right_hand_front_bottom)
+		if left_hand_on_top:
+			show_left_hand(left_hand_front_top)
+		else:
+			show_left_hand(left_hand_front_bottom)
+	
+	if looks_up:
+		player_sprite.texture = PLAYER_BACK
+	else:
+		player_sprite.texture = PLAYER_FRONT
+
+func show_left_hand(left_hand: Sprite2D):
+	for hand in [
+		left_hand_back_bottom,
+		left_hand_back_top,
+		left_hand_front_bottom,
+		left_hand_front_top
+	]:
+		hand.visible = hand == left_hand
+
+func show_right_hand(right_hand: Sprite2D):
+	for hand in [
+		right_hand_back_bottom,
+		right_hand_back_top,
+		right_hand_front_bottom,
+		right_hand_front_top
+	]:
+		hand.visible = hand == right_hand

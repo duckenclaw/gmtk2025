@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://4qenjsgkc0ts"]
 
 [ext_resource type="Script" uid="uid://e8wckeq84dyo" path="res://src/upgrades/upgrade_card.gd" id="1_lfd37"]
-[ext_resource type="Script" uid="uid://cjs56bula4a82" path="res://src/upgrades/mouse_pressed_listener.gd" id="2_7ykpv"]
+[ext_resource type="Script" uid="uid://cjs56bula4a82" path="res://src/ui/mouse_pressed_listener.gd" id="2_7ykpv"]
 
 [node name="UpgradeCard" type="PanelContainer"]
 script = ExtResource("1_lfd37")
@@ -27,6 +27,7 @@ layout_mode = 2
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Description"
+autowrap_mode = 3
 
 [node name="MousePressedListener" type="Node" parent="."]
 script = ExtResource("2_7ykpv")

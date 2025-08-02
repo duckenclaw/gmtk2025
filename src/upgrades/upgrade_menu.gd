@@ -35,8 +35,24 @@ func select_new_upgrades() -> Array[Upgrade]:
 	var upgrades = all_upgrades.duplicate()
 	
 	var selected_upgrades: Array[Upgrade]
+	var selected_upgrade_names: Array[String]
 	for i in min(upgrades.size(), 3):
 		var new_upgrade = upgrades.pick_random()
+		
+		if selected_upgrade_names.has(new_upgrade.title):
+			new_upgrade = upgrades.pick_random()
+		if selected_upgrade_names.has(new_upgrade.title):
+			new_upgrade = upgrades.pick_random()
+		if selected_upgrade_names.has(new_upgrade.title):
+			new_upgrade = upgrades.pick_random()
+		if selected_upgrade_names.has(new_upgrade.title):
+			new_upgrade = upgrades.pick_random()
+		if selected_upgrade_names.has(new_upgrade.title):
+			new_upgrade = upgrades.pick_random()
+		if selected_upgrade_names.has(new_upgrade.title):
+			new_upgrade = upgrades.pick_random()
+		
 		upgrades.erase(new_upgrade)
 		selected_upgrades.append(new_upgrade)
+		selected_upgrade_names.append(new_upgrade.title)
 	return selected_upgrades

@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://brl4r63pus6xw"]
+
+[ext_resource type="Shader" uid="uid://dqq61xdyviuav" path="res://assets/shaders/recolor.gdshader" id="1_5o3x3"]
+
+[resource]
+shader = ExtResource("1_5o3x3")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/modulate_color = Color(1, 1, 1, 1)

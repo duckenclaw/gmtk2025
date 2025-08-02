@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsj0ugy6xuvl4"
-path="res://.godot/imported/target_aoe_detected.png-5e676292d5f7fda8114f7a53f7e36b40.ctex"
+uid="uid://bd2unw7kylwxh"
+path="res://.godot/imported/left_hand_back.PNG-2e37b70b87797284416a87f7c37e33b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/testing/target_aoe_detected.png"
-dest_files=["res://.godot/imported/target_aoe_detected.png-5e676292d5f7fda8114f7a53f7e36b40.ctex"]
+source_file="res://assets/art/player/left_hand_back.PNG"
+dest_files=["res://.godot/imported/left_hand_back.PNG-2e37b70b87797284416a87f7c37e33b3.ctex"]
 
 [params]
 

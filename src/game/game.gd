@@ -48,7 +48,7 @@ func check_next_lvl():
 		upgrade_menu.entrance()
 
 func update_camera(delta: float):
-	var target = player.global_position / 4.0
+	var target = player.global_position / 2.0
 	var distance = target.distance_to(camera.global_position)
 	camera.global_position = lerp(camera.global_position, target, 0.1 * delta * distance)
 

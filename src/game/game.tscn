@@ -32,6 +32,7 @@ script = ExtResource("1_7uq6d")
 [node name="GameUi" parent="." instance=ExtResource("3_l80un")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
 
 [node name="Background" type="Sprite2D" parent="."]
 scale = Vector2(15.546876, 8.78125)

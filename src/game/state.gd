@@ -21,6 +21,8 @@ var flag_regen: float = 20.0
 var max_copies: int = 5
 var current_copies: int = 0
 var all_time_copies: int = 0
+var records: Array[Record]
+var copies: Dictionary # id to Player
 
 # TODO: finish this!!
 var fire_available: bool = true
@@ -53,3 +55,6 @@ func on_loop_progress(value: float):
 	loop_progress.emit(value, value * LOOP_TIME)
 	loop_value = value
 	loop_progress_sec = value * LOOP_TIME
+
+func get_record(id: String) -> Record:
+	return records[records.find_custom(func (record): return record.id == id)]

@@ -40,6 +40,7 @@ collectable=""
 [gui]
 
 theme/custom="uid://c8qwnhn2pdfrw"
+theme/custom_font="uid://spl4varvrcrw"
 
 [input]
 
@@ -124,3 +125,5 @@ number_5={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+anti_aliasing/quality/msaa_2d=1
+anti_aliasing/quality/msaa_3d=1

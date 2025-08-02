@@ -1,9 +1,56 @@
-[gd_scene format=3 uid="uid://c28sw4vsxpqlj"]
+[gd_scene load_steps=8 format=3 uid="uid://c28sw4vsxpqlj"]
 
-[node name="CopyButton" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[ext_resource type="Script" uid="uid://br1648l6eolgs" path="res://src/ui/copy_button.gd" id="1_6lgf1"]
+[ext_resource type="Material" uid="uid://bm2108ea6mlk5" path="res://assets/shaders/player_shadow_material.tres" id="2_d2r1c"]
+[ext_resource type="Script" uid="uid://cjs56bula4a82" path="res://src/ui/mouse_pressed_listener.gd" id="2_h6mug"]
+[ext_resource type="Texture2D" uid="uid://u2xov25lfo1c" path="res://assets/art/player/player_front.PNG" id="2_irau5"]
+[ext_resource type="Texture2D" uid="uid://cmrjf4p5xyg8j" path="res://assets/art/player/left_hand_front.PNG" id="3_tkwsb"]
+[ext_resource type="Texture2D" uid="uid://cw7irwvgn2fk" path="res://assets/art/player/right_hand_front.PNG" id="4_d2r1c"]
+[ext_resource type="Material" uid="uid://brl4r63pus6xw" path="res://assets/shaders/hands_shadow_material.tres" id="4_jyban"]
+
+[node name="CopyButton" type="PanelContainer"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 628.0
+offset_bottom = 828.0
+script = ExtResource("1_6lgf1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="Container" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Player" type="TextureRect" parent="MarginContainer/Container"]
+material = ExtResource("2_d2r1c")
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("2_irau5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LeftHand" type="TextureRect" parent="MarginContainer/Container"]
+material = ExtResource("4_jyban")
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("3_tkwsb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RightHand" type="TextureRect" parent="MarginContainer/Container"]
+material = ExtResource("4_jyban")
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("4_d2r1c")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ClickListener" type="Node" parent="."]
+script = ExtResource("2_h6mug")
+
+[connection signal="mouse_pressed" from="ClickListener" to="." method="_on_click_listener_mouse_pressed"]

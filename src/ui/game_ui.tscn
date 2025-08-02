@@ -23,14 +23,14 @@ offset_bottom = 255.0
 
 [node name="FlagHealthLabel" type="Label" parent="HealthContainer"]
 layout_mode = 2
-text = "Flag health"
+text = "FLAG HEALTH"
 
 [node name="FlagProgressBar" parent="HealthContainer" instance=ExtResource("2_r30kv")]
 layout_mode = 2
 
 [node name="PlayerHealthLabel" type="Label" parent="HealthContainer"]
 layout_mode = 2
-text = "Player health"
+text = "PLAYER HEALTH"
 
 [node name="PlayerProgressBar" parent="HealthContainer" instance=ExtResource("2_r30kv")]
 layout_mode = 2
@@ -56,12 +56,6 @@ text = "Fire
 layout_mode = 2
 text = "Black hole"
 
-[node name="Copies" type="HBoxContainer" parent="."]
-offset_left = 466.0
-offset_top = 986.0
-offset_right = 506.0
-offset_bottom = 1026.0
-
 [node name="CreateCopyButton" type="Button" parent="."]
 offset_left = 1440.0
 offset_top = 864.0
@@ -75,5 +69,24 @@ offset_top = 80.0
 offset_right = 1575.0
 offset_bottom = 103.0
 text = "10"
+
+[node name="ReplaceCopyBackground" type="ColorRect" parent="."]
+visible = false
+offset_left = -20.0
+offset_top = -19.0
+offset_right = 1947.0
+offset_bottom = 1111.0
+color = Color(0, 0, 0, 0.12156863)
+
+[node name="CopiesCenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Copies" type="HBoxContainer" parent="CopiesCenterContainer"]
+layout_mode = 2
 
 [connection signal="pressed" from="CreateCopyButton" to="." method="_on_create_copy_button_pressed"]
