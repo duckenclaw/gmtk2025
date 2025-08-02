@@ -11,6 +11,8 @@ class_name Game
 @onready var recorder_area: RecorderArea = $RecorderArea
 @onready var particle_layer: Node2D = $ParticleLayer
 
+@onready var upgrade_menu: UpgradeMenu = $UpgradeMenu
+
 
 func _ready() -> void:
 	Ref.particle_layer = particle_layer
@@ -24,6 +26,17 @@ func _ready() -> void:
 	State.start_loop()
 
 func _process(delta: float) -> void:
+	update_camera(delta)
+	check_next_lvl()
+
+func check_next_lvl():
+	if State.exp >= State.exp_to_next_lvl:
+		get_tree().paused = true
+		State.exp = State.exp - State.exp_to_next_lvl
+		State.exp_to_next_lvl *= State.NEXT_LVL_MULTIPLIER
+		upgrade_menu.entrance()
+
+func update_camera(delta: float):
 	var target = player.global_position / 4.0
 	var distance = target.distance_to(camera.global_position)
 	camera.global_position = lerp(camera.global_position, target, 0.1 * delta * distance)

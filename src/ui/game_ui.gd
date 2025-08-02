@@ -9,6 +9,8 @@ signal create_copy_pressed
 @onready var create_copy_button: Button = $CreateCopyButton
 @onready var time_label: Label = $TimeLabel
 
+@onready var exp_progress_bar: ProgressBar = $ExpContainer/ProgressBar
+
 
 
 func _ready() -> void:
@@ -22,6 +24,9 @@ func _process(_delta: float) -> void:
 	
 	time_label.text = str(int(State.LOOP_TIME - State.loop_progress_sec + 1))
 	
+	
+	exp_progress_bar.max_value = State.exp_to_next_lvl
+	exp_progress_bar.value = State.exp
 
 func player_health_changed(health: float):
 	player_progress_bar.value = health

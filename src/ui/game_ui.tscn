@@ -6,11 +6,20 @@
 [node name="GameUi" type="CanvasLayer"]
 script = ExtResource("1_jlfe0")
 
+[node name="ExpContainer" type="MarginContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 46.0
+grow_horizontal = 2
+
+[node name="ProgressBar" parent="ExpContainer" instance=ExtResource("2_r30kv")]
+layout_mode = 2
+
 [node name="HealthContainer" type="VBoxContainer" parent="."]
-offset_left = 35.0
-offset_top = 41.0
-offset_right = 530.0
-offset_bottom = 159.0
+offset_left = 40.0
+offset_top = 137.0
+offset_right = 535.0
+offset_bottom = 255.0
 
 [node name="FlagHealthLabel" type="Label" parent="HealthContainer"]
 layout_mode = 2

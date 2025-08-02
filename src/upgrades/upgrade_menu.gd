@@ -11,7 +11,6 @@ var all_upgrades: Array[Upgrade]
 
 func _ready() -> void:
 	all_upgrades = UpgradeList.get_upgrade_list()
-	entrance()
 
 func entrance():
 	visible = true
@@ -30,7 +29,7 @@ func on_card_clicked(card: UpgradeCard):
 func exit():
 	visible = false
 	NodeUtils.queue_free_children(h_box_container)
-	pass
+	get_tree().paused = false
 
 func select_new_upgrades() -> Array[Upgrade]:
 	var upgrades = all_upgrades.duplicate()

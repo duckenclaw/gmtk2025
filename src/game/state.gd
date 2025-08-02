@@ -1,6 +1,8 @@
 extends Node
 #class_name State # Autoload
 
+const INITIAL_NEXT_LVL_EXP: float = 10.0
+const NEXT_LVL_MULTIPLIER: float = 1.2
 const LOOP_TIME: float = 10.0
 
 signal loop_restarted
@@ -21,6 +23,9 @@ var player_is_home: bool = false
 
 var fire_available: bool = true
 var black_hole_available: bool = false
+
+var exp_to_next_lvl: float = INITIAL_NEXT_LVL_EXP
+var exp: float = 0.0
 
 # for real player
 var player_config: PlayerConfig = PlayerConfig.new()
