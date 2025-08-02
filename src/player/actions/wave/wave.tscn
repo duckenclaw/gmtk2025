@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://djkit3bbogwrg"]
+[gd_scene load_steps=3 format=3 uid="uid://djkit3bbogwrg"]
 
-[node name="Wave" type="Node2D"]
+[ext_resource type="Script" uid="uid://dxfm5loc1yh5u" path="res://src/player/actions/wave/wave.gd" id="1_kb2sb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hvvyj"]
+size = Vector2(200, 40)
+
+[node name="Wave" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_kb2sb")
+metadata/_custom_type_script = "uid://dxfm5loc1yh5u"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hvvyj")

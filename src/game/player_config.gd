@@ -11,5 +11,8 @@ var is_copy: bool = false
 
 @export var laser_damage: float = 10.0
 
+@export var wave_width: float = 40.0
+@export var wave_damage: float = 10.0
+
 @export var black_hole_damage: float = 5.0
 @export var black_hole_radius: float = 100.0
