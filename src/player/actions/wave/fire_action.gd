@@ -10,7 +10,6 @@ const DAMAGE_TIMEOUT: float = 150 # msec
 @onready var cpu_particles: CPUParticles2D = $Area2D/CPUParticles2D
 
 
-
 var target_group: String = "enemy"
 var targets_in_area: Array
 

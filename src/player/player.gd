@@ -25,7 +25,8 @@ var velocity: Vector2
 
 func _ready() -> void:
 	actions.append_array(actions_node.get_children())
-	set_action(actions[1])
+	set_action(actions[3])
+	print(actions[3])
 	State.loop_restarted.connect(loop_restarted)
 
 func loop_restarted():
@@ -94,7 +95,7 @@ func take_damage(damage: float):
 			player_health_changed.emit(health)
 
 func take_impulse(impulse: Vector2):
-	pass
+	velocity += impulse * Drag.COMMON_IMPULSE_MULTIPLIER
 
 func start_recording():
 	Ref.recorder.remove_path("player")
