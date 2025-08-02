@@ -13,4 +13,4 @@ class_name EnemyType
 @export var damage: float = 25.0
 
 # Behavior
-@export var target_group: String = "loopOrigin"
+@export var target_groups: Array[String] = ["loopOrigin", "player"]
