@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://c0sene84p44ry"]
+[gd_scene load_steps=24 format=3 uid="uid://c0sene84p44ry"]
 
 [ext_resource type="Script" uid="uid://mk37pv18gbuy" path="res://src/game/game.gd" id="1_7uq6d"]
 [ext_resource type="Texture2D" uid="uid://cgh8hqlthfpxj" path="res://assets/art/grey.png" id="2_l80un"]
 [ext_resource type="PackedScene" uid="uid://ce880iha75f3d" path="res://src/ui/game_ui.tscn" id="3_l80un"]
+[ext_resource type="Script" uid="uid://di44pt4tqawyl" path="res://src/game/circle.gd" id="4_72t65"]
 [ext_resource type="Script" uid="uid://ce14hx2k4slhj" path="res://src/map/game_map.gd" id="4_x1f1g"]
 [ext_resource type="Script" uid="uid://vkq5h0d44gc8" path="res://src/resources/wave_config.gd" id="5_72t65"]
 [ext_resource type="Resource" uid="uid://dnu81157bjydy" path="res://src/resources/waves/wave_basic.tres" id="6_xowm4"]
@@ -20,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://nsl84b5jq2rn" path="res://assets/art/testing/white.png" id="19_rl3to"]
 [ext_resource type="PackedScene" uid="uid://cov5v1yloo3ev" path="res://src/map/flag.tscn" id="20_nhcde"]
 [ext_resource type="Script" uid="uid://bjena0veuadfu" path="res://src/game/recorder_area.gd" id="21_7liwe"]
+[ext_resource type="PackedScene" uid="uid://dpnmj3276mrri" path="res://src/upgrades/upgrade_menu.tscn" id="21_x1f1g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2e6sl"]
 radius = 80.09994
@@ -29,13 +31,14 @@ script = ExtResource("1_7uq6d")
 
 [node name="GameUi" parent="." instance=ExtResource("3_l80un")]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="Background" type="Sprite2D" parent="."]
 scale = Vector2(15.546876, 8.78125)
 texture = ExtResource("2_l80un")
 
-[node name="ParticleLayer" type="Node2D" parent="."]
-
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Circle" type="Node2D" parent="."]
+script = ExtResource("4_72t65")
 
 [node name="RecorderArea" type="Area2D" parent="." groups=["center_area"]]
 script = ExtResource("21_7liwe")
@@ -131,6 +134,11 @@ wait_time = 2.0
 [node name="WaveTimer" type="Timer" parent="GameMap"]
 wait_time = 15.0
 autostart = true
+
+[node name="ParticleLayer" type="Node2D" parent="."]
+
+[node name="UpgradeMenu" parent="." instance=ExtResource("21_x1f1g")]
+visible = false
 
 [connection signal="create_copy_pressed" from="GameUi" to="." method="_on_game_ui_create_copy_pressed"]
 [connection signal="wave_completed" from="GameMap" to="GameMap" method="_on_wave_completed"]
