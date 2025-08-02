@@ -25,8 +25,8 @@ var velocity: Vector2
 
 func _ready() -> void:
 	actions.append_array(actions_node.get_children())
-	set_action(actions[2])
-	print(actions[2])
+	set_action(actions[3])
+	print(actions[3])
 	State.loop_restarted.connect(loop_restarted)
 
 func loop_restarted():

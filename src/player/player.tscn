@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cni2a6p1fkqef"]
+[gd_scene load_steps=15 format=3 uid="uid://cni2a6p1fkqef"]
 
 [ext_resource type="Script" uid="uid://cwhyfhc6c1nya" path="res://src/player/player.gd" id="1_4anbu"]
 [ext_resource type="Script" uid="uid://bhn3toge8b57u" path="res://src/player/actions/action.gd" id="2_mf2ua"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://deye6blic5qq" path="res://src/player/actions/wave/wave_action.gd" id="5_jiejy"]
 [ext_resource type="Texture2D" uid="uid://dc66shp0a2b2h" path="res://assets/art/testing/target_aoe_undetected.png" id="5_o822w"]
 [ext_resource type="Script" uid="uid://hdqpwg5uj86i" path="res://src/player/pick_up_area.gd" id="6_jiejy"]
+[ext_resource type="Script" uid="uid://qqqwdbse05x" path="res://src/player/actions/laser/laser_action.gd" id="6_x42xx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5f2sf"]
 radius = 12.0
@@ -48,9 +49,11 @@ shape = SubResource("CapsuleShape2D_5f2sf")
 position = Vector2(0, -21)
 
 [node name="NoneAction" type="Node2D" parent="Actions"]
+visible = false
 script = ExtResource("2_mf2ua")
 
 [node name="FireAction" type="Node2D" parent="Actions"]
+visible = false
 script = ExtResource("2_rxibo")
 
 [node name="Area2D" type="Area2D" parent="Actions/FireAction"]
@@ -76,6 +79,7 @@ scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_5f2sf")
 
 [node name="BlackHoleAction" type="Node2D" parent="Actions"]
+visible = false
 script = ExtResource("4_5f2sf")
 
 [node name="PreviewArea" type="Area2D" parent="Actions/BlackHoleAction"]
@@ -89,7 +93,17 @@ shape = SubResource("CircleShape2D_5f2sf")
 scale = Vector2(2, 2)
 texture = ExtResource("5_o822w")
 
+[node name="LaserAction" type="Node2D" parent="Actions"]
+script = ExtResource("6_x42xx")
+
+[node name="LaserRaycast" type="RayCast2D" parent="Actions/LaserAction"]
+enabled = false
+target_position = Vector2(0, 0)
+collision_mask = 4
+collide_with_areas = true
+
 [node name="WaveAction" type="Node2D" parent="Actions"]
+visible = false
 script = ExtResource("5_jiejy")
 
 [node name="PickUpArea" type="Area2D" parent="."]
