@@ -13,7 +13,6 @@ var last_damage_time = 0.0
 @onready var player: Player = $"../.."
 
 func accept_command(command: Command):
-	print(is_reloading())
 	if command is CommandMouse:
 		preview_area.visible = not is_reloading()
 		preview_area.global_position = command.mouse_position
