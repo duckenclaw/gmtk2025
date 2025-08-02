@@ -21,8 +21,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_yimol"]
 radius = 100.0
 
-[node name="GameMap" type="Node2D" node_paths=PackedStringArray("north_spawner", "south_spawner", "west_spawner", "east_spawner")]
+[node name="GameMap" type="Node2D" node_paths=PackedStringArray("central_spawner", "north_spawner", "south_spawner", "west_spawner", "east_spawner")]
 script = ExtResource("1_s4k8m")
+central_spawner = NodePath("EnemySpawners/CentralEnemySpawner2")
 north_spawner = NodePath("EnemySpawners/NorthEnemySpawner")
 south_spawner = NodePath("EnemySpawners/SouthEnemySpawner")
 west_spawner = NodePath("EnemySpawners/WestEnemySpawner")
@@ -39,6 +40,26 @@ texture = ExtResource("1_xu641")
 position = Vector2(79, -3)
 
 [node name="EnemySpawners" type="Node2D" parent="."]
+
+[node name="CentralEnemySpawner2" type="Node2D" parent="EnemySpawners" node_paths=PackedStringArray("target_node")]
+script = ExtResource("3_qq67j")
+enemy_scene = ExtResource("1_c04iw")
+current_enemy_types = Array[ExtResource("11_yimol")]([ExtResource("12_4im40"), ExtResource("13_ydoxh"), ExtResource("14_j2nwg"), ExtResource("15_34bvs")])
+enemy_type_weights = Array[float]([5.0, 3.0, 1.0, 0.5])
+spawn_count = 100
+enemy_pack_count = 3
+spawn_radius = 1000.0
+spawn_interval = 5.0
+target_node = NodePath("../../Flag")
+
+[node name="White" type="Sprite2D" parent="EnemySpawners/CentralEnemySpawner2"]
+visible = false
+rotation = 0.7853982
+texture = ExtResource("3_ixs7q")
+
+[node name="SpawnTimer" type="Timer" parent="EnemySpawners/CentralEnemySpawner2"]
+wait_time = 5.0
+autostart = true
 
 [node name="NorthEnemySpawner" type="Node2D" parent="EnemySpawners" node_paths=PackedStringArray("target_node")]
 position = Vector2(2, -797)
@@ -116,6 +137,8 @@ autostart = true
 shape = SubResource("CircleShape2D_yimol")
 
 [connection signal="wave_completed" from="." to="." method="_on_wave_completed"]
+[connection signal="enemy_spawned" from="EnemySpawners/CentralEnemySpawner2" to="." method="_on_enemy_spawned"]
+[connection signal="timeout" from="EnemySpawners/CentralEnemySpawner2/SpawnTimer" to="EnemySpawners/CentralEnemySpawner2" method="_on_spawn_timer_timeout"]
 [connection signal="enemy_spawned" from="EnemySpawners/NorthEnemySpawner" to="." method="_on_enemy_spawned"]
 [connection signal="timeout" from="EnemySpawners/NorthEnemySpawner/SpawnTimer" to="EnemySpawners/NorthEnemySpawner" method="_on_spawn_timer_timeout"]
 [connection signal="enemy_spawned" from="EnemySpawners/SouthEnemySpawner" to="." method="_on_enemy_spawned"]

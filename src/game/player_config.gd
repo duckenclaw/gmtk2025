@@ -9,5 +9,7 @@ var is_copy: bool = false
 
 @export var fire_damage: float = 1.0
 
-@export var black_hole_damage: float = 10.0
+@export var laser_damage: float = 10.0
+
+@export var black_hole_damage: float = 5.0
 @export var black_hole_radius: float = 100.0
