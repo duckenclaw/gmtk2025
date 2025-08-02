@@ -106,6 +106,58 @@ func _physics_process(delta: float) -> void:
 	if is_recording:
 		position_history.append(global_position)
 
+func accept_command(command: Command): 
+	if is_recording:
+		var since_start = get_ticks_sec() - start_of_recording
+		history.append(SavedCommand.new(since_start, command))
+	
+	current_action.accept_command(command)
+	
+	if command is CommandMove:
+		velocity += command.direction * command.delta * player_config.speed * 2.0
+		position += command.direction * command.delta * player_config.speed
+
+func take_damage(damage: float):
+	health -= damage
+	if health <= 0.0:
+		health = 0.0
+		if not is_copy:
+			player_health_changed.emit(health)
+			player_died.emit()
+	else:
+		if not is_copy:
+			player_health_changed.emit(health)
+
+func take_impulse(impulse: Vector2):
+	velocity += impulse * Drag.COMMON_IMPULSE_MULTIPLIER
+
+func start_recording():
+	Ref.recorder.remove_path("player")
+	history = []
+	position_history = []
+	position_history.append(Vector2.ZERO)
+	
+	start_of_recording = get_ticks_sec()
+	is_recording = true
+
+func stop_recording():
+	is_recording = false
+
+
+func get_ticks_sec() -> float:
+	return Time.get_ticks_msec() / 1000.0
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("center_area"):
+		State.player_is_home = true
+
+
+func _on_area_exited(area: Area2D) -> void:
+	if area.is_in_group("center_area"):
+		#State.player_is_home = false
+		pass
+
 func update_visuals():
 	var mouse_direction: Vector2 = (get_global_mouse_position() - hands_top_front.global_position).normalized()
 	
@@ -163,55 +215,3 @@ func show_right_hand(right_hand: Sprite2D):
 		right_hand_front_top
 	]:
 		hand.visible = hand == right_hand
-
-func accept_command(command: Command): 
-	if is_recording:
-		var since_start = get_ticks_sec() - start_of_recording
-		history.append(SavedCommand.new(since_start, command))
-	
-	current_action.accept_command(command)
-	
-	if command is CommandMove:
-		velocity += command.direction * command.delta * player_config.speed * 2.0
-		position += command.direction * command.delta * player_config.speed
-
-func take_damage(damage: float):
-	health -= damage
-	if health <= 0.0:
-		health = 0.0
-		if not is_copy:
-			player_health_changed.emit(health)
-			player_died.emit()
-	else:
-		if not is_copy:
-			player_health_changed.emit(health)
-
-func take_impulse(impulse: Vector2):
-	velocity += impulse * Drag.COMMON_IMPULSE_MULTIPLIER
-
-func start_recording():
-	Ref.recorder.remove_path("player")
-	history = []
-	position_history = []
-	position_history.append(Vector2.ZERO)
-	
-	start_of_recording = get_ticks_sec()
-	is_recording = true
-
-func stop_recording():
-	is_recording = false
-
-
-func get_ticks_sec() -> float:
-	return Time.get_ticks_msec() / 1000.0
-
-
-func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("center_area"):
-		State.player_is_home = true
-
-
-func _on_area_exited(area: Area2D) -> void:
-	if area.is_in_group("center_area"):
-		#State.player_is_home = false
-		pass

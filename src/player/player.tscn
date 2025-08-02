@@ -13,8 +13,8 @@
 [ext_resource type="Script" uid="uid://qqqwdbse05x" path="res://src/player/actions/laser/laser_action.gd" id="6_x42xx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5f2sf"]
-radius = 12.0
-height = 36.0
+radius = 14.0
+height = 70.0
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_rxibo"]
 points = PackedVector2Array(0, 0, 150, -50, 180, 0, 150, 50)
@@ -46,12 +46,12 @@ script = ExtResource("1_4anbu")
 position = Vector2(0, -45)
 
 [node name="LeftHandBack" type="Sprite2D" parent="HandsBottomBack"]
-position = Vector2(9, 0)
+position = Vector2(-0.99999905, 0)
 scale = Vector2(0.12, 0.12)
 texture = ExtResource("2_ylhto")
 
 [node name="RightHandBack" type="Sprite2D" parent="HandsBottomBack"]
-position = Vector2(-7, 0)
+position = Vector2(-4.7683716e-07, 0)
 scale = Vector2(0.12, 0.12)
 texture = ExtResource("3_cwolq")
 
@@ -59,12 +59,11 @@ texture = ExtResource("3_cwolq")
 position = Vector2(0, -45)
 
 [node name="LeftHandFront" type="Sprite2D" parent="HandsBottomFront"]
-position = Vector2(-6.9999995, 0)
 scale = Vector2(0.12, 0.12)
 texture = ExtResource("3_x42xx")
 
 [node name="RightHandFront" type="Sprite2D" parent="HandsBottomFront"]
-position = Vector2(8.999999, 0)
+position = Vector2(-1, 0)
 scale = Vector2(0.12, 0.12)
 texture = ExtResource("4_l271a")
 
@@ -77,12 +76,12 @@ texture = ExtResource("2_o822w")
 position = Vector2(0, -45)
 
 [node name="LeftHandBack" type="Sprite2D" parent="HandsTopBack"]
-position = Vector2(9, 0)
+position = Vector2(-0.99999905, 0)
 scale = Vector2(0.12, 0.12)
 texture = ExtResource("2_ylhto")
 
 [node name="RightHandBack" type="Sprite2D" parent="HandsTopBack"]
-position = Vector2(-7, 0)
+position = Vector2(-4.7683716e-07, 0)
 scale = Vector2(0.12, 0.12)
 texture = ExtResource("3_cwolq")
 
@@ -90,21 +89,20 @@ texture = ExtResource("3_cwolq")
 position = Vector2(0, -45)
 
 [node name="LeftHandFront" type="Sprite2D" parent="HandsTopFront"]
-position = Vector2(-6.9999995, 0)
 scale = Vector2(0.12, 0.12)
 texture = ExtResource("3_x42xx")
 
 [node name="RightHandFront" type="Sprite2D" parent="HandsTopFront"]
-position = Vector2(8.999999, 0)
+position = Vector2(-1, 0)
 scale = Vector2(0.12, 0.12)
 texture = ExtResource("4_l271a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -21)
+position = Vector2(0, -36)
 shape = SubResource("CapsuleShape2D_5f2sf")
 
 [node name="Actions" type="Node2D" parent="."]
-position = Vector2(0, -21)
+position = Vector2(0, -45)
 
 [node name="FireAction" type="Node2D" parent="Actions"]
 script = ExtResource("2_rxibo")
