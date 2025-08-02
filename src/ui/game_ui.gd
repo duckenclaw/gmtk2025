@@ -15,7 +15,7 @@ signal create_copy_pressed
 @onready var exp_progress_bar: ProgressBar = $ExpContainer/ProgressBar
 
 @onready var actions_container: HBoxContainer = $Actions
-@onready var copies_container: HBoxContainer = $CopiesCenterContainer/Copies
+@onready var copies_container: BoxContainer = $CopiesCenterContainer/Copies
 
 
 

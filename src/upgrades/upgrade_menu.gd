@@ -6,8 +6,7 @@ const UPGRADE_CARD = preload("uid://4qenjsgkc0ts")
 var all_upgrades: Array[Upgrade]
 
 @onready var color_rect: ColorRect = $ColorRect
-@onready var h_box_container: HBoxContainer = $HBoxContainer
-
+@onready var h_box_container: HBoxContainer = $CenterContainer/HBoxContainer
 
 func _ready() -> void:
 	all_upgrades = UpgradeList.get_upgrade_list()

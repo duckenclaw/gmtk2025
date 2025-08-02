@@ -30,6 +30,15 @@ static func get_upgrade_list() -> Array[Upgrade]:
 		
 		list.append(upgrade)
 	
+	for i in 6:
+		var upgrade: Upgrade = Upgrade.new()
+		
+		upgrade.title = "More Shadows!"
+		upgrade.desctiption = "Allows you add one more copy of yourself"
+		upgrade.action = func(): State.max_copies += 1
+		
+		list.append(upgrade)
+	
 	for i in 3:
 		var upgrade: Upgrade = Upgrade.new()
 		

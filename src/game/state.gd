@@ -18,7 +18,7 @@ var flag_max_health: float = 300.0
 var flag_regen: float = 20.0
 
 # COPIES
-var max_copies: int = 5
+var max_copies: int = 3
 var current_copies: int = 0
 var all_time_copies: int = 0
 var records: Array[Record]

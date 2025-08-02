@@ -1,13 +1,12 @@
-extends PanelContainer
+extends MarginContainer
 class_name CopyButton
 
 var record: Record
 var copy: Player
 
-@onready var player: TextureRect = $MarginContainer/Container/Player
-@onready var left_hand: TextureRect = $MarginContainer/Container/LeftHand
-@onready var right_hand: TextureRect = $MarginContainer/Container/RightHand
-
+@onready var player: TextureRect = $PanelContainer/MarginContainer/Container/Player
+@onready var left_hand: TextureRect = $PanelContainer/MarginContainer/Container/LeftHand
+@onready var right_hand: TextureRect = $PanelContainer/MarginContainer/Container/RightHand
 
 func _ready() -> void:
 	if record != null:
