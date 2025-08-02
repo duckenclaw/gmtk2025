@@ -6,10 +6,13 @@
 
 [resource]
 script = ExtResource("3_aiaim")
-wave_name = "Wave basic"
+wave_name = "Wave circular 1"
+spawner_directions = Array[String](["central"])
 enemy_types = Array[ExtResource("1_pb2hb")]([ExtResource("2_pb2hb")])
-spawn_interval = 5.0
+spawn_interval = 3.0
 total_enemies = 18
-enemies_per_spawner = 3
-enemy_pack_count = 3
+enemies_per_spawner = 10
+enemy_pack_count = 5
+is_repeating = true
+repeat_interval = 10.0
 metadata/_custom_type_script = "uid://vkq5h0d44gc8"
