@@ -33,7 +33,6 @@ func _ready():
 	target = main_target
 
 func _physics_process(delta):
-	set_target_position(target.global_position)
 	if is_dead:
 		return
 	
@@ -50,6 +49,8 @@ func _physics_process(delta):
 		return
 	
 	# Move towards target position
+	if target:
+		set_target_position(target.global_position)
 	var direction = (target_position - global_position).normalized()
 	var distance_to_target = global_position.distance_to(target_position)
 	
