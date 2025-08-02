@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cni2a6p1fkqef"]
+[gd_scene load_steps=14 format=3 uid="uid://cni2a6p1fkqef"]
 
 [ext_resource type="Script" uid="uid://cwhyfhc6c1nya" path="res://src/player/player.gd" id="1_4anbu"]
 [ext_resource type="Script" uid="uid://co86e1n8ijmiw" path="res://src/player/actions/fire/fire_action.gd" id="2_rxibo"]
@@ -11,8 +11,7 @@
 radius = 12.0
 height = 36.0
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_rxibo"]
-points = PackedVector2Array(0, 0, 150, -50, 180, 0, 150, 50)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o822w"]
 
 [sub_resource type="Curve" id="Curve_jiejy"]
 _limits = [0.0, 100.0, 0.0, 1.0]
@@ -25,6 +24,9 @@ point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5f2sf"]
 radius = 200.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jiejy"]
+size = Vector2(1000, 40)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jiejy"]
 radius = 100.0
@@ -54,7 +56,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actions/FireAction/Area2D"]
-shape = SubResource("ConvexPolygonShape2D_rxibo")
+shape = SubResource("RectangleShape2D_o822w")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Actions/FireAction/Area2D"]
 amount = 200
@@ -87,11 +89,13 @@ scale = Vector2(2, 2)
 [node name="LaserAction" type="Node2D" parent="Actions"]
 script = ExtResource("6_x42xx")
 
-[node name="LaserRaycast" type="RayCast2D" parent="Actions/LaserAction"]
-enabled = false
-target_position = Vector2(0, 0)
+[node name="LaserArea" type="Area2D" parent="Actions/LaserAction"]
+collision_layer = 0
 collision_mask = 4
-collide_with_areas = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actions/LaserAction/LaserArea"]
+position = Vector2(519, -1)
+shape = SubResource("RectangleShape2D_jiejy")
 
 [node name="WaveAction" type="Node2D" parent="Actions"]
 script = ExtResource("5_jiejy")
@@ -107,5 +111,7 @@ shape = SubResource("CircleShape2D_jiejy")
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_entered" from="." to="PickUpArea" method="_on_player_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="area_entered" from="Actions/LaserAction/LaserArea" to="Actions/LaserAction" method="_on_area_entered"]
+[connection signal="area_exited" from="Actions/LaserAction/LaserArea" to="Actions/LaserAction" method="_on_area_exited"]
 [connection signal="area_entered" from="PickUpArea" to="PickUpArea" method="_on_area_entered"]
 [connection signal="area_exited" from="PickUpArea" to="PickUpArea" method="_on_area_exited"]
