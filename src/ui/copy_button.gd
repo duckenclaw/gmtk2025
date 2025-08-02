@@ -5,6 +5,8 @@ var record: Record
 var copy: Player
 
 @onready var label: Label = $MarginContainer/Label
+@onready var player_silouette: Container = $MarginContainer/Container
+
 
 func _ready() -> void:
 	if record != null:
@@ -14,6 +16,11 @@ func _ready() -> void:
 
 func setup_record():
 	label.text = record.id
+	player_silouette.modulate = record.color
 
 func setup_empty():
 	pass
+
+
+func _on_click_listener_mouse_pressed() -> void:
+	pass # Replace with function body.

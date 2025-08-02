@@ -51,6 +51,8 @@ var velocity: Vector2
 func _ready() -> void:
 	if !is_copy:
 		player_config = State.player_config
+	else:
+		set_shadow_colors()
 	
 	health = player_config.max_health
 	
@@ -157,6 +159,9 @@ func _on_area_exited(area: Area2D) -> void:
 	if area.is_in_group("center_area"):
 		#State.player_is_home = false
 		pass
+
+func set_shadow_colors():
+	pass
 
 func update_visuals():
 	var mouse_direction: Vector2 = (get_global_mouse_position() - hands_top_front.global_position).normalized()
