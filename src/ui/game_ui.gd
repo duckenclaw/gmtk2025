@@ -7,6 +7,7 @@ signal create_copy_pressed
 @onready var flag_progress_bar: ProgressBar = $HealthContainer/FlagProgressBar
 @onready var player_progress_bar: ProgressBar = $HealthContainer/PlayerProgressBar
 @onready var create_copy_button: Button = $CreateCopyButton
+@onready var time_label: Label = $TimeLabel
 
 
 
@@ -18,7 +19,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	player_progress_bar.max_value = State.player_max_health
 	flag_progress_bar.max_value = State.flag_max_health
-	create_copy_button.visible = State.player_is_home
+	
+	time_label.text = str(int(State.LOOP_TIME - State.loop_progress_sec + 1))
 	
 
 func player_health_changed(health: float):

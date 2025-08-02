@@ -18,6 +18,8 @@ var current_action: Action
 
 var health := State.player_max_health
 
+var velocity: Vector2
+
 @onready var actions_node: Node2D = $Actions
 
 
@@ -42,11 +44,14 @@ func set_action(action: Action):
 	current_action.active = true
 
 func _process(delta: float) -> void:
-	if is_recording:
+	if is_recording and not is_copy:
 		Ref.recorder.display_path(position_history, Color.WEB_MAROON, "player")
 
 
 func _physics_process(delta: float) -> void:
+	global_position += velocity * delta
+	velocity = Drag.drag(velocity)
+	
 	if is_copy: return
 	
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -74,16 +79,19 @@ func accept_command(command: Command):
 	current_action.accept_command(command)
 	
 	if command is CommandMove:
+		velocity += command.direction * command.delta *  MOVE_SPEED * 2.0
 		position += command.direction * command.delta *  MOVE_SPEED
 
 func take_damage(damage: float):
 	health -= damage
 	if health <= 0.0:
 		health = 0.0
-		player_health_changed.emit(health)
-		player_died.emit()
+		if not is_copy:
+			player_health_changed.emit(health)
+			player_died.emit()
 	else:
-		player_health_changed.emit(health)
+		if not is_copy:
+			player_health_changed.emit(health)
 
 func take_impulse(impulse: Vector2):
 	pass

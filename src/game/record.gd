@@ -6,7 +6,7 @@ var history: Array[SavedCommand]
 var position_history: PackedVector2Array
 
 func _init(_id, _history, _position_history) -> void:
-	id = "Record " + str(id)
+	id = "Record " + str(_id)
 	original_history = _history
 	history = _history
 	position_history = _position_history

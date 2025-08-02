@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cni2a6p1fkqef"]
+[gd_scene load_steps=13 format=3 uid="uid://cni2a6p1fkqef"]
 
 [ext_resource type="Script" uid="uid://cwhyfhc6c1nya" path="res://src/player/player.gd" id="1_4anbu"]
 [ext_resource type="Script" uid="uid://bhn3toge8b57u" path="res://src/player/actions/action.gd" id="2_mf2ua"]
 [ext_resource type="Script" uid="uid://co86e1n8ijmiw" path="res://src/player/actions/wave/fire_action.gd" id="2_rxibo"]
 [ext_resource type="Script" uid="uid://dnl5urnuxsdd2" path="res://src/player/actions/black_hole/black_hole_action.gd" id="4_5f2sf"]
 [ext_resource type="Script" uid="uid://deye6blic5qq" path="res://src/player/actions/wave/wave_action.gd" id="5_jiejy"]
+[ext_resource type="Script" uid="uid://hdqpwg5uj86i" path="res://src/player/pick_up_area.gd" id="6_jiejy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5f2sf"]
 radius = 12.0
@@ -25,7 +26,12 @@ point_count = 2
 [sub_resource type="CircleShape2D" id="CircleShape2D_5f2sf"]
 radius = 200.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_jiejy"]
+radius = 100.0
+
 [node name="Player" type="Area2D" groups=["player"]]
+collision_layer = 2
+collision_mask = 52
 script = ExtResource("1_4anbu")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -47,6 +53,8 @@ script = ExtResource("2_mf2ua")
 script = ExtResource("2_rxibo")
 
 [node name="Area2D" type="Area2D" parent="Actions/FireAction"]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actions/FireAction/Area2D"]
 shape = SubResource("ConvexPolygonShape2D_rxibo")
@@ -78,5 +86,16 @@ shape = SubResource("CircleShape2D_5f2sf")
 [node name="WaveAction" type="Node2D" parent="Actions"]
 script = ExtResource("5_jiejy")
 
+[node name="PickUpArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("6_jiejy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpArea"]
+shape = SubResource("CircleShape2D_jiejy")
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_entered" from="." to="PickUpArea" method="_on_player_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="area_entered" from="PickUpArea" to="PickUpArea" method="_on_area_entered"]
+[connection signal="area_exited" from="PickUpArea" to="PickUpArea" method="_on_area_exited"]

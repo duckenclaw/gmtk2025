@@ -2,6 +2,7 @@ extends Action
 class_name FireAction
 
 const FIRE_DAMAGE: float = 1.0
+const FIRE_IMPULSE = 1.0
 const DAMAGE_TIMEOUT: float = 150 # msec
 
 @onready var area_2d: Area2D = $Area2D
@@ -31,6 +32,7 @@ func accept_command(command: Command):
 		if command.is_pressed:
 			for enemy in targets_in_area:
 				enemy.take_damage(FIRE_DAMAGE)
+				enemy.take_impulse(FIRE_IMPULSE * global_position.direction_to(enemy.global_position))
 
 
 

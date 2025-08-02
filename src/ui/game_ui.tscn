@@ -58,4 +58,11 @@ offset_right = 1448.0
 offset_bottom = 904.0
 text = "Create copy"
 
+[node name="TimeLabel" type="Label" parent="."]
+offset_left = 1535.0
+offset_top = 80.0
+offset_right = 1575.0
+offset_bottom = 103.0
+text = "10"
+
 [connection signal="pressed" from="CreateCopyButton" to="." method="_on_create_copy_button_pressed"]

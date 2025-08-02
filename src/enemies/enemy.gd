@@ -1,6 +1,8 @@
 extends Area2D
 class_name Enemy
 
+const EXP = preload("uid://c86ubuma3ax4m")
+
 # Enemy attributes
 @export var speed: float = 100.0
 @export var max_health: float = 100.0
@@ -14,6 +16,7 @@ var target_position: Vector2
 var is_moving: bool = true
 var is_dead: bool = false
 var is_invincible: bool = false
+var velocity: Vector2 = Vector2.ZERO
 
 # Node references
 @onready var sprite: Sprite2D = $Sprite2D
@@ -30,6 +33,9 @@ func _physics_process(delta):
 	if is_dead:
 		return
 	
+	global_position += velocity
+	velocity = Drag.drag(velocity)
+	
 	# Attack 
 	for area in get_overlapping_areas():
 		if NodeUtils.has_intersecting_groups(area, target_groups):
@@ -44,7 +50,7 @@ func _physics_process(delta):
 	var distance_to_target = global_position.distance_to(target_position)
 	
 	# Stop moving if close enough to target
-	if distance_to_target < 5.0:
+	if distance_to_target < 30.0:
 		is_moving = false
 		return
 	
@@ -71,11 +77,17 @@ func take_damage(incoming_damage: float):
 		is_dead = true
 		print(name + " ENEMY DEAD")
 		enemy_died.emit(self)
+		drop_exp()
 		queue_free()
 	return true
 
 func take_impulse(impulse: Vector2):
-	pass
+	velocity += impulse * Drag.COMMON_IMPULSE_MULTIPLIER
+
+func drop_exp():
+	var exp = EXP.instantiate()
+	get_parent().add_child(exp)
+	exp.global_position = global_position
 
 func _on_body_entered(body: PhysicsBody2D):
 	if NodeUtils.has_intersecting_groups(body, target_groups):

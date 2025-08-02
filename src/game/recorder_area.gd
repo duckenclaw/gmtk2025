@@ -33,10 +33,9 @@ func restart_copies():
 		
 		remove_path(record.id)
 		display_path(record.position_history, Color.BLUE, record.id)
-		
-	print("Created " + str(records.size()) + " copies")
+		print("Created player copy: " + record.id)
 
-func on_loop_progress(value: float, seconds: float):
+func on_loop_progress(_value: float, seconds: float):
 	for id in copies.keys(): 
 		var record = get_record(id)
 		var copy = copies[id]
@@ -49,7 +48,7 @@ func on_loop_progress(value: float, seconds: float):
 			if record.history.is_empty(): break
 			
 			var saved_command: SavedCommand = record.history.front()
-			print(str(saved_command.activation_time_sec))
+			#print(str(saved_command.activation_time_sec))
 			if saved_command.activation_time_sec > seconds: break
 			
 			record.history.pop_front()
@@ -77,10 +76,11 @@ func get_or_create_line(path: PackedVector2Array, color: Color, id: String):
 func remove_path(id: String):
 	if lines.has(id) and is_instance_valid(lines[id]):
 		lines[id].queue_free()
+		lines.erase(id)
 
 func save_recording(player: Player, id: int):
 	print("Added new recording")
 	records.append(Record.new(id, player.history, player.position_history))
 
 func get_record(id: String) -> Record:
-	return records[records.find_custom(func (record): record.id == id)]
+	return records[records.find_custom(func (record): return record.id == id)]

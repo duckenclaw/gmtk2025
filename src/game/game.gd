@@ -26,7 +26,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var target = player.global_position / 4.0
 	var distance = target.distance_to(camera.global_position)
-	camera.global_position = lerp(camera.global_position, target, 0.0001 * distance)
+	camera.global_position = lerp(camera.global_position, target, 0.1 * delta * distance)
 
 
 func _on_game_ui_create_copy_pressed() -> void:

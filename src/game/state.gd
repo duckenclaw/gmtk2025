@@ -6,6 +6,10 @@ const LOOP_TIME: float = 10.0
 signal loop_restarted
 signal loop_progress(value: float, seconds: float) # 0 to 1
 
+var loop_index: int = 0
+var loop_progress_sec: float = 0.0
+var loop_value: float = 0.0 # 0 to 1
+
 var player_max_health: float = 100.0
 var flag_max_health: float = 300.0
 
@@ -27,9 +31,12 @@ func start_loop():
 	on_loop_restarted(0)
 
 func on_loop_restarted(loop: int):
+	loop_index = loop
 	print("LOOP RESTARTED: " + str(loop))
 	loop_restarted.emit()
 
 func on_loop_progress(value: float):
 	#print("LOOP PROGRESS: " + str(value))
 	loop_progress.emit(value, value * LOOP_TIME)
+	loop_value = value
+	loop_progress_sec = value * LOOP_TIME

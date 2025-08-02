@@ -155,7 +155,8 @@ func _on_enemy_died(enemy: Enemy):
 	_check_wave_complete()
 
 func _on_enemy_dealt_damage(target: Node, damage_amount: float):
-	print("Enemy dealt ", damage_amount, " damage to ", target.name)
+	pass
+	#print("Enemy dealt ", damage_amount, " damage to ", target.name)
 
 # ========== UTILITY FUNCTIONS ==========
 
