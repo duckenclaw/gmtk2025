@@ -21,7 +21,6 @@ func accept_command(command: Command):
 			return
 		
 		var black_hole = BLACK_HOLE.instantiate()
-		black_hole.black_hole_radius = radius
 		player.get_parent().add_child(black_hole)
 		
 		black_hole.global_position = command.mouse_position

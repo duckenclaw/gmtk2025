@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cgpkr8nvf4qyk"]
 
 [ext_resource type="Script" uid="uid://cm46pno826410" path="res://src/enemies/enemy.gd" id="1_8b5j4"]
-[ext_resource type="Texture2D" uid="uid://bgna4jhcxa2s3" path="res://assets/art/wolf.PNG" id="2_jg4ye"]
+[ext_resource type="Texture2D" uid="uid://b5e3470g348nu" path="res://assets/art/wolf.PNG" id="2_jg4ye"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jg4ye"]
 radius = 36.0

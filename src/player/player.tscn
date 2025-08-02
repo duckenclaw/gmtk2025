@@ -132,7 +132,7 @@ scale_amount_curve = SubResource("Curve_5f2sf")
 script = ExtResource("4_5f2sf")
 
 [node name="PreviewArea" type="Area2D" parent="Actions/BlackHoleAction"]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actions/BlackHoleAction/PreviewArea"]

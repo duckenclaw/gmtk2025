@@ -2,26 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD:assets/art/testing/target_aoe_undetected.png.import
-uid="uid://dc66shp0a2b2h"
-path="res://.godot/imported/target_aoe_undetected.png-1450575b08786aac416f3c722f0894c9.ctex"
-=======
-uid="uid://bj2w4l1fubpg3"
+uid="uid://1qxyis13ayil"
 path="res://.godot/imported/mad.PNG-f485acc25ab1bf3660b066cf8ffc8b5f.ctex"
->>>>>>> 9a9026c2b66841cd09528d0c3065785341b6429d:assets/art/mad.PNG.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<< HEAD:assets/art/testing/target_aoe_undetected.png.import
-source_file="res://assets/art/testing/target_aoe_undetected.png"
-dest_files=["res://.godot/imported/target_aoe_undetected.png-1450575b08786aac416f3c722f0894c9.ctex"]
-=======
 source_file="res://assets/art/mad.PNG"
 dest_files=["res://.godot/imported/mad.PNG-f485acc25ab1bf3660b066cf8ffc8b5f.ctex"]
->>>>>>> 9a9026c2b66841cd09528d0c3065785341b6429d:assets/art/mad.PNG.import
 
 [params]
 
