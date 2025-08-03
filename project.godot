@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="gmtk2025"
-run/main_scene="uid://ihpur1o3hacr"
+run/main_scene="uid://c0sene84p44ry"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -125,5 +125,5 @@ number_5={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-anti_aliasing/quality/msaa_2d=1
-anti_aliasing/quality/msaa_3d=1
+textures/vram_compression/import_etc2_astc=true
+limits/spatial_indexer/threaded_cull_minimum_instances=65536
