@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WaveConfig" load_steps=5 format=3 uid="uid://dqedlc3ewaurs"]
+
+[ext_resource type="Script" uid="uid://hbxxlijgke2g" path="res://src/enemies/resources/enemy_type.gd" id="1_jp56o"]
+[ext_resource type="Resource" uid="uid://djuha7l2tif1k" path="res://src/enemies/resources/enemy_types/ultra_basic_enemy.tres" id="2_iah26"]
+[ext_resource type="Resource" uid="uid://bnrmbxi8uu4op" path="res://src/enemies/resources/enemy_types/ultra_heavy_enemy.tres" id="2_jp56o"]
+[ext_resource type="Script" uid="uid://vkq5h0d44gc8" path="res://src/enemies/resources/wave_config.gd" id="3_n45y7"]
+
+[resource]
+script = ExtResource("3_n45y7")
+wave_name = "Wave heavy double"
+wave_number = 8
+enemy_types = Array[ExtResource("1_jp56o")]([ExtResource("2_iah26"), ExtResource("2_jp56o")])
+enemy_type_weights = Array[float]([3.0, 1.0])
+spawn_interval = 5.0
+total_enemies = 6
+enemies_per_spawner = 3
+metadata/_custom_type_script = "uid://vkq5h0d44gc8"

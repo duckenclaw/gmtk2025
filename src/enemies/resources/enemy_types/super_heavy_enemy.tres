@@ -5,10 +5,10 @@
 
 [resource]
 script = ExtResource("1_en05s")
-name = "Heavy Enemy"
+name = "Super Heavy Enemy"
 texture = ExtResource("2_ribtn")
-scale = Vector2(1.2, 1.2)
-modulate_color = Color(1, 0, 0, 1)
+scale = Vector2(1.5, 1.5)
+modulate_color = Color(0.5693797, 1.8770993e-06, 4.3317675e-07, 1)
 speed = 25.0
 max_health = 2000.0
 damage = 30.0

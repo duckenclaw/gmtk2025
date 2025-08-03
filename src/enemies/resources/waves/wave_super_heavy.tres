@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WaveConfig" load_steps=4 format=3 uid="uid://b1fkyv7rnillr"]
+
+[ext_resource type="Script" uid="uid://hbxxlijgke2g" path="res://src/enemies/resources/enemy_type.gd" id="1_0ncok"]
+[ext_resource type="Resource" uid="uid://cnhikde2pm05v" path="res://src/enemies/resources/enemy_types/super_heavy_enemy.tres" id="2_0ncok"]
+[ext_resource type="Script" uid="uid://vkq5h0d44gc8" path="res://src/enemies/resources/wave_config.gd" id="3_wpdnc"]
+
+[resource]
+script = ExtResource("3_wpdnc")
+wave_name = "Wave heavy"
+wave_number = 8
+spawner_directions = Array[String](["west", "east", "north", "south"])
+enemy_types = Array[ExtResource("1_0ncok")]([ExtResource("2_0ncok")])
+spawn_interval = 5.0
+total_enemies = 12
+enemies_per_spawner = 3
+enemy_pack_count = 2
+metadata/_custom_type_script = "uid://vkq5h0d44gc8"

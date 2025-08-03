@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyType" load_steps=3 format=3 uid="uid://bnrmbxi8uu4op"]
+
+[ext_resource type="Script" uid="uid://hbxxlijgke2g" path="res://src/enemies/resources/enemy_type.gd" id="1_k1vic"]
+[ext_resource type="Texture2D" uid="uid://cc0f02alg2ll8" path="res://assets/art/enemies/pig.PNG" id="2_tk04r"]
+
+[resource]
+script = ExtResource("1_k1vic")
+name = "Ultra Heavy Enemy"
+texture = ExtResource("2_tk04r")
+scale = Vector2(2, 2)
+modulate_color = Color(0.5686275, 0.5686275, 0, 1)
+speed = 25.0
+max_health = 5000.0
+damage = 50.0
+metadata/_custom_type_script = "uid://hbxxlijgke2g"

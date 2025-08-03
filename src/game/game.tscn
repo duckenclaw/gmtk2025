@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c0sene84p44ry"]
+[gd_scene load_steps=31 format=3 uid="uid://c0sene84p44ry"]
 
 [ext_resource type="Script" uid="uid://mk37pv18gbuy" path="res://src/game/game.gd" id="1_7uq6d"]
 [ext_resource type="Texture2D" uid="uid://o5i0rhqd2ooq" path="res://assets/art/background.JPG" id="3_72t65"]
@@ -10,11 +10,25 @@
 [ext_resource type="Resource" uid="uid://bktkemr278g2d" path="res://src/enemies/resources/waves/wave_heavy.tres" id="7_eveok"]
 [ext_resource type="Resource" uid="uid://bmlldxi7p35u5" path="res://src/enemies/resources/waves/wave_fast.tres" id="8_evl7j"]
 [ext_resource type="Resource" uid="uid://b0f6p300g2kgj" path="res://src/enemies/resources/waves/wave_mixed.tres" id="9_6m1pf"]
+[ext_resource type="Resource" uid="uid://7pyf6b6ngrch" path="res://src/enemies/resources/waves/wave_circular2.tres" id="10_cvpot"]
+[ext_resource type="Resource" uid="uid://drbo3c1duosr7" path="res://src/enemies/resources/waves/wave_circular3.tres" id="12_l5jlt"]
 [ext_resource type="PackedScene" uid="uid://btex0cib7sk1l" path="res://src/map/enemy_spawners.tscn" id="13_xniy2"]
+[ext_resource type="Resource" uid="uid://cdy1crcyb7tmh" path="res://src/enemies/resources/waves/wave_ultra_heavy.tres" id="14_4r86i"]
+[ext_resource type="Resource" uid="uid://gvtaawphunhg" path="res://src/enemies/resources/waves/wave_circular4.tres" id="14_l5jlt"]
+[ext_resource type="Resource" uid="uid://b1fkyv7rnillr" path="res://src/enemies/resources/waves/wave_super_heavy.tres" id="15_cwxnf"]
 [ext_resource type="PackedScene" uid="uid://b3fx2moxlvulj" path="res://src/ui/rewrite_copy_menu.tscn" id="15_xniy2"]
+[ext_resource type="Resource" uid="uid://cb07rfocjtj5d" path="res://src/enemies/resources/waves/wave_super_mixed.tres" id="17_x1f1g"]
+[ext_resource type="Resource" uid="uid://d3pohuweb7a08" path="res://src/enemies/resources/waves/wave_circular5.tres" id="17_xowm4"]
+[ext_resource type="Resource" uid="uid://bmxlgtv7y2xqe" path="res://src/enemies/resources/waves/wave_ultra_basic.tres" id="18_72t65"]
+[ext_resource type="Resource" uid="uid://bbnab5d474v7f" path="res://src/enemies/resources/waves/wave_circular6.tres" id="19_eveok"]
+[ext_resource type="Resource" uid="uid://dufqv6ftipwpw" path="res://src/enemies/resources/waves/wave_super_fast.tres" id="20_6m1pf"]
 [ext_resource type="PackedScene" uid="uid://cov5v1yloo3ev" path="res://src/map/flag.tscn" id="20_nhcde"]
 [ext_resource type="Script" uid="uid://bjena0veuadfu" path="res://src/game/recorder_area.gd" id="21_7liwe"]
+[ext_resource type="Resource" uid="uid://bch3clalwdoxb" path="res://src/enemies/resources/waves/wave_circular7.tres" id="21_evl7j"]
 [ext_resource type="PackedScene" uid="uid://dpnmj3276mrri" path="res://src/upgrades/upgrade_menu.tscn" id="21_x1f1g"]
+[ext_resource type="Resource" uid="uid://btx7sx2ldajhs" path="res://src/enemies/resources/waves/wave_rare_mixed.tres" id="23_ov5gv"]
+[ext_resource type="Resource" uid="uid://j04dcmhrv5jl" path="res://src/enemies/resources/waves/wave_circular8.tres" id="24_28tqb"]
+[ext_resource type="Resource" uid="uid://dqedlc3ewaurs" path="res://src/enemies/resources/waves/wave_ultra_heavy_double.tres" id="25_rcxir"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2e6sl"]
 radius = 80.09994
@@ -54,7 +68,7 @@ modulate = Color(1, 1, 1, 0.21568628)
 [node name="GameMap" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("4_x1f1g")
-wave_configs = Array[ExtResource("5_72t65")]([ExtResource("6_xowm4"), ExtResource("7_eveok"), ExtResource("8_evl7j"), ExtResource("9_6m1pf")])
+wave_configs = Array[ExtResource("5_72t65")]([ExtResource("6_xowm4"), ExtResource("7_eveok"), ExtResource("10_cvpot"), ExtResource("9_6m1pf"), ExtResource("12_l5jlt"), ExtResource("8_evl7j"), ExtResource("14_4r86i"), ExtResource("14_l5jlt"), ExtResource("15_cwxnf"), ExtResource("17_xowm4"), ExtResource("17_x1f1g"), ExtResource("19_eveok"), ExtResource("20_6m1pf"), ExtResource("18_72t65"), ExtResource("21_evl7j"), ExtResource("23_ov5gv"), ExtResource("24_28tqb"), ExtResource("25_rcxir")])
 
 [node name="EnemySpawners" parent="GameMap" instance=ExtResource("13_xniy2")]
 

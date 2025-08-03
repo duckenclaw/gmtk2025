@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="WaveConfig" load_steps=7 format=3 uid="uid://d3pohuweb7a08"]
+
+[ext_resource type="Script" uid="uid://hbxxlijgke2g" path="res://src/enemies/resources/enemy_type.gd" id="1_q8vu0"]
+[ext_resource type="Resource" uid="uid://beat4rfmp0nc6" path="res://src/enemies/resources/enemy_types/super_basic_enemy.tres" id="2_c3rir"]
+[ext_resource type="Resource" uid="uid://bdn1c1owl41n4" path="res://src/enemies/resources/enemy_types/super_fast_enemy.tres" id="3_w0qfp"]
+[ext_resource type="Resource" uid="uid://cnhikde2pm05v" path="res://src/enemies/resources/enemy_types/super_heavy_enemy.tres" id="4_d2h6v"]
+[ext_resource type="Script" uid="uid://vkq5h0d44gc8" path="res://src/enemies/resources/wave_config.gd" id="5_4r4ea"]
+[ext_resource type="Resource" uid="uid://cnoi3cktqi55k" path="res://src/enemies/resources/enemy_types/rare_basic_enemy.tres" id="5_c3rir"]
+
+[resource]
+script = ExtResource("5_4r4ea")
+wave_name = "Wave circular 5"
+wave_number = 7
+spawner_directions = Array[String](["central"])
+enemy_types = Array[ExtResource("1_q8vu0")]([ExtResource("2_c3rir"), ExtResource("3_w0qfp"), ExtResource("4_d2h6v"), ExtResource("5_c3rir")])
+enemy_type_weights = Array[float]([5.0, 3.0, 2.0, 0.5])
+spawn_interval = 1.0
+total_enemies = 25
+enemies_per_spawner = 25
+repeat_interval = 10.0
+metadata/_custom_type_script = "uid://vkq5h0d44gc8"

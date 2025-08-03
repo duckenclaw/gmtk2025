@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="WaveConfig" load_steps=5 format=3 uid="uid://bch3clalwdoxb"]
+
+[ext_resource type="Script" uid="uid://hbxxlijgke2g" path="res://src/enemies/resources/enemy_type.gd" id="1_6also"]
+[ext_resource type="Resource" uid="uid://bnrmbxi8uu4op" path="res://src/enemies/resources/enemy_types/ultra_heavy_enemy.tres" id="3_gqs2p"]
+[ext_resource type="Resource" uid="uid://cnoi3cktqi55k" path="res://src/enemies/resources/enemy_types/rare_basic_enemy.tres" id="5_evet7"]
+[ext_resource type="Script" uid="uid://vkq5h0d44gc8" path="res://src/enemies/resources/wave_config.gd" id="6_d7yf8"]
+
+[resource]
+script = ExtResource("6_d7yf8")
+wave_name = "Wave circular 7"
+wave_number = 7
+spawner_directions = Array[String](["central"])
+enemy_types = Array[ExtResource("1_6also")]([ExtResource("5_evet7"), ExtResource("5_evet7"), ExtResource("3_gqs2p")])
+enemy_type_weights = Array[float]([5.0, 4.0, 1.0])
+spawn_interval = 1.0
+total_enemies = 40
+enemies_per_spawner = 40
+repeat_interval = 10.0
+metadata/_custom_type_script = "uid://vkq5h0d44gc8"

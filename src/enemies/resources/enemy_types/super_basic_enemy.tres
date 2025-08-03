@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyType" load_steps=3 format=3 uid="uid://beat4rfmp0nc6"]
+
+[ext_resource type="Script" uid="uid://hbxxlijgke2g" path="res://src/enemies/resources/enemy_type.gd" id="1_laa8y"]
+[ext_resource type="Texture2D" uid="uid://b5e3470g348nu" path="res://assets/art/enemies/wolf.PNG" id="2_pymr0"]
+
+[resource]
+script = ExtResource("1_laa8y")
+texture = ExtResource("2_pymr0")
+scale = Vector2(1.2, 1.2)
+modulate_color = Color(0.5686275, 0, 0, 1)
+speed = 55.0
+max_health = 1000.0
+damage = 15.0
+metadata/_custom_type_script = "uid://hbxxlijgke2g"

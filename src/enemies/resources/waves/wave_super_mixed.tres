@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="WaveConfig" load_steps=6 format=3 uid="uid://cb07rfocjtj5d"]
+
+[ext_resource type="Script" uid="uid://hbxxlijgke2g" path="res://src/enemies/resources/enemy_type.gd" id="1_cd5gf"]
+[ext_resource type="Resource" uid="uid://beat4rfmp0nc6" path="res://src/enemies/resources/enemy_types/super_basic_enemy.tres" id="2_kxavd"]
+[ext_resource type="Resource" uid="uid://bdn1c1owl41n4" path="res://src/enemies/resources/enemy_types/super_fast_enemy.tres" id="3_rij58"]
+[ext_resource type="Resource" uid="uid://cnhikde2pm05v" path="res://src/enemies/resources/enemy_types/super_heavy_enemy.tres" id="4_yh0bt"]
+[ext_resource type="Script" uid="uid://vkq5h0d44gc8" path="res://src/enemies/resources/wave_config.gd" id="5_dbsxr"]
+
+[resource]
+script = ExtResource("5_dbsxr")
+wave_name = "Wave mixed"
+wave_number = 4
+spawner_directions = Array[String](["north", "west", "east", "south"])
+enemy_types = Array[ExtResource("1_cd5gf")]([ExtResource("2_kxavd"), ExtResource("3_rij58"), ExtResource("4_yh0bt")])
+enemy_type_weights = Array[float]([5.0, 3.0, 2.0])
+spawn_interval = 3.0
+total_enemies = 40
+enemies_per_spawner = 10
+metadata/_custom_type_script = "uid://vkq5h0d44gc8"
