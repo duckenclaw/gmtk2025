@@ -40,7 +40,7 @@ func check_action_changed():
 			print("Selected action number_" + str(i))
 			State.pending_selected_action_index = i - 1
 
-func update_current_action(_loop: int):
+func update_current_action():
 	State.selected_action_index = State.pending_selected_action_index
 
 func check_next_lvl():

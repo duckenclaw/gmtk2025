@@ -14,6 +14,13 @@ func _ready() -> void:
 func entrance():
 	visible = true
 	var selected_upgrades: Array[Upgrade] = select_new_upgrades()
+	
+	if selected_upgrades.is_empty():
+		exit()
+		return
+	
+	await WaitUtil.wait(0.4)
+	
 	for upgrade in selected_upgrades:
 		var card = UPGRADE_CARD.instantiate()
 		card.upgrade = upgrade
@@ -36,22 +43,23 @@ func select_new_upgrades() -> Array[Upgrade]:
 	var selected_upgrades: Array[Upgrade]
 	var selected_upgrade_names: Array[String]
 	for i in min(upgrades.size(), 3):
-		var new_upgrade = upgrades.pick_random()
+		var new_upgrade: Upgrade = upgrades.pick_random()
 		
-		if selected_upgrade_names.has(new_upgrade.title):
-			new_upgrade = upgrades.pick_random()
-		if selected_upgrade_names.has(new_upgrade.title):
-			new_upgrade = upgrades.pick_random()
-		if selected_upgrade_names.has(new_upgrade.title):
-			new_upgrade = upgrades.pick_random()
-		if selected_upgrade_names.has(new_upgrade.title):
-			new_upgrade = upgrades.pick_random()
-		if selected_upgrade_names.has(new_upgrade.title):
-			new_upgrade = upgrades.pick_random()
-		if selected_upgrade_names.has(new_upgrade.title):
-			new_upgrade = upgrades.pick_random()
+		for k in 10:
+			if selected_upgrade_names.has(new_upgrade.title) or not available(new_upgrade):
+				new_upgrade = upgrades.pick_random()
+			else:
+				break
+		if selected_upgrade_names.has(new_upgrade.title) or not available(new_upgrade):
+			continue
 		
 		upgrades.erase(new_upgrade)
 		selected_upgrades.append(new_upgrade)
 		selected_upgrade_names.append(new_upgrade.title)
 	return selected_upgrades
+
+func available(upgrade: Upgrade) -> bool:
+	if upgrade.condition.is_valid():
+		return upgrade.condition.call()
+	else:
+		return true

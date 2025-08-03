@@ -14,12 +14,13 @@ signal finished
 
 func _ready() -> void:
 	title_label.text = upgrade.title
-	texture_rect.visible = upgrade.texture != null
+	texture_rect.texture = upgrade.texture
 	
 	if upgrade.mult != 1.0:
 		description_label.text = "Multiplier: " + str(upgrade.mult)
 	else:
 		description_label.text = upgrade.desctiption
+	
 
 func _on_mouse_pressed_listener_mouse_pressed() -> void:
 	upgrade.action.call()

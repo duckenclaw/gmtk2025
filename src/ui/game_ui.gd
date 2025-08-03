@@ -48,7 +48,7 @@ func setup_actions():
 		var button: ActionButton = action_buttons[i]
 		button.action_index = i
 		button.is_available = Action.get_action_enabled(i)
-		button.is_pending = i == State.pending_selected_action_index
+		button.is_pending = i == State.pending_selected_action_index and State.pending_selected_action_index != State.selected_action_index
 		button.is_active = i == State.selected_action_index
 		
 
