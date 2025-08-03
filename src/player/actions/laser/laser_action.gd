@@ -36,6 +36,7 @@ func is_reloading() -> bool:
 	return Time.get_ticks_msec() - last_damage_time < DAMAGE_TIMEOUT
 
 func start_laser():
+	Sound.play_laser()
 	if is_laser_active:
 		return
 		

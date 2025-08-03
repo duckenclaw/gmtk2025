@@ -12,7 +12,7 @@ func _ready() -> void:
 	preview_area.radius = player_config.black_hole_radius
 	
 	$CPUParticles2D.emission_sphere_radius = player_config.black_hole_radius
-	
+	Sound.play_black_hole()
 	await WaitUtil.wait(0.1)
 	for area in get_overlapping_areas():
 		if area.is_in_group("enemy"):
