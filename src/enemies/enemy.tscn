@@ -1,13 +1,52 @@
 [gd_scene load_steps=8 format=3 uid="uid://cgpkr8nvf4qyk"]
 
 [ext_resource type="Script" uid="uid://cm46pno826410" path="res://src/enemies/enemy.gd" id="1_8b5j4"]
-[ext_resource type="Texture2D" uid="uid://b5e3470g348nu" path="res://assets/art/wolf.PNG" id="2_jg4ye"]
+[ext_resource type="Texture2D" uid="uid://b5e3470g348nu" path="res://assets/art/enemies/wolf.PNG" id="2_jg4ye"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jg4ye"]
 radius = 36.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yvjb1"]
 radius = 80.0
+
+[sub_resource type="Animation" id="Animation_yvjb1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.5, -42)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.125, 0.125)]
+}
 
 [sub_resource type="Animation" id="Animation_jg4ye"]
 resource_name = "walk"
@@ -49,45 +88,6 @@ tracks/2/keys = {
 "values": [Vector2(0.125, 0.125), Vector2(0.13, 0.13), Vector2(0.125, 0.125), Vector2(0.13, 0.13), Vector2(0.125, 0.125)]
 }
 
-[sub_resource type="Animation" id="Animation_yvjb1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-0.5, -42)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.125, 0.125)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yvjb1"]
 _data = {
 &"RESET": SubResource("Animation_yvjb1"),
@@ -117,7 +117,7 @@ shape = SubResource("CircleShape2D_jg4ye")
 [node name="DetectionArea" type="Area2D" parent="."]
 position = Vector2(0, -36)
 collision_layer = 0
-collision_mask = 2
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_yvjb1")

@@ -1,10 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://ce880iha75f3d"]
+[gd_scene load_steps=4 format=3 uid="uid://ce880iha75f3d"]
 
 [ext_resource type="Script" uid="uid://dbejkj7uymni8" path="res://src/ui/game_ui.gd" id="1_jlfe0"]
 [ext_resource type="PackedScene" uid="uid://b0wa65js18xls" path="res://src/ui/progress_bar/progress_bar.tscn" id="2_r30kv"]
+[ext_resource type="Texture2D" uid="uid://dmd55u6g1cnru" path="res://assets/art/foreground.PNG" id="3_jdnd6"]
 
 [node name="GameUi" type="CanvasLayer"]
 script = ExtResource("1_jlfe0")
+
+[node name="Foreground" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_jdnd6")
+expand_mode = 1
 
 [node name="ExpContainer" type="MarginContainer" parent="."]
 anchors_preset = 10

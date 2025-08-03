@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="WaveConfig" load_steps=5 format=3 uid="uid://b0f6p300g2kgj"]
 
-[ext_resource type="Script" uid="uid://hbxxlijgke2g" path="res://src/resources/enemy_type.gd" id="1_nq82q"]
-[ext_resource type="Resource" uid="uid://b7ujvifag7ksk" path="res://src/resources/enemy_types/fast_enemy.tres" id="2_nq82q"]
-[ext_resource type="Resource" uid="uid://crf6ltt5cmtey" path="res://src/resources/enemy_types/heavy_enemy.tres" id="3_0dop4"]
-[ext_resource type="Script" uid="uid://vkq5h0d44gc8" path="res://src/resources/wave_config.gd" id="4_7vbx1"]
+[ext_resource type="Script" uid="uid://hbxxlijgke2g" path="res://src/enemies/resources/enemy_type.gd" id="1_nq82q"]
+[ext_resource type="Resource" uid="uid://b7ujvifag7ksk" path="res://src/enemies/resources/enemy_types/fast_enemy.tres" id="2_nq82q"]
+[ext_resource type="Resource" uid="uid://crf6ltt5cmtey" path="res://src/enemies/resources/enemy_types/heavy_enemy.tres" id="3_0dop4"]
+[ext_resource type="Script" uid="uid://vkq5h0d44gc8" path="res://src/enemies/resources/wave_config.gd" id="4_7vbx1"]
 
 [resource]
 script = ExtResource("4_7vbx1")

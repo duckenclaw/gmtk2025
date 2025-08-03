@@ -4,6 +4,7 @@ extends Node
 const INITIAL_NEXT_LVL_EXP: float = 10.0
 const NEXT_LVL_MULTIPLIER: float = 1.2
 const LOOP_TIME: float = 10.0
+const PLAYER_SPAWN_POINT: Vector2 = Vector2(50, 100)
 
 signal loop_restarted
 signal loop_progress(value: float, seconds: float) # 0 to 1
@@ -33,7 +34,7 @@ var exp: float = 0.0
 
 # for real player
 var player_config: PlayerConfig = PlayerConfig.new()
-var pending_selected_action_index: int = 0
+var pending_selected_action_index: int = 3
 
 func _ready() -> void:
 	pass

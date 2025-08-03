@@ -3,7 +3,7 @@ class_name WaveAction
 
 const WAVE = preload("res://src/player/actions/wave/wave.tscn")
 
-const DAMAGE_TIMEOUT: float = 1000 # msec
+const DAMAGE_TIMEOUT: float = 800 # msec
 
 var last_damage_time: float = -100.0
 
@@ -14,7 +14,7 @@ var last_damage_time: float = -100.0
 func accept_command(command: Command):
 	if command is CommandMouse:
 		# Position preview halfway between player and mouse for better visualization
-		var direction = player.global_position.direction_to(command.mouse_position)
+		var direction = global_position.direction_to(command.mouse_position)
 		
 	if command is CommandMouseReleased:
 		if is_reloading():
@@ -23,11 +23,9 @@ func accept_command(command: Command):
 		
 		var wave: Wave = WAVE.instantiate()
 		wave.player_config = player_config
-		wave.target_position = command.mouse_position
+		wave.direction = command.direction
 		player.get_parent().get_parent().add_child(wave)
-		
 		wave.global_position = player.global_position
-		wave.look_at(command.mouse_position)
 
 func is_reloading() -> bool:
 	return Time.get_ticks_msec() - last_damage_time < DAMAGE_TIMEOUT

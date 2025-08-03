@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cni2a6p1fkqef"]
+[gd_scene load_steps=20 format=3 uid="uid://cni2a6p1fkqef"]
 
 [ext_resource type="Script" uid="uid://cwhyfhc6c1nya" path="res://src/player/player.gd" id="1_4anbu"]
 [ext_resource type="Texture2D" uid="uid://u2xov25lfo1c" path="res://assets/art/player/player_front.PNG" id="2_o822w"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://deye6blic5qq" path="res://src/player/actions/wave/wave_action.gd" id="5_jiejy"]
 [ext_resource type="Script" uid="uid://hdqpwg5uj86i" path="res://src/player/pick_up_area.gd" id="6_jiejy"]
 [ext_resource type="Script" uid="uid://qqqwdbse05x" path="res://src/player/actions/laser/laser_action.gd" id="6_x42xx"]
+[ext_resource type="Texture2D" uid="uid://ckiy646s583to" path="res://assets/art/particles/fire_small.png" id="8_cwolq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5f2sf"]
 radius = 14.0
@@ -25,8 +26,8 @@ _data = [Vector2(0, 100), 0.0, 0.0, 0, 0, Vector2(0.98120296, 100), 0.0, 0.0, 0,
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_5f2sf"]
-_data = [Vector2(0, 0.29271293), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0.016917288, 0), 0.0, 0.0, 0, 0, Vector2(0.082706764, 0.30187488), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5f2sf"]
 radius = 200.0
@@ -115,13 +116,15 @@ collision_mask = 4
 shape = SubResource("ConvexPolygonShape2D_rxibo")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Actions/FireAction/Area2D"]
-amount = 200
-lifetime = 0.32
-speed_scale = 1.45
+amount = 70
+texture = ExtResource("8_cwolq")
+lifetime = 0.64
+speed_scale = 3.01
 spread = 18.09
 gravity = Vector2(0, 10)
-initial_velocity_min = 886.86
-initial_velocity_max = 886.86
+initial_velocity_min = 885.02
+initial_velocity_max = 885.02
+angular_velocity_max = 720.0
 damping_min = 24.634
 damping_max = 24.634
 damping_curve = SubResource("Curve_jiejy")

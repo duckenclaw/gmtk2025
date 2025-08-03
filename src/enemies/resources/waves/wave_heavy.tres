@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="WaveConfig" load_steps=4 format=3 uid="uid://bktkemr278g2d"]
 
-[ext_resource type="Script" uid="uid://hbxxlijgke2g" path="res://src/resources/enemy_type.gd" id="1_uttyj"]
-[ext_resource type="Resource" uid="uid://crf6ltt5cmtey" path="res://src/resources/enemy_types/heavy_enemy.tres" id="2_uttyj"]
-[ext_resource type="Script" uid="uid://vkq5h0d44gc8" path="res://src/resources/wave_config.gd" id="3_ih5b6"]
+[ext_resource type="Script" uid="uid://hbxxlijgke2g" path="res://src/enemies/resources/enemy_type.gd" id="1_uttyj"]
+[ext_resource type="Resource" uid="uid://crf6ltt5cmtey" path="res://src/enemies/resources/enemy_types/heavy_enemy.tres" id="2_uttyj"]
+[ext_resource type="Script" uid="uid://vkq5h0d44gc8" path="res://src/enemies/resources/wave_config.gd" id="3_ih5b6"]
 
 [resource]
 script = ExtResource("3_ih5b6")

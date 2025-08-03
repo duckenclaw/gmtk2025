@@ -69,7 +69,7 @@ func loop_restarted():
 	
 	selected_action_index = State.pending_selected_action_index
 	set_action(actions[selected_action_index])
-	global_position = Vector2.ZERO
+	global_position = State.PLAYER_SPAWN_POINT
 	stop_recording()
 	start_recording()
 
@@ -137,7 +137,7 @@ func start_recording():
 	Ref.recorder.remove_path("player")
 	history = []
 	position_history = []
-	position_history.append(Vector2.ZERO)
+	position_history.append(State.PLAYER_SPAWN_POINT)
 	
 	start_of_recording = get_ticks_sec()
 	is_recording = true

@@ -16,6 +16,7 @@ func _on_invincibility_timer_timeout():
 
 func _process(delta: float) -> void:
 	current_health += State.flag_regen * delta
+	origin_health_changed.emit(current_health)
 
 func take_damage(incoming_damage: float):
 	if is_invincible:

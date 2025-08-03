@@ -6,8 +6,6 @@ const DAMAGE_TIMEOUT: float = 2000 # msec
 
 var last_damage_time: float = -100.0
 
-@export var radius = 200
-
 @onready var preview_area: Area2D = $PreviewArea
 @onready var preview_shape: CollisionShape2D = $PreviewArea/CollisionShape2D
 

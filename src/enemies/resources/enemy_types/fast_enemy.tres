@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyType" load_steps=3 format=3 uid="uid://b7ujvifag7ksk"]
+
+[ext_resource type="Script" uid="uid://hbxxlijgke2g" path="res://src/enemies/resources/enemy_type.gd" id="1_vkgt5"]
+[ext_resource type="Texture2D" uid="uid://bj2w4l1fubpg3" path="res://assets/art/enemies/mad.PNG" id="2_ywnw0"]
+
+[resource]
+script = ExtResource("1_vkgt5")
+name = "Fast Enemy"
+texture = ExtResource("2_ywnw0")
+speed = 75.0
+max_health = 400.0
+damage = 5.0
+metadata/_custom_type_script = "uid://hbxxlijgke2g"

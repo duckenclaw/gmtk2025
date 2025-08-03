@@ -1,23 +1,23 @@
 [gd_scene load_steps=24 format=3 uid="uid://c0sene84p44ry"]
 
 [ext_resource type="Script" uid="uid://mk37pv18gbuy" path="res://src/game/game.gd" id="1_7uq6d"]
-[ext_resource type="Texture2D" uid="uid://cgh8hqlthfpxj" path="res://assets/art/grey.png" id="2_l80un"]
+[ext_resource type="Texture2D" uid="uid://o5i0rhqd2ooq" path="res://assets/art/background.JPG" id="3_72t65"]
 [ext_resource type="PackedScene" uid="uid://ce880iha75f3d" path="res://src/ui/game_ui.tscn" id="3_l80un"]
 [ext_resource type="Script" uid="uid://di44pt4tqawyl" path="res://src/game/circle.gd" id="4_72t65"]
 [ext_resource type="Script" uid="uid://ce14hx2k4slhj" path="res://src/map/game_map.gd" id="4_x1f1g"]
-[ext_resource type="Script" uid="uid://vkq5h0d44gc8" path="res://src/resources/wave_config.gd" id="5_72t65"]
-[ext_resource type="Resource" uid="uid://dnu81157bjydy" path="res://src/resources/waves/wave_basic.tres" id="6_xowm4"]
-[ext_resource type="Resource" uid="uid://bktkemr278g2d" path="res://src/resources/waves/wave_heavy.tres" id="7_eveok"]
-[ext_resource type="Resource" uid="uid://bmlldxi7p35u5" path="res://src/resources/waves/wave_fast.tres" id="8_evl7j"]
-[ext_resource type="Resource" uid="uid://b0f6p300g2kgj" path="res://src/resources/waves/wave_mixed.tres" id="9_6m1pf"]
+[ext_resource type="Script" uid="uid://vkq5h0d44gc8" path="res://src/enemies/resources/wave_config.gd" id="5_72t65"]
+[ext_resource type="Resource" uid="uid://dnu81157bjydy" path="res://src/enemies/resources/waves/wave_basic.tres" id="6_xowm4"]
+[ext_resource type="Resource" uid="uid://bktkemr278g2d" path="res://src/enemies/resources/waves/wave_heavy.tres" id="7_eveok"]
+[ext_resource type="Resource" uid="uid://bmlldxi7p35u5" path="res://src/enemies/resources/waves/wave_fast.tres" id="8_evl7j"]
+[ext_resource type="Resource" uid="uid://b0f6p300g2kgj" path="res://src/enemies/resources/waves/wave_mixed.tres" id="9_6m1pf"]
 [ext_resource type="PackedScene" uid="uid://cni2a6p1fkqef" path="res://src/player/player.tscn" id="10_ov5gv"]
 [ext_resource type="Script" uid="uid://slrq46ve4m1n" path="res://src/enemies/enemy_spawner.gd" id="11_8a13b"]
 [ext_resource type="PackedScene" uid="uid://cgpkr8nvf4qyk" path="res://src/enemies/enemy.tscn" id="12_28tqb"]
-[ext_resource type="Script" uid="uid://hbxxlijgke2g" path="res://src/resources/enemy_type.gd" id="14_gu4qb"]
-[ext_resource type="Resource" uid="uid://bdblhdo83ukl6" path="res://src/resources/enemy_types/test_enemy.tres" id="15_t5ynd"]
-[ext_resource type="Resource" uid="uid://iqgd0ysoad7f" path="res://src/resources/enemy_types/basic_enemy.tres" id="16_yi3n0"]
-[ext_resource type="Resource" uid="uid://b7ujvifag7ksk" path="res://src/resources/enemy_types/fast_enemy.tres" id="17_c4ouk"]
-[ext_resource type="Resource" uid="uid://crf6ltt5cmtey" path="res://src/resources/enemy_types/heavy_enemy.tres" id="18_e3dug"]
+[ext_resource type="Script" uid="uid://hbxxlijgke2g" path="res://src/enemies/resources/enemy_type.gd" id="14_gu4qb"]
+[ext_resource type="Resource" uid="uid://bdblhdo83ukl6" path="res://src/enemies/resources/enemy_types/test_enemy.tres" id="15_t5ynd"]
+[ext_resource type="Resource" uid="uid://iqgd0ysoad7f" path="res://src/enemies/resources/enemy_types/basic_enemy.tres" id="16_yi3n0"]
+[ext_resource type="Resource" uid="uid://b7ujvifag7ksk" path="res://src/enemies/resources/enemy_types/fast_enemy.tres" id="17_c4ouk"]
+[ext_resource type="Resource" uid="uid://crf6ltt5cmtey" path="res://src/enemies/resources/enemy_types/heavy_enemy.tres" id="18_e3dug"]
 [ext_resource type="Texture2D" uid="uid://nsl84b5jq2rn" path="res://assets/art/testing/white.png" id="19_rl3to"]
 [ext_resource type="PackedScene" uid="uid://cov5v1yloo3ev" path="res://src/map/flag.tscn" id="20_nhcde"]
 [ext_resource type="Script" uid="uid://bjena0veuadfu" path="res://src/game/recorder_area.gd" id="21_7liwe"]
@@ -31,12 +31,17 @@ script = ExtResource("1_7uq6d")
 
 [node name="GameUi" parent="." instance=ExtResource("3_l80un")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
-
 [node name="Background" type="Sprite2D" parent="."]
-scale = Vector2(15.546876, 8.78125)
-texture = ExtResource("2_l80un")
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_72t65")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 2)
+zoom = Vector2(1.5, 1.5)
+limit_left = -900
+limit_top = -500
+limit_right = 900
+limit_bottom = 500
 
 [node name="Circle" type="Node2D" parent="."]
 script = ExtResource("4_72t65")
@@ -151,6 +156,7 @@ texture = ExtResource("19_rl3to")
 wait_time = 2.0
 
 [node name="Flag" parent="GameMap" instance=ExtResource("20_nhcde")]
+position = Vector2(0, 34)
 
 [node name="WaveTimer" type="Timer" parent="GameMap"]
 wait_time = 15.0

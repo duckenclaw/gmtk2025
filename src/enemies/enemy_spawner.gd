@@ -61,14 +61,14 @@ func _check_wave_complete():
 # Spawn a pack of enemies in circular formation
 func _spawn_enemy_pack():
 	var spawn_angle = randf() * TAU
-	var spawn_distance = randf_range(spawn_radius * 0.5, spawn_radius)
-	var pack_center = global_position + Vector2(cos(spawn_angle), sin(spawn_distance)) * spawn_distance
+	var spawn_distance = Random.f_range(spawn_radius, spawn_radius * 1.5)
+	var pack_center = global_position + Random.point_on_radius(spawn_distance)
 	
 	var enemy_type = _get_weighted_random_enemy_type()
 	
 	for i in range(enemy_pack_count):
 		var angle = (float(i) / enemy_pack_count) * TAU
-		var pos = pack_center + Vector2(cos(angle), sin(angle)) * 30.0  # Small spacing between pack members
+		var pos = pack_center + Random.point_within_radius(300.0)  # Small spacing between pack members
 		var enemy = _create_enemy_at_position(pos, enemy_type)
 
 # Create a single enemy with type configuration

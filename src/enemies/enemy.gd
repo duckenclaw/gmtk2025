@@ -20,6 +20,9 @@ var is_dead: bool = false
 var is_invincible: bool = false
 var velocity: Vector2 = Vector2.ZERO
 
+var nearby_enemies: Array[Enemy]
+var min_enemy_distance: float = Random.f_range(30, 70)
+
 # Node references
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
@@ -48,10 +51,16 @@ func _physics_process(delta):
 	if not is_moving:
 		return
 	
+	var away_vector: Vector2 = Vector2.ZERO
+	for enemy in nearby_enemies:
+		if global_position.distance_to(enemy.global_position) < min_enemy_distance:
+			away_vector -= global_position.direction_to(enemy.global_position)
+	away_vector.normalized()
+	
 	# Move towards target position
 	if target:
 		set_target_position(target.global_position)
-	var direction = (target_position - global_position).normalized()
+	var direction = ((target_position - global_position).normalized() + away_vector.normalized()).normalized()
 	var distance_to_target = global_position.distance_to(target_position)
 	
 	# Stop moving if close enough to target
@@ -113,9 +122,12 @@ func _on_invincibility_timer_timeout():
 
 
 func _on_detection_area_entered(area):
-	target = area
-	if NodeUtils.has_intersecting_groups(area, target_groups):
-		set_target_position(target.global_position)
+	if area.is_in_group("player"):
+		target = area
+		if NodeUtils.has_intersecting_groups(area, target_groups):
+			set_target_position(target.global_position)
+	if area.is_in_group("enemy"):
+		nearby_enemies.append(area)
 
 
 func _on_disinterest_timer_timeout():
@@ -123,5 +135,8 @@ func _on_disinterest_timer_timeout():
 	set_target_position(target.global_position)
 
 
-func _on_detection_area_exited(area):
-	$DetectionArea/DisinterestTimer.start(1.0)
+func _on_detection_area_exited(area: Area2D):
+	if area.is_in_group("player"):
+		$DetectionArea/DisinterestTimer.start(0.2)
+	if area.is_in_group("enemy"):
+		nearby_enemies.erase(area)

@@ -10,6 +10,8 @@ func _ready() -> void:
 	$Sprite2D.scale.x = player_config.black_hole_radius/100.0
 	$Sprite2D.scale.y = player_config.black_hole_radius/100.0
 	
+	$CPUParticles2D.emission_sphere_radius = player_config.black_hole_radius
+	
 	await WaitUtil.wait(0.1)
 	for area in get_overlapping_areas():
 		if area.is_in_group("enemy"):
