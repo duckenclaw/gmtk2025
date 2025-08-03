@@ -13,6 +13,7 @@ signal action_selected()
 @onready var time_label: Label = $TimeLabel
 @onready var exp_progress_bar: ProgressBar = $ExpContainer/ProgressBar
 
+@onready var hint_label: Label = $HintLabel
 @onready var copies_container: BoxContainer = $CopiesCenterContainer/Copies
 
 @onready var actions_container: HBoxContainer = $Actions
@@ -28,7 +29,7 @@ func _process(_delta: float) -> void:
 	update_health_bars()
 	update_exp_bar()
 	
-	time_label.text = str(int(State.LOOP_TIME - State.loop_progress_sec + 1))
+	hint_label.visible = State.all_time_copies < 3
 	
 	setup_copies()
 	setup_actions()

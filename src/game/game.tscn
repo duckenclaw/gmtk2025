@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c0sene84p44ry"]
+[gd_scene load_steps=17 format=3 uid="uid://c0sene84p44ry"]
 
 [ext_resource type="Script" uid="uid://mk37pv18gbuy" path="res://src/game/game.gd" id="1_7uq6d"]
 [ext_resource type="Texture2D" uid="uid://o5i0rhqd2ooq" path="res://assets/art/background.JPG" id="3_72t65"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://bmlldxi7p35u5" path="res://src/enemies/resources/waves/wave_fast.tres" id="8_evl7j"]
 [ext_resource type="Resource" uid="uid://b0f6p300g2kgj" path="res://src/enemies/resources/waves/wave_mixed.tres" id="9_6m1pf"]
 [ext_resource type="PackedScene" uid="uid://btex0cib7sk1l" path="res://src/map/enemy_spawners.tscn" id="13_xniy2"]
+[ext_resource type="PackedScene" uid="uid://b3fx2moxlvulj" path="res://src/ui/rewrite_copy_menu.tscn" id="15_xniy2"]
 [ext_resource type="PackedScene" uid="uid://cov5v1yloo3ev" path="res://src/map/flag.tscn" id="20_nhcde"]
 [ext_resource type="Script" uid="uid://bjena0veuadfu" path="res://src/game/recorder_area.gd" id="21_7liwe"]
 [ext_resource type="PackedScene" uid="uid://dpnmj3276mrri" path="res://src/upgrades/upgrade_menu.tscn" id="21_x1f1g"]
@@ -67,6 +68,9 @@ autostart = true
 [node name="ParticleLayer" type="Node2D" parent="."]
 
 [node name="UpgradeMenu" parent="." instance=ExtResource("21_x1f1g")]
+visible = false
+
+[node name="RewriteCopyMenu" parent="." instance=ExtResource("15_xniy2")]
 visible = false
 
 [connection signal="wave_completed" from="GameMap" to="GameMap" method="_on_wave_completed"]

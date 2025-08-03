@@ -15,6 +15,7 @@ var player: Player
 @onready var particle_layer: Node2D = $ParticleLayer
 
 @onready var upgrade_menu: UpgradeMenu = $UpgradeMenu
+@onready var rewrite_copy_menu: RewriteCopyMenu = $RewriteCopyMenu
 
 
 func _ready() -> void:
@@ -72,7 +73,13 @@ func update_camera(delta: float):
 	camera.global_position = lerp(camera.global_position, target, 0.1 * delta * distance)
 
 func save_record() -> void:
+	if not is_instance_valid(player) or player.is_dead:
+		return
+	
 	if State.current_copies < State.max_copies:
 		State.current_copies += 1
 		State.all_time_copies += 1
 		recorder_area.save_recording(player, State.all_time_copies)
+	else:
+		get_tree().paused = true
+		rewrite_copy_menu.rewrite_copy(player)

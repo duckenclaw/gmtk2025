@@ -7,6 +7,7 @@ const ROCK_BIG = preload("uid://c1x4td4yx8npc")
 const SNAKE_BIG = preload("uid://dxc2ckt53loo0")
 const WATER_BIG = preload("uid://dhx4fp48nt5ty")
 
+signal clicked
 
 var record: Record
 var copy: Player
@@ -42,7 +43,7 @@ func set_color(color):
 	right_hand.material.set_shader_parameter("modulate_color", color)
 
 func _on_click_listener_mouse_pressed() -> void:
-	pass # Replace with function body.
+	clicked.emit()
 
 func get_action_texture() -> CompressedTexture2D:
 	match record.selected_action_index:
