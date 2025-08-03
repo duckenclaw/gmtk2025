@@ -16,7 +16,7 @@ func accept_command(command: Command):
 	if command is CommandMouse:
 		preview_area.visible = not is_reloading()
 		preview_area.global_position = command.mouse_position
-		preview_shape.shape.radius = player_config.black_hole_radius
+		preview_area.radius = player_config.black_hole_radius
 		
 	if command is CommandMouseReleased:
 		if is_reloading():

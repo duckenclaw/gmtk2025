@@ -5,10 +5,11 @@ const BLACK_HOLE_IMPULSE = 2.0
 
 var player_config: PlayerConfig
 
+@onready var preview_area: PreviewArea = $PreviewArea
+
 func _ready() -> void:
 	$CollisionShape2D.shape.radius = player_config.black_hole_radius
-	$Sprite2D.scale.x = player_config.black_hole_radius/100.0
-	$Sprite2D.scale.y = player_config.black_hole_radius/100.0
+	preview_area.radius = player_config.black_hole_radius
 	
 	$CPUParticles2D.emission_sphere_radius = player_config.black_hole_radius
 	

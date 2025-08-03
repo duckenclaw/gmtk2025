@@ -24,12 +24,14 @@ var actions: Array[Action]
 var current_action: Action
 @export var selected_action_index: int = 0
 
+var is_dead: bool = false
 var health: float = 0.0
 var velocity: Vector2
 
 @onready var actions_node: Node2D = $Actions
 
 @onready var player_sprite: Sprite2D = $PlayerSprite
+@onready var dead_sprite: Sprite2D = $DeadSprite
 
 @onready var hands_bottom_back: Node2D = $HandsBottomBack
 @onready var hands_bottom_front: Node2D = $HandsBottomFront
@@ -145,6 +147,16 @@ func start_recording():
 func stop_recording():
 	is_recording = false
 
+func die():
+	is_dead = true
+	stop_recording()
+	hands_bottom_back.hide()
+	hands_bottom_front.hide()
+	hands_top_back.hide()
+	hands_top_front.hide()
+	player_sprite.hide()
+	dead_sprite.show()
+	
 
 func get_ticks_sec() -> float:
 	return Time.get_ticks_msec() / 1000.0

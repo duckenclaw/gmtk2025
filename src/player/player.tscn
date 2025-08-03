@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://hdqpwg5uj86i" path="res://src/player/pick_up_area.gd" id="6_jiejy"]
 [ext_resource type="Script" uid="uid://qqqwdbse05x" path="res://src/player/actions/laser/laser_action.gd" id="6_x42xx"]
 [ext_resource type="Texture2D" uid="uid://ckiy646s583to" path="res://assets/art/particles/fire_small.png" id="8_cwolq"]
+[ext_resource type="Script" uid="uid://dw188k46q46vr" path="res://src/player/preview_area.gd" id="10_wlj80"]
 [ext_resource type="Texture2D" uid="uid://xt5j8d7gro4y" path="res://assets/art/particles/light_small.png" id="11_rl62b"]
 [ext_resource type="Script" uid="uid://bts6tdk106l68" path="res://src/player/actions/rock/rock_action.gd" id="12_2smqc"]
 
@@ -30,9 +31,6 @@ point_count = 2
 [sub_resource type="Curve" id="Curve_5f2sf"]
 _data = [Vector2(0.016917288, 0), 0.0, 0.0, 0, 0, Vector2(0.035714284, 0), 0.0, 0.0, 0, 0, Vector2(0.08834587, 0.46504617), 0.0, 0.0, 0, 0, Vector2(0.6917293, 0.64646006), 0.0, 0.0, 0, 0, Vector2(0.87781954, 0.5931328), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 6
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_5f2sf"]
-radius = 200.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jiejy"]
 size = Vector2(800, 40)
@@ -76,6 +74,14 @@ texture = ExtResource("4_l271a")
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 position = Vector2(-0.99999994, -37.999996)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("2_o822w")
+
+[node name="DeadSprite" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.033853278, 0.033853278, 0.033853274, 1)
+position = Vector2(1.9999998, -13.000002)
+rotation = 1.5707964
 scale = Vector2(0.12, 0.12)
 texture = ExtResource("2_o822w")
 
@@ -144,12 +150,7 @@ script = ExtResource("4_5f2sf")
 [node name="PreviewArea" type="Area2D" parent="Actions/BlackHoleAction"]
 collision_layer = 2
 collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Actions/BlackHoleAction/PreviewArea"]
-shape = SubResource("CircleShape2D_5f2sf")
-
-[node name="Sprite2D" type="Sprite2D" parent="Actions/BlackHoleAction/PreviewArea"]
-scale = Vector2(2, 2)
+script = ExtResource("10_wlj80")
 
 [node name="LaserAction" type="Node2D" parent="Actions"]
 script = ExtResource("6_x42xx")
@@ -196,6 +197,11 @@ script = ExtResource("5_jiejy")
 
 [node name="RockAction" type="Node2D" parent="Actions"]
 script = ExtResource("12_2smqc")
+
+[node name="PreviewArea" type="Area2D" parent="Actions/RockAction"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("10_wlj80")
 
 [node name="PickUpArea" type="Area2D" parent="."]
 collision_layer = 0

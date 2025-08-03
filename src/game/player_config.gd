@@ -20,3 +20,4 @@ var is_copy: bool = false
 
 @export var rock_damage: float = 25.0
 @export var rock_impulse: float = 20.0
+@export var rock_radius: float = 60.0

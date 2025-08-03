@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://c4xsb2ohggau7"]
 
 [ext_resource type="Script" uid="uid://bmyvfkdchdwbs" path="res://src/player/actions/black_hole/black_hole.gd" id="1_gwcgv"]
-[ext_resource type="Texture2D" uid="uid://dsj0ugy6xuvl4" path="res://assets/art/testing/target_aoe_detected.png" id="2_moxey"]
-[ext_resource type="Texture2D" uid="uid://8oyari14jryw" path="res://assets/art/particles/snake_small.png" id="3_benje"]
+[ext_resource type="Texture2D" uid="uid://b13bn4a2kl10j" path="res://assets/art/particles/dark_small.png" id="2_benje"]
+[ext_resource type="Script" uid="uid://dw188k46q46vr" path="res://src/player/preview_area.gd" id="3_g27ec"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bvt61"]
 radius = 100.0
@@ -26,15 +26,17 @@ collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_gwcgv")
 
+[node name="PreviewArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("3_g27ec")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bvt61")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_moxey")
-
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 amount = 130
-texture = ExtResource("3_benje")
+texture = ExtResource("2_benje")
 emission_shape = 2
 emission_sphere_radius = 92.87
 gravity = Vector2(0, 0)
