@@ -22,6 +22,7 @@ Ref="*res://src/ref.gd"
 State="*res://src/game/state.gd"
 ParticlePool="*res://src/ui/numbers/particle_pool.gd"
 WaitUtil="*res://src/utils/wait_util.gd"
+Sound="*res://src/sound/sound.gd"
 
 [display]
 
