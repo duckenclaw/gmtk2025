@@ -2,7 +2,6 @@ extends Area2D
 class_name Wave
 
 const WAVE_SPEED = 400
-const WAVE_IMPULSE = 1.5
 
 var player_config: PlayerConfig
 var direction: Vector2
@@ -35,5 +34,5 @@ func _physics_process(delta):
 				damaged_enemies.append(area)
 			
 			# Apply impulse in the direction the wave is traveling
-			var impulse = direction * WAVE_IMPULSE
+			var impulse = direction * player_config.wave_impulse
 			area.take_impulse(impulse)

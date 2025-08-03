@@ -1,8 +1,6 @@
 extends Action
 
 const DAMAGE_TIMEOUT: float = 1000 # msec
-const LASER_DAMAGE: float = 20.0
-const LASER_IMPULSE: float = 5.0
 
 var last_damage_time = 0.0
 var is_laser_active: bool = false
@@ -33,7 +31,6 @@ func accept_command(command: Command):
 			if Time.get_ticks_msec() - last_damage_time < DAMAGE_TIMEOUT: return
 			for enemy in targets_in_area:
 				enemy.take_damage(player_config.laser_damage)
-				enemy.take_impulse(LASER_IMPULSE * global_position.direction_to(enemy.global_position))
 
 func is_reloading() -> bool:
 	return Time.get_ticks_msec() - last_damage_time < DAMAGE_TIMEOUT
@@ -56,6 +53,7 @@ func start_laser():
 	laser_line.modulate.a = 0.0
 	
 	# Reset width to 0 for animation
+	original_laser_width = player_config.laser_width
 	laser_line.width = 0
 	
 	# Create main laser animation tween

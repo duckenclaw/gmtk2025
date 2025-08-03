@@ -10,6 +10,6 @@ texture = ExtResource("2_msuww")
 scale = Vector2(1.2, 1.2)
 modulate_color = Color(0.5686275, 0, 0, 1)
 speed = 125.0
-max_health = 800.0
+max_health = 750.0
 damage = 10.0
 metadata/_custom_type_script = "uid://hbxxlijgke2g"
