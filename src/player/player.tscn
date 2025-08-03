@@ -155,43 +155,32 @@ scale = Vector2(2, 2)
 script = ExtResource("6_x42xx")
 
 [node name="LaserArea" type="Area2D" parent="Actions/LaserAction"]
-position = Vector2(20, 0)
 collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actions/LaserAction/LaserArea"]
-position = Vector2(400, 0)
+position = Vector2(420, 0)
 shape = SubResource("RectangleShape2D_jiejy")
 
 [node name="Line2D" type="Line2D" parent="Actions/LaserAction/LaserArea"]
+position = Vector2(20, 0)
 points = PackedVector2Array(0, 0, 800, 0)
 width = 40.0
 gradient = SubResource("Gradient_2smqc")
 
 [node name="CastingParticles" type="CPUParticles2D" parent="Actions/LaserAction/LaserArea"]
-position = Vector2(10, 0)
+position = Vector2(30, 0)
 texture = ExtResource("11_rl62b")
 lifetime = 0.5
 explosiveness = 0.5
 randomness = 0.25
-spread = 120.0
-gravity = Vector2(0, 0)
+spread = 90.0
+gravity = Vector2(1, 0)
 initial_velocity_min = 100.0
 initial_velocity_max = 100.0
 
-[node name="LineParticles" type="CPUParticles2D" parent="Actions/LaserAction/LaserArea"]
-position = Vector2(10, 0)
-amount = 20
-texture = ExtResource("11_rl62b")
-lifetime = 2.0
-speed_scale = 2.0
-spread = 3.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 400.0
-initial_velocity_max = 400.0
-
 [node name="CollisionParticles" type="CPUParticles2D" parent="Actions/LaserAction/LaserArea"]
-position = Vector2(790, 0)
+position = Vector2(810, 0)
 texture = ExtResource("11_rl62b")
 lifetime = 0.3
 explosiveness = 0.5
