@@ -15,7 +15,6 @@ func accept_command(command: Command):
 	if command is CommandMouse:
 		# Position preview halfway between player and mouse for better visualization
 		var direction = global_position.direction_to(command.mouse_position)
-		
 	if command is CommandMouseReleased:
 		if is_reloading():
 			return

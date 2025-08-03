@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://hdqpwg5uj86i" path="res://src/player/pick_up_area.gd" id="6_jiejy"]
 [ext_resource type="Script" uid="uid://qqqwdbse05x" path="res://src/player/actions/laser/laser_action.gd" id="6_x42xx"]
 [ext_resource type="Texture2D" uid="uid://ckiy646s583to" path="res://assets/art/particles/fire_small.png" id="8_cwolq"]
-[ext_resource type="Script" uid="uid://cgy0hyry73kxo" path="res://src/player/actions/rock/rock_action.gd" id="12_2smqc"]
+[ext_resource type="Script" uid="uid://bts6tdk106l68" path="res://src/player/actions/rock/rock_action.gd" id="12_2smqc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5f2sf"]
 radius = 14.0
@@ -119,7 +119,7 @@ shape = SubResource("ConvexPolygonShape2D_rxibo")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Actions/FireAction/Area2D"]
 amount = 70
 texture = ExtResource("8_cwolq")
-lifetime = 0.9500000000000001
+lifetime = 0.95
 speed_scale = 3.01
 spread = 18.09
 gravity = Vector2(0, 10)

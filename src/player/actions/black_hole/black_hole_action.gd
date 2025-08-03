@@ -8,8 +8,8 @@ var last_damage_time: float = -100.0
 
 @onready var preview_area: Area2D = $PreviewArea
 @onready var preview_shape: CollisionShape2D = $PreviewArea/CollisionShape2D
-
 @onready var preview_sprite: Sprite2D = $PreviewArea/Sprite2D
+
 @onready var player: Player = $"../.."
 
 func accept_command(command: Command):
