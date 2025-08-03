@@ -3,8 +3,8 @@ class_name NumberChangeParticle
 
 signal was_stashed
 
-const UP_SPEED: float = 60.0
-const MAX_TIME: float = 2.0
+const UP_SPEED: float = 120.0
+const MAX_TIME: float = 0.8
 const RANDOM_OFFSET: Vector2 = Vector2(80, 30)
 
 var stashed: bool = false

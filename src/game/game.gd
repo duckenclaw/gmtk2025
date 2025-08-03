@@ -56,8 +56,10 @@ func _process(delta: float) -> void:
 func check_action_changed():
 	for i in [1, 2, 3, 4, 5]:
 		if Input.is_action_just_pressed("number_" + str(i)):
-			print("Selected action number_" + str(i))
-			State.pending_selected_action_index = i - 1
+			var action_index = i - 1
+			if Action.get_action_enabled(action_index):
+				print("Selected action number_" + str(action_index))
+				State.pending_selected_action_index = action_index
 
 func check_record_pressed():
 	if Input.is_action_just_pressed("record"):

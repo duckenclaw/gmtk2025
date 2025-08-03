@@ -1,6 +1,10 @@
 extends Node
 # SOUND
 
+const MIN_TIME_TO_REPLAY: float = 700.0
+
+var recently_played: Dictionary # path to float: time
+
 var player: AudioStreamPlayer
 
 func _ready():
@@ -11,6 +15,13 @@ func _ready():
 	
 	player.bus = "Music"
 	start_soundtrack()
+
+func _process(delta: float) -> void:
+	var new_recently_played: Dictionary
+	for path in recently_played:
+		if Time.get_ticks_msec() - recently_played[path] < MIN_TIME_TO_REPLAY:
+			new_recently_played[path] = recently_played[path]
+	recently_played = new_recently_played
 
 func play_fire():
 	play_sfx("res://assets/sfx/fire.mp3")
@@ -32,6 +43,10 @@ func start_soundtrack():
 	player.play()
 
 func play_sfx(sfx_res: String):
+	if recently_played.has(sfx_res):
+		return
+	recently_played[sfx_res] = Time.get_ticks_msec()
+	
 	var sfx = BaseSfx.new()
 	sfx.stream = load(sfx_res)
 	add_child(sfx)
