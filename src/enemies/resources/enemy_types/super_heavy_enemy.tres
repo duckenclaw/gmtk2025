@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyType" load_steps=3 format=3 uid="uid://cnhikde2pm05v"]
+
+[ext_resource type="Script" uid="uid://hbxxlijgke2g" path="res://src/enemies/resources/enemy_type.gd" id="1_en05s"]
+[ext_resource type="Texture2D" uid="uid://cc0f02alg2ll8" path="res://assets/art/enemies/pig.PNG" id="2_ribtn"]
+
+[resource]
+script = ExtResource("1_en05s")
+name = "Heavy Enemy"
+texture = ExtResource("2_ribtn")
+scale = Vector2(1.2, 1.2)
+modulate_color = Color(1, 0, 0, 1)
+speed = 25.0
+max_health = 2000.0
+damage = 30.0
+metadata/_custom_type_script = "uid://hbxxlijgke2g"

@@ -145,11 +145,13 @@ func _apply_enemy_type(enemy: Enemy, enemy_type: EnemyType):
 	enemy.current_health = enemy_type.max_health
 	enemy.damage = enemy_type.damage
 	enemy.target_groups = enemy_type.target_groups
+	enemy.scale = enemy_type.scale
 	
 	# Apply visual properties
 	if enemy_type.texture and enemy.sprite:
 		enemy.enemy_texture = enemy_type.texture
 		enemy.sprite.texture = enemy_type.texture
+		enemy.sprite.modulate = enemy_type.modulate_color
 
 # ========== EVENT HANDLERS ==========
 
