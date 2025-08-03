@@ -34,6 +34,7 @@ signal enemy_dealt_damage(target: Node, damage: float)
 func _ready():
 	current_health = max_health
 	target = main_target
+	$AnimationPlayer.speed_scale = Random.f_range(0.95, 1.05)
 
 func _physics_process(delta):
 	if is_dead:

@@ -14,8 +14,9 @@ signal create_copy_pressed
 @onready var time_label: Label = $TimeLabel
 @onready var exp_progress_bar: ProgressBar = $ExpContainer/ProgressBar
 
-@onready var actions_container: HBoxContainer = $Actions
 @onready var copies_container: BoxContainer = $CopiesCenterContainer/Copies
+
+@onready var actions_container: HBoxContainer = $Actions
 
 
 
@@ -31,6 +32,7 @@ func _process(_delta: float) -> void:
 	time_label.text = str(int(State.LOOP_TIME - State.loop_progress_sec + 1))
 	
 	setup_copies()
+	setup_actions()
 
 func update_exp_bar():
 	exp_progress_bar.max_value = State.exp_to_next_lvl
@@ -41,7 +43,14 @@ func update_health_bars():
 	flag_progress_bar.max_value = State.flag_max_health
 
 func setup_actions():
-	pass
+	var action_buttons := actions_container.get_children()
+	for i in action_buttons.size():
+		var button: ActionButton = action_buttons[i]
+		button.action_index = i
+		button.is_available = Action.get_action_enabled(i)
+		button.is_pending = i == State.pending_selected_action_index
+		button.is_active = i == State.selected_action_index
+		
 
 func setup_copies():
 	NodeUtils.queue_free_children(copies_container)

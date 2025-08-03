@@ -5,5 +5,5 @@
 [resource]
 resource_local_to_scene = true
 shader = ExtResource("1_vrgl2")
-shader_parameter/color = Color(0.8047426, 0.80474263, 0.8047426, 1)
+shader_parameter/color = Color(0.39308518, 0.3930856, 0.39308548, 1)
 shader_parameter/modulate_color = Color(1, 1, 1, 1)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cni2a6p1fkqef"]
+[gd_scene load_steps=21 format=3 uid="uid://cni2a6p1fkqef"]
 
 [ext_resource type="Script" uid="uid://cwhyfhc6c1nya" path="res://src/player/player.gd" id="1_4anbu"]
 [ext_resource type="Texture2D" uid="uid://u2xov25lfo1c" path="res://assets/art/player/player_front.PNG" id="2_o822w"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://hdqpwg5uj86i" path="res://src/player/pick_up_area.gd" id="6_jiejy"]
 [ext_resource type="Script" uid="uid://qqqwdbse05x" path="res://src/player/actions/laser/laser_action.gd" id="6_x42xx"]
 [ext_resource type="Texture2D" uid="uid://ckiy646s583to" path="res://assets/art/particles/fire_small.png" id="8_cwolq"]
+[ext_resource type="Script" uid="uid://cgy0hyry73kxo" path="res://src/player/actions/rock/rock_action.gd" id="12_2smqc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5f2sf"]
 radius = 14.0
@@ -26,8 +27,8 @@ _data = [Vector2(0, 100), 0.0, 0.0, 0, 0, Vector2(0.98120296, 100), 0.0, 0.0, 0,
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_5f2sf"]
-_data = [Vector2(0.016917288, 0), 0.0, 0.0, 0, 0, Vector2(0.082706764, 0.30187488), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0.016917288, 0), 0.0, 0.0, 0, 0, Vector2(0.035714284, 0), 0.0, 0.0, 0, 0, Vector2(0.08834587, 0.46504617), 0.0, 0.0, 0, 0, Vector2(0.6917293, 0.64646006), 0.0, 0.0, 0, 0, Vector2(0.87781954, 0.5931328), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 6
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5f2sf"]
 radius = 200.0
@@ -118,7 +119,7 @@ shape = SubResource("ConvexPolygonShape2D_rxibo")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Actions/FireAction/Area2D"]
 amount = 70
 texture = ExtResource("8_cwolq")
-lifetime = 0.64
+lifetime = 0.9500000000000001
 speed_scale = 3.01
 spread = 18.09
 gravity = Vector2(0, 10)
@@ -158,6 +159,9 @@ shape = SubResource("RectangleShape2D_jiejy")
 
 [node name="WaveAction" type="Node2D" parent="Actions"]
 script = ExtResource("5_jiejy")
+
+[node name="RockAction" type="Node2D" parent="Actions"]
+script = ExtResource("12_2smqc")
 
 [node name="PickUpArea" type="Area2D" parent="."]
 collision_layer = 0

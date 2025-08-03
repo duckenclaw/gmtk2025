@@ -29,7 +29,7 @@ func accept_command(command: Command):
 		
 		if command.is_pressed:
 			for enemy in targets_in_area:
-				enemy.take_damage(player_config.fire_damage)
+				enemy.take_damage(player_config.fire_damage * player_config.damage_mult)
 				enemy.take_impulse(FIRE_IMPULSE * global_position.direction_to(enemy.global_position))
 
 

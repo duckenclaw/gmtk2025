@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://c28sw4vsxpqlj"]
+[gd_scene load_steps=9 format=3 uid="uid://c28sw4vsxpqlj"]
 
-[ext_resource type="Script" uid="uid://br1648l6eolgs" path="res://src/ui/copy_button.gd" id="1_6lgf1"]
+[ext_resource type="Script" uid="uid://br1648l6eolgs" path="res://src/ui/copy/copy_button.gd" id="1_6lgf1"]
 [ext_resource type="Material" uid="uid://bm2108ea6mlk5" path="res://assets/shaders/player_shadow_material.tres" id="2_d2r1c"]
 [ext_resource type="Script" uid="uid://cjs56bula4a82" path="res://src/ui/mouse_pressed_listener.gd" id="2_h6mug"]
 [ext_resource type="Texture2D" uid="uid://u2xov25lfo1c" path="res://assets/art/player/player_front.PNG" id="2_irau5"]
 [ext_resource type="Texture2D" uid="uid://cmrjf4p5xyg8j" path="res://assets/art/player/left_hand_front.PNG" id="3_tkwsb"]
 [ext_resource type="Texture2D" uid="uid://cw7irwvgn2fk" path="res://assets/art/player/right_hand_front.PNG" id="4_d2r1c"]
 [ext_resource type="Material" uid="uid://brl4r63pus6xw" path="res://assets/shaders/hands_shadow_material.tres" id="4_jyban"]
+[ext_resource type="Texture2D" uid="uid://chby0tlyn6ij0" path="res://assets/art/particles/fire_big.PNG" id="7_h1v4h"]
 
 [node name="CopyButton" type="MarginContainer"]
 offset_left = 2.0
@@ -53,6 +54,12 @@ layout_mode = 2
 texture = ExtResource("4_d2r1c")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="ActionRect" type="TextureRect" parent="PanelContainer/MarginContainer/Container"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("7_h1v4h")
+expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer"]
 layout_mode = 2

@@ -25,16 +25,19 @@ var all_time_copies: int = 0
 var records: Array[Record]
 var copies: Dictionary # id to Player
 
-# TODO: finish this!!
 var fire_available: bool = true
 var black_hole_available: bool = false
+var laser_available: bool = false
+var wave_available: bool = false
+var rock_available: bool = false
 
 var exp_to_next_lvl: float = INITIAL_NEXT_LVL_EXP
 var exp: float = 0.0
 
 # for real player
 var player_config: PlayerConfig = PlayerConfig.new()
-var pending_selected_action_index: int = 3
+var pending_selected_action_index: int = 0
+var selected_action_index: int = 0
 
 func _ready() -> void:
 	pass

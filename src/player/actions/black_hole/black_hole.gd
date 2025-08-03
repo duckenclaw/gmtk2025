@@ -15,7 +15,7 @@ func _ready() -> void:
 	await WaitUtil.wait(0.1)
 	for area in get_overlapping_areas():
 		if area.is_in_group("enemy"):
-			area.take_damage(player_config.black_hole_damage)
+			area.take_damage(player_config.black_hole_damage * player_config.damage_mult)
 	
 	await WaitUtil.wait(5.0)
 	queue_free()

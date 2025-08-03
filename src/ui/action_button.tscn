@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://cig20fddjdm1r"]
-
-[node name="ActionButton" type="MarginContainer"]
-offset_right = 16.0
-offset_bottom = 16.0
-
-[node name="TextureButton" type="TextureButton" parent="."]
-layout_mode = 2

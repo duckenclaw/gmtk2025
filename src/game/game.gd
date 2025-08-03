@@ -25,8 +25,8 @@ func _ready() -> void:
 	
 	flag.origin_health_changed.connect(game_ui.flag_health_changed)
 	
+	State.loop_restarted.connect(update_current_action)
 	State.start_loop()
-
 
 
 func _process(delta: float) -> void:
@@ -39,6 +39,9 @@ func check_action_changed():
 		if Input.is_action_just_pressed("number_" + str(i)):
 			print("Selected action number_" + str(i))
 			State.pending_selected_action_index = i - 1
+
+func update_current_action(_loop: int):
+	State.selected_action_index = State.pending_selected_action_index
 
 func check_next_lvl():
 	if State.exp >= State.exp_to_next_lvl:

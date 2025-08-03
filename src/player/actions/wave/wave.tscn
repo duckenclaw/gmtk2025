@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://djkit3bbogwrg"]
+[gd_scene load_steps=7 format=3 uid="uid://djkit3bbogwrg"]
 
 [ext_resource type="Script" uid="uid://dxfm5loc1yh5u" path="res://src/player/actions/wave/wave.gd" id="1_kb2sb"]
 [ext_resource type="Texture2D" uid="uid://sorw5x0pt3mk" path="res://assets/art/particles/water_small.png" id="2_e3kf2"]
@@ -14,6 +14,11 @@ point_count = 2
 [sub_resource type="Curve" id="Curve_e3kf2"]
 _data = [Vector2(0, 0.56625366), 0.0, 0.0, 0, 0, Vector2(0.6184211, 1), -0.015052967, -0.015052967, 0, 0, Vector2(1, 0.4629807), 0.0, 0.0, 0, 0]
 point_count = 3
+
+[sub_resource type="Curve" id="Curve_c332u"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0.01127819, 0.07880521), 0.0, 0.0, 0, 0, Vector2(0.46052632, -0.18557358), 0.0, 0.0, 0, 0, Vector2(0.7330828, 0.24404198), 0.0, 0.0, 0, 0, Vector2(0.99248123, 0.442326), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [node name="Wave" type="Area2D"]
 collision_layer = 0
@@ -41,3 +46,6 @@ linear_accel_min = -50.17
 linear_accel_max = -50.17
 linear_accel_curve = SubResource("Curve_jjf54")
 scale_amount_curve = SubResource("Curve_e3kf2")
+hue_variation_min = -0.02
+hue_variation_max = -0.02
+hue_variation_curve = SubResource("Curve_c332u")

@@ -31,7 +31,7 @@ func _physics_process(delta):
 		if area.is_in_group("enemy"):
 			area.take_impulse(direction * 5.0)
 			if not area in damaged_enemies:
-				area.take_damage(player_config.wave_damage)
+				area.take_damage(player_config.wave_damage * player_config.damage_mult)
 				damaged_enemies.append(area)
 			
 			# Apply impulse in the direction the wave is traveling

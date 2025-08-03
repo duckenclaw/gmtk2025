@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://ce880iha75f3d"]
+[gd_scene load_steps=9 format=3 uid="uid://ce880iha75f3d"]
 
 [ext_resource type="Script" uid="uid://dbejkj7uymni8" path="res://src/ui/game_ui.gd" id="1_jlfe0"]
 [ext_resource type="PackedScene" uid="uid://b0wa65js18xls" path="res://src/ui/progress_bar/progress_bar.tscn" id="2_r30kv"]
 [ext_resource type="Texture2D" uid="uid://dmd55u6g1cnru" path="res://assets/art/foreground.PNG" id="3_jdnd6"]
+[ext_resource type="PackedScene" uid="uid://cig20fddjdm1r" path="res://src/ui/action/action_button.tscn" id="4_uoilq"]
+[ext_resource type="Texture2D" uid="uid://chby0tlyn6ij0" path="res://assets/art/particles/fire_big.PNG" id="5_xhlgw"]
+[ext_resource type="Texture2D" uid="uid://dxc2ckt53loo0" path="res://assets/art/particles/snake_big.PNG" id="6_n7cae"]
+[ext_resource type="Texture2D" uid="uid://dhx4fp48nt5ty" path="res://assets/art/particles/water_big.PNG" id="7_rf5aj"]
+[ext_resource type="Texture2D" uid="uid://c1x4td4yx8npc" path="res://assets/art/particles/rock_big.PNG" id="8_3bvhv"]
 
 [node name="GameUi" type="CanvasLayer"]
 script = ExtResource("1_jlfe0")
@@ -57,14 +62,24 @@ offset_bottom = -164.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="FireButton" type="Button" parent="Actions"]
+[node name="FireButton" parent="Actions" instance=ExtResource("4_uoilq")]
 layout_mode = 2
-text = "Fire
-"
+texture = ExtResource("5_xhlgw")
 
-[node name="BlackHoleButton" type="Button" parent="Actions"]
+[node name="BlackHoleButton" parent="Actions" instance=ExtResource("4_uoilq")]
 layout_mode = 2
-text = "Black hole"
+texture = ExtResource("6_n7cae")
+
+[node name="LaserButton" parent="Actions" instance=ExtResource("4_uoilq")]
+layout_mode = 2
+
+[node name="WaveButton" parent="Actions" instance=ExtResource("4_uoilq")]
+layout_mode = 2
+texture = ExtResource("7_rf5aj")
+
+[node name="RockButton" parent="Actions" instance=ExtResource("4_uoilq")]
+layout_mode = 2
+texture = ExtResource("8_3bvhv")
 
 [node name="CreateCopyButton" type="Button" parent="."]
 offset_left = 1440.0
