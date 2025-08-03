@@ -12,8 +12,8 @@ const EXP = preload("uid://c86ubuma3ax4m")
 
 # Current state
 var current_health: float
-var main_target: Area2D
-var target: Area2D
+var main_target: Node2D
+var target: Node2D
 var target_position: Vector2
 var is_moving: bool = true
 var is_dead: bool = false
@@ -133,11 +133,12 @@ func _on_detection_area_entered(area):
 
 func _on_disinterest_timer_timeout():
 	target = main_target
+	await WaitUtil.wait(0.5)
 	set_target_position(target.global_position)
 
 
 func _on_detection_area_exited(area: Area2D):
 	if area.is_in_group("player"):
-		$DetectionArea/DisinterestTimer.start(0.2)
+		$DetectionArea/DisinterestTimer.start(0.5)
 	if area.is_in_group("enemy"):
 		nearby_enemies.erase(area)
