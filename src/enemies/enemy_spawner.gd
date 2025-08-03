@@ -34,7 +34,7 @@ func _ready():
 
 # 1. Start the spawning process
 func start_spawning():
-	remaining_spawns = spawn_count
+	remaining_spawns = spawn_count * 1.5
 	if spawn_timer and remaining_spawns > 0:
 		spawn_timer.start()
 
@@ -54,7 +54,7 @@ func _on_spawner_timer_timeout():
 
 # 4. Check if all enemies are dead and spawning is complete
 func _check_wave_complete():
-	if remaining_spawns <= 0 and get_living_enemy_count() == 0:
+	if remaining_spawns <= 0:
 		all_enemies_dead.emit()
 
 # ========== CORE SPAWNING LOGIC ==========

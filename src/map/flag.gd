@@ -1,5 +1,6 @@
 extends Area2D
 
+signal flag_died
 signal origin_health_changed(health: float)
 
 const INVINSIBILITY_TIME: float = 0.2
@@ -19,11 +20,11 @@ func take_damage(incoming_damage: float):
 		return false
 	
 	current_health -= incoming_damage
-	#print("FLAG TOOK: " + str(incoming_damage))
-	#print("CURRENT HEALTH: " + str(current_health) + "/" + str(State.flag_max_health))
 	is_invincible = true
-	#print("flag invincible")
 	invincibility_timer.start(INVINSIBILITY_TIME)
+	
+	if current_health <= 0.0:
+		flag_died.emit()
 	
 	origin_health_changed.emit(current_health)
 	ParticlePool.spawn_number_particle(

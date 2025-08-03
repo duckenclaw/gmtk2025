@@ -24,6 +24,7 @@ func setup(g_pos: Vector2, type: ParticlePool.ParticleType, amount: float):
 	
 	global_position = g_pos
 	position.x -= 100
+	position.y -= 100
 	position += Random.point_within_box(RANDOM_OFFSET)
 	
 	modulate.a = 1.0

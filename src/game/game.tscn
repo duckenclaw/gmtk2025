@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c0sene84p44ry"]
+[gd_scene load_steps=32 format=3 uid="uid://c0sene84p44ry"]
 
 [ext_resource type="Script" uid="uid://mk37pv18gbuy" path="res://src/game/game.gd" id="1_7uq6d"]
 [ext_resource type="Texture2D" uid="uid://o5i0rhqd2ooq" path="res://assets/art/background.JPG" id="3_72t65"]
@@ -29,6 +29,7 @@
 [ext_resource type="Resource" uid="uid://btx7sx2ldajhs" path="res://src/enemies/resources/waves/wave_rare_mixed.tres" id="23_ov5gv"]
 [ext_resource type="Resource" uid="uid://j04dcmhrv5jl" path="res://src/enemies/resources/waves/wave_circular8.tres" id="24_28tqb"]
 [ext_resource type="Resource" uid="uid://dqedlc3ewaurs" path="res://src/enemies/resources/waves/wave_ultra_heavy_double.tres" id="25_rcxir"]
+[ext_resource type="PackedScene" uid="uid://5ieicqy875d1" path="res://src/ui/game_over_screen.tscn" id="30_rcxir"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2e6sl"]
 radius = 80.09994
@@ -39,7 +40,7 @@ script = ExtResource("1_7uq6d")
 [node name="GameUi" parent="." instance=ExtResource("3_l80un")]
 
 [node name="Background" type="Sprite2D" parent="."]
-modulate = Color(0.32358384, 0.32358387, 0.32358384, 1)
+modulate = Color(0.4117647, 0.4117647, 0.4117647, 1)
 scale = Vector2(0.85, 0.85)
 texture = ExtResource("3_72t65")
 
@@ -76,7 +77,7 @@ wave_configs = Array[ExtResource("5_72t65")]([ExtResource("6_xowm4"), ExtResourc
 position = Vector2(0, 34)
 
 [node name="WaveTimer" type="Timer" parent="GameMap"]
-wait_time = 15.0
+wait_time = 5.0
 autostart = true
 
 [node name="ParticleLayer" type="Node2D" parent="."]
@@ -89,6 +90,9 @@ visible = false
 layer = 2
 visible = false
 recorder = NodePath("../RecorderArea")
+
+[node name="GameOverScreen" parent="." instance=ExtResource("30_rcxir")]
+visible = false
 
 [connection signal="wave_completed" from="GameMap" to="GameMap" method="_on_wave_completed"]
 [connection signal="timeout" from="GameMap/WaveTimer" to="GameMap" method="_on_wave_timer_timeout"]

@@ -16,15 +16,18 @@ var player: Player
 
 @onready var upgrade_menu: UpgradeMenu = $UpgradeMenu
 @onready var rewrite_copy_menu: RewriteCopyMenu = $RewriteCopyMenu
+@onready var game_over_screen: GameOverScreen = $GameOverScreen
 
 
 func _ready() -> void:
+	Sound.start_soundtrack()
 	Ref.particle_layer = particle_layer
 	Ref.recorder = recorder_area
 	spawn_player()
 	
 	
 	flag.origin_health_changed.connect(game_ui.flag_health_changed)
+	flag.flag_died.connect(flag_died)
 	
 	State.loop_restarted.connect(update_current_action)
 	State.start_loop()
@@ -35,6 +38,11 @@ func _ready() -> void:
 		)
 	
 
+
+func flag_died():
+	game_over_screen.show_game_over()
+
+
 func spawn_player():
 	player = PLAYER.instantiate()
 	game_map.add_child(player)
@@ -42,6 +50,10 @@ func spawn_player():
 	player.player_died.connect(on_player_died)
 
 func on_player_died():
+	if State.max_copies == 0:
+		flag_died()
+		return 
+	
 	get_tree().paused = true
 	rewrite_copy_menu.open_remove_copy_on_death(player)
 	await State.loop_restarted

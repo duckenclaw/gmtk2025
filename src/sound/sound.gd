@@ -11,10 +11,13 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	player = AudioStreamPlayer.new()
+	
+	if OS.get_name() == "WEB":
+		player.volume_db = -10
+	
 	add_child(player)
 	
 	player.bus = "Music"
-	start_soundtrack()
 
 func _process(delta: float) -> void:
 	var new_recently_played: Dictionary

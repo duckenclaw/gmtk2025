@@ -95,6 +95,9 @@ func save_recording(player: Player, id: int):
 	State.records.append(record)
 
 func remove_recording(record: Record, copy: Player):
+	if record == null:
+		return
+	
 	print("Removed recording")
 	State.records.erase(record)
 	State.copies.erase(record.id)

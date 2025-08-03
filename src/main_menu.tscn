@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ihpur1o3hacr"]
+[gd_scene load_steps=3 format=3 uid="uid://ihpur1o3hacr"]
 
 [ext_resource type="Script" uid="uid://bdq2tyknub0s6" path="res://src/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://bojei1pm8ux3x" path="res://assets/art/cover.JPG" id="2_bq8pk"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -18,6 +19,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_bq8pk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -36.0
+offset_top = -28.0
+offset_right = 1998.0
+offset_bottom = 1130.0
+color = Color(0, 0, 0, 0.84705883)
 
 [node name="TitleScreen" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -36,7 +47,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 40
-text = "Title"
+text = "Save the Eternal Tuna!
+It gives you the power of using all of your 9 lives at the same time.
+Press \"E\" near the end of the cycle to create a copy"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -49,18 +62,8 @@ theme_override_constants/separation = 16
 [node name="StartButton" type="Button" parent="TitleScreen/ButtonsContainer"]
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
+theme_override_font_sizes/font_size = 64
 text = "Start"
-
-[node name="OptionsButton" type="Button" parent="TitleScreen/ButtonsContainer"]
-custom_minimum_size = Vector2(100, 40)
-layout_mode = 2
-text = "Options
-"
-
-[node name="ExitButton" type="Button" parent="TitleScreen/ButtonsContainer"]
-custom_minimum_size = Vector2(100, 40)
-layout_mode = 2
-text = "Exit"
 
 [node name="OptionsScreen" type="MarginContainer" parent="."]
 visible = false
@@ -114,6 +117,4 @@ size_flags_vertical = 8
 text = "Exit"
 
 [connection signal="pressed" from="TitleScreen/ButtonsContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="TitleScreen/ButtonsContainer/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="TitleScreen/ButtonsContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="OptionsScreen/VBoxContainer/ExitOptionsButton" to="." method="_on_exit_options_button_pressed"]

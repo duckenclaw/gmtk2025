@@ -32,7 +32,7 @@ signal enemy_died()
 signal enemy_dealt_damage(target: Node, damage: float)
 
 func _ready():
-	current_health = max_health
+	current_health = max_health / 2.0
 	target = main_target
 	$AnimationPlayer.speed_scale = Random.f_range(0.95, 1.05)
 

@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://5ieicqy875d1"]
+
+[ext_resource type="Script" uid="uid://cjrjiio4v235b" path="res://src/ui/game_over_screen.gd" id="1_wmw1d"]
+
+[node name="GameOverScreen" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_wmw1d")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = -1
+offset_left = -36.0
+offset_top = -28.0
+offset_right = 1998.0
+offset_bottom = 1130.0
+color = Color(0, 0, 0, 0.84705883)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "The Eternal Tuna has been destroyed!
+You've lost!"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "
+Please reload the page to restart :c"
+horizontal_alignment = 1
