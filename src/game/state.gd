@@ -17,7 +17,7 @@ var loop_value: float = 0.0 # 0 to 1
 
 # FLAG
 var flag_max_health: float = 300.0
-var flag_regen: float = 10.0
+var flag_regen: float = 5.0
 
 # COPIES
 var max_copies: int = 2

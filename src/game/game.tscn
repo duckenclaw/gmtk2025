@@ -69,6 +69,5 @@ autostart = true
 [node name="UpgradeMenu" parent="." instance=ExtResource("21_x1f1g")]
 visible = false
 
-[connection signal="create_copy_pressed" from="GameUi" to="." method="_on_game_ui_create_copy_pressed"]
 [connection signal="wave_completed" from="GameMap" to="GameMap" method="_on_wave_completed"]
 [connection signal="timeout" from="GameMap/WaveTimer" to="GameMap" method="_on_wave_timer_timeout"]

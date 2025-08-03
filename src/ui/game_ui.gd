@@ -6,7 +6,6 @@ const COPY_BUTTON = preload("uid://c28sw4vsxpqlj")
 
 
 signal action_selected()
-signal create_copy_pressed
 
 @onready var flag_progress_bar: ProgressBar = $HealthContainer/FlagProgressBar
 @onready var player_progress_bar: ProgressBar = $HealthContainer/PlayerProgressBar
@@ -74,7 +73,3 @@ func player_health_changed(health: float):
 
 func flag_health_changed(health: float):
 	flag_progress_bar.value = health
-
-
-func _on_create_copy_button_pressed() -> void:
-	create_copy_pressed.emit()

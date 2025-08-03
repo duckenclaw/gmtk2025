@@ -86,14 +86,6 @@ texture = ExtResource("7_rf5aj")
 layout_mode = 2
 texture = ExtResource("8_3bvhv")
 
-[node name="CreateCopyButton" type="Button" parent="."]
-anchors_preset = -1
-offset_left = 1440.0
-offset_top = 864.0
-offset_right = 1448.0
-offset_bottom = 904.0
-text = "Create copy"
-
 [node name="TimeLabel" type="Label" parent="."]
 anchors_preset = -1
 offset_left = 1535.0
@@ -134,5 +126,3 @@ grow_vertical = 2
 
 [node name="Copies" type="VBoxContainer" parent="CopiesCenterContainer"]
 layout_mode = 2
-
-[connection signal="pressed" from="CreateCopyButton" to="." method="_on_create_copy_button_pressed"]

@@ -41,12 +41,17 @@ func _process(delta: float) -> void:
 	update_camera(delta)
 	check_next_lvl()
 	check_action_changed()
+	check_record_pressed()
 
 func check_action_changed():
 	for i in [1, 2, 3, 4, 5]:
 		if Input.is_action_just_pressed("number_" + str(i)):
 			print("Selected action number_" + str(i))
 			State.pending_selected_action_index = i - 1
+
+func check_record_pressed():
+	if Input.is_action_just_pressed("record"):
+		save_record()
 
 func update_current_action():
 	State.selected_action_index = State.pending_selected_action_index
@@ -66,7 +71,7 @@ func update_camera(delta: float):
 	var distance = target.distance_to(camera.global_position)
 	camera.global_position = lerp(camera.global_position, target, 0.1 * delta * distance)
 
-func _on_game_ui_create_copy_pressed() -> void:
+func save_record() -> void:
 	if State.current_copies < State.max_copies:
 		State.current_copies += 1
 		State.all_time_copies += 1
