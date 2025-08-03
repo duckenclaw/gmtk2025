@@ -1,6 +1,7 @@
 extends Node
 #class_name State # Autoload
 
+const TOTAL_MAX_COPIES: int = 8
 const INITIAL_NEXT_LVL_EXP: float = 10.0
 const NEXT_LVL_MULTIPLIER: float = 1.2
 const LOOP_TIME: float = 10.0
@@ -19,7 +20,7 @@ var flag_max_health: float = 300.0
 var flag_regen: float = 20.0
 
 # COPIES
-var max_copies: int = 3
+var max_copies: int = 2
 var current_copies: int = 0
 var all_time_copies: int = 0
 var records: Array[Record]

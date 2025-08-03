@@ -141,11 +141,12 @@ static func get_upgrade_list() -> Array[Upgrade]:
 		
 		list.append(upgrade)
 	
-	for i in 6:
+	for i in 10:
 		var upgrade: Upgrade = Upgrade.new()
 		
 		upgrade.title = "More Shadows!"
-		upgrade.desctiption = "Allows you add one more copy of yourself"
+		upgrade.desctiption = "Use all of you cat lives at the same time"
+		upgrade.condition = func(): return State.max_copies < State.TOTAL_MAX_COPIES
 		upgrade.action = func(): State.max_copies += 1
 		
 		list.append(upgrade)

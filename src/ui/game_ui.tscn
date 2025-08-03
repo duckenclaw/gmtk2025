@@ -20,11 +20,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("3_jdnd6")
 expand_mode = 1
 
 [node name="ExpContainer" type="MarginContainer" parent="."]
-anchors_preset = 10
+anchors_preset = -1
 anchor_right = 1.0
 offset_bottom = 46.0
 grow_horizontal = 2
@@ -33,6 +34,7 @@ grow_horizontal = 2
 layout_mode = 2
 
 [node name="HealthContainer" type="VBoxContainer" parent="."]
+anchors_preset = -1
 offset_left = 10.0
 offset_top = 80.0
 offset_right = 505.0
@@ -53,7 +55,7 @@ text = "PLAYER HEALTH"
 layout_mode = 2
 
 [node name="Actions" type="HBoxContainer" parent="."]
-anchors_preset = 12
+anchors_preset = -1
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -85,6 +87,7 @@ layout_mode = 2
 texture = ExtResource("8_3bvhv")
 
 [node name="CreateCopyButton" type="Button" parent="."]
+anchors_preset = -1
 offset_left = 1440.0
 offset_top = 864.0
 offset_right = 1448.0
@@ -92,6 +95,7 @@ offset_bottom = 904.0
 text = "Create copy"
 
 [node name="TimeLabel" type="Label" parent="."]
+anchors_preset = -1
 offset_left = 1535.0
 offset_top = 80.0
 offset_right = 1575.0
@@ -100,6 +104,7 @@ text = "10"
 
 [node name="ReplaceCopyBackground" type="ColorRect" parent="."]
 visible = false
+anchors_preset = -1
 offset_left = -20.0
 offset_top = -19.0
 offset_right = 1947.0
@@ -113,19 +118,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("3_jdnd6")
 expand_mode = 1
 
 [node name="CopiesCenterContainer" type="CenterContainer" parent="."]
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = -1
+anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -168.0
-grow_horizontal = 2
-grow_vertical = 0
+offset_left = -20.0
+offset_right = -20.0
+grow_horizontal = 0
+grow_vertical = 2
 
-[node name="Copies" type="HBoxContainer" parent="CopiesCenterContainer"]
+[node name="Copies" type="VBoxContainer" parent="CopiesCenterContainer"]
 layout_mode = 2
 
 [connection signal="pressed" from="CreateCopyButton" to="." method="_on_create_copy_button_pressed"]

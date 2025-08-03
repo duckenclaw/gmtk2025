@@ -15,22 +15,26 @@ var copy: Player
 @onready var left_hand: TextureRect = $PanelContainer/MarginContainer/Container/LeftHand
 @onready var right_hand: TextureRect = $PanelContainer/MarginContainer/Container/RightHand
 @onready var action_rect: TextureRect = $PanelContainer/MarginContainer/Container/ActionRect
-
+@onready var loader: Sprite2D = $PanelContainer/MarginContainer/Container/Loader
 
 func _ready() -> void:
 	if record != null:
 		setup_record()
 	else:
 		setup_empty()
+	loader.rotation = Time.get_ticks_msec() / 1000.0
 
 func setup_record():
 	set_color(record.color)
 	action_rect.visible = true
 	action_rect.texture = get_action_texture()
+	loader.visible = copy == null
+		
 
 func setup_empty():
 	set_color(Color.DIM_GRAY)
 	action_rect.visible = false
+	loader.visible = false
 
 func set_color(color):
 	player.material.set_shader_parameter("modulate_color", color)

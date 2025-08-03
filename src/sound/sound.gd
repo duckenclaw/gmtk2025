@@ -18,6 +18,9 @@ func play_fire():
 func play_laser():
 	play_sfx("res://assets/sfx/light.mp3")
 
+func play_water():
+	play_sfx("res://assets/sfx/splash.mp3")
+
 func start_soundtrack():
 	player.stream = load("res://assets/sfx/asian_soundtrack.mp3")
 	player.play()

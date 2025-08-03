@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c28sw4vsxpqlj"]
+[gd_scene load_steps=10 format=3 uid="uid://c28sw4vsxpqlj"]
 
 [ext_resource type="Script" uid="uid://br1648l6eolgs" path="res://src/ui/copy/copy_button.gd" id="1_6lgf1"]
 [ext_resource type="Material" uid="uid://bm2108ea6mlk5" path="res://assets/shaders/player_shadow_material.tres" id="2_d2r1c"]
@@ -8,16 +8,16 @@
 [ext_resource type="Texture2D" uid="uid://cw7irwvgn2fk" path="res://assets/art/player/right_hand_front.PNG" id="4_d2r1c"]
 [ext_resource type="Material" uid="uid://brl4r63pus6xw" path="res://assets/shaders/hands_shadow_material.tres" id="4_jyban"]
 [ext_resource type="Texture2D" uid="uid://chby0tlyn6ij0" path="res://assets/art/particles/fire_big.PNG" id="7_h1v4h"]
+[ext_resource type="Texture2D" uid="uid://b77v8cjnykw2x" path="res://assets/art/loader.PNG" id="8_xiyof"]
 
 [node name="CopyButton" type="MarginContainer"]
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 618.0
-offset_bottom = 818.0
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 24
+anchors_preset = -1
+offset_right = 616.0
+offset_bottom = 816.0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
 script = ExtResource("1_6lgf1")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -60,6 +60,12 @@ custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("7_h1v4h")
 expand_mode = 1
+
+[node name="Loader" type="Sprite2D" parent="PanelContainer/MarginContainer/Container"]
+modulate = Color(7.137, 7.137, 7.137, 0.518)
+position = Vector2(49, 49)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_xiyof")
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer"]
 layout_mode = 2

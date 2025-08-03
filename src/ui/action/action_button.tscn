@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b77v8cjnykw2x" path="res://assets/art/loader.PNG" id="3_gu6wm"]
 
 [node name="ActionButton" type="PanelContainer"]
+anchors_preset = -1
 offset_right = 16.0
 offset_bottom = 16.0
 script = ExtResource("1_gn2ic")
@@ -27,7 +28,7 @@ text = "7"
 horizontal_alignment = 1
 
 [node name="Loader" type="Sprite2D" parent="MarginContainer"]
-modulate = Color(7.137082, 7.137082, 7.137082, 1)
+modulate = Color(7.137, 7.137, 7.137, 0.518)
 position = Vector2(60, 60)
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.35, 0.35)
 texture = ExtResource("3_gu6wm")
