@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c0sene84p44ry"]
+[gd_scene load_steps=17 format=3 uid="uid://c0sene84p44ry"]
 
 [ext_resource type="Script" uid="uid://mk37pv18gbuy" path="res://src/game/game.gd" id="1_7uq6d"]
 [ext_resource type="Texture2D" uid="uid://o5i0rhqd2ooq" path="res://assets/art/background.JPG" id="3_72t65"]
@@ -11,14 +11,7 @@
 [ext_resource type="Resource" uid="uid://bmlldxi7p35u5" path="res://src/enemies/resources/waves/wave_fast.tres" id="8_evl7j"]
 [ext_resource type="Resource" uid="uid://b0f6p300g2kgj" path="res://src/enemies/resources/waves/wave_mixed.tres" id="9_6m1pf"]
 [ext_resource type="PackedScene" uid="uid://cni2a6p1fkqef" path="res://src/player/player.tscn" id="10_ov5gv"]
-[ext_resource type="Script" uid="uid://slrq46ve4m1n" path="res://src/enemies/enemy_spawner.gd" id="11_8a13b"]
-[ext_resource type="PackedScene" uid="uid://cgpkr8nvf4qyk" path="res://src/enemies/enemy.tscn" id="12_28tqb"]
-[ext_resource type="Script" uid="uid://hbxxlijgke2g" path="res://src/enemies/resources/enemy_type.gd" id="14_gu4qb"]
-[ext_resource type="Resource" uid="uid://bdblhdo83ukl6" path="res://src/enemies/resources/enemy_types/test_enemy.tres" id="15_t5ynd"]
-[ext_resource type="Resource" uid="uid://iqgd0ysoad7f" path="res://src/enemies/resources/enemy_types/basic_enemy.tres" id="16_yi3n0"]
-[ext_resource type="Resource" uid="uid://b7ujvifag7ksk" path="res://src/enemies/resources/enemy_types/fast_enemy.tres" id="17_c4ouk"]
-[ext_resource type="Resource" uid="uid://crf6ltt5cmtey" path="res://src/enemies/resources/enemy_types/heavy_enemy.tres" id="18_e3dug"]
-[ext_resource type="Texture2D" uid="uid://nsl84b5jq2rn" path="res://assets/art/testing/white.png" id="19_rl3to"]
+[ext_resource type="PackedScene" uid="uid://btex0cib7sk1l" path="res://src/map/enemy_spawners.tscn" id="13_xniy2"]
 [ext_resource type="PackedScene" uid="uid://cov5v1yloo3ev" path="res://src/map/flag.tscn" id="20_nhcde"]
 [ext_resource type="Script" uid="uid://bjena0veuadfu" path="res://src/game/recorder_area.gd" id="21_7liwe"]
 [ext_resource type="PackedScene" uid="uid://dpnmj3276mrri" path="res://src/upgrades/upgrade_menu.tscn" id="21_x1f1g"]
@@ -61,100 +54,17 @@ modulate = Color(1, 1, 1, 0.21568628)
 [node name="GameMap" type="Node2D" parent="." node_paths=PackedStringArray("central_spawner", "north_spawner", "south_spawner", "west_spawner", "east_spawner")]
 y_sort_enabled = true
 script = ExtResource("4_x1f1g")
-central_spawner = NodePath("EnemySpawners/CentralEnemySpawner")
-north_spawner = NodePath("EnemySpawners/NorthEnemySpawner")
-south_spawner = NodePath("EnemySpawners/SouthEnemySpawner")
-west_spawner = NodePath("EnemySpawners/WestEnemySpawner")
-east_spawner = NodePath("EnemySpawners/EastEnemySpawner")
+central_spawner = NodePath("")
+north_spawner = NodePath("")
+south_spawner = NodePath("")
+west_spawner = NodePath("")
+east_spawner = NodePath("")
 wave_configs = Array[ExtResource("5_72t65")]([ExtResource("6_xowm4"), ExtResource("7_eveok"), ExtResource("8_evl7j"), ExtResource("9_6m1pf")])
 
 [node name="Player" parent="GameMap" instance=ExtResource("10_ov5gv")]
 position = Vector2(79, -3)
 
-[node name="EnemySpawners" type="Node2D" parent="GameMap"]
-
-[node name="CentralEnemySpawner" type="Node2D" parent="GameMap/EnemySpawners" node_paths=PackedStringArray("target_node")]
-script = ExtResource("11_8a13b")
-enemy_scene = ExtResource("12_28tqb")
-current_enemy_types = Array[ExtResource("14_gu4qb")]([ExtResource("15_t5ynd"), ExtResource("16_yi3n0"), ExtResource("17_c4ouk"), ExtResource("18_e3dug")])
-enemy_type_weights = Array[float]([5.0, 3.0, 1.0, 0.5])
-spawn_count = 10
-enemy_pack_count = 3
-spawn_radius = 1200.0
-spawn_interval = 2.5
-target_node = NodePath("../../Flag")
-
-[node name="White" type="Sprite2D" parent="GameMap/EnemySpawners/CentralEnemySpawner"]
-visible = false
-rotation = 0.7853982
-texture = ExtResource("19_rl3to")
-
-[node name="SpawnTimer" type="Timer" parent="GameMap/EnemySpawners/CentralEnemySpawner"]
-wait_time = 2.0
-
-[node name="NorthEnemySpawner" type="Node2D" parent="GameMap/EnemySpawners" node_paths=PackedStringArray("target_node")]
-position = Vector2(2, -797)
-script = ExtResource("11_8a13b")
-enemy_scene = ExtResource("12_28tqb")
-current_enemy_types = Array[ExtResource("14_gu4qb")]([ExtResource("15_t5ynd"), ExtResource("16_yi3n0"), ExtResource("17_c4ouk"), ExtResource("18_e3dug")])
-enemy_type_weights = Array[float]([5.0, 3.0, 1.0, 0.5])
-spawn_count = 0
-target_node = NodePath("../../Flag")
-
-[node name="White" type="Sprite2D" parent="GameMap/EnemySpawners/NorthEnemySpawner"]
-rotation = 0.7853982
-texture = ExtResource("19_rl3to")
-
-[node name="SpawnTimer" type="Timer" parent="GameMap/EnemySpawners/NorthEnemySpawner"]
-wait_time = 2.0
-
-[node name="SouthEnemySpawner" type="Node2D" parent="GameMap/EnemySpawners" node_paths=PackedStringArray("target_node")]
-position = Vector2(-4, 835)
-script = ExtResource("11_8a13b")
-enemy_scene = ExtResource("12_28tqb")
-current_enemy_types = Array[ExtResource("14_gu4qb")]([ExtResource("15_t5ynd"), ExtResource("16_yi3n0"), ExtResource("17_c4ouk"), ExtResource("18_e3dug")])
-enemy_type_weights = Array[float]([5.0, 3.0, 1.0, 0.5])
-spawn_count = 0
-target_node = NodePath("../../Flag")
-
-[node name="White" type="Sprite2D" parent="GameMap/EnemySpawners/SouthEnemySpawner"]
-rotation = 0.7853982
-texture = ExtResource("19_rl3to")
-
-[node name="SpawnTimer" type="Timer" parent="GameMap/EnemySpawners/SouthEnemySpawner"]
-wait_time = 2.0
-
-[node name="EastEnemySpawner" type="Node2D" parent="GameMap/EnemySpawners" node_paths=PackedStringArray("target_node")]
-position = Vector2(1036, 4)
-script = ExtResource("11_8a13b")
-enemy_scene = ExtResource("12_28tqb")
-current_enemy_types = Array[ExtResource("14_gu4qb")]([ExtResource("15_t5ynd"), ExtResource("16_yi3n0"), ExtResource("17_c4ouk"), ExtResource("18_e3dug")])
-enemy_type_weights = Array[float]([5.0, 3.0, 1.0, 0.5])
-spawn_count = 0
-target_node = NodePath("../../Flag")
-
-[node name="White" type="Sprite2D" parent="GameMap/EnemySpawners/EastEnemySpawner"]
-rotation = 0.7853982
-texture = ExtResource("19_rl3to")
-
-[node name="SpawnTimer" type="Timer" parent="GameMap/EnemySpawners/EastEnemySpawner"]
-wait_time = 2.0
-
-[node name="WestEnemySpawner" type="Node2D" parent="GameMap/EnemySpawners" node_paths=PackedStringArray("target_node")]
-position = Vector2(-1040, 2)
-script = ExtResource("11_8a13b")
-enemy_scene = ExtResource("12_28tqb")
-current_enemy_types = Array[ExtResource("14_gu4qb")]([ExtResource("15_t5ynd"), ExtResource("16_yi3n0"), ExtResource("17_c4ouk"), ExtResource("18_e3dug")])
-enemy_type_weights = Array[float]([5.0, 3.0, 1.0, 0.5])
-spawn_count = 0
-target_node = NodePath("../../Flag")
-
-[node name="White" type="Sprite2D" parent="GameMap/EnemySpawners/WestEnemySpawner"]
-rotation = 0.7853982
-texture = ExtResource("19_rl3to")
-
-[node name="SpawnTimer" type="Timer" parent="GameMap/EnemySpawners/WestEnemySpawner"]
-wait_time = 2.0
+[node name="EnemySpawners" parent="GameMap" instance=ExtResource("13_xniy2")]
 
 [node name="Flag" parent="GameMap" instance=ExtResource("20_nhcde")]
 position = Vector2(0, 34)
@@ -170,14 +80,4 @@ visible = false
 
 [connection signal="create_copy_pressed" from="GameUi" to="." method="_on_game_ui_create_copy_pressed"]
 [connection signal="wave_completed" from="GameMap" to="GameMap" method="_on_wave_completed"]
-[connection signal="enemy_spawned" from="GameMap/EnemySpawners/CentralEnemySpawner" to="GameMap" method="_on_enemy_spawned"]
-[connection signal="timeout" from="GameMap/EnemySpawners/CentralEnemySpawner/SpawnTimer" to="GameMap/EnemySpawners/CentralEnemySpawner" method="_on_spawn_timer_timeout"]
-[connection signal="enemy_spawned" from="GameMap/EnemySpawners/NorthEnemySpawner" to="GameMap" method="_on_enemy_spawned"]
-[connection signal="timeout" from="GameMap/EnemySpawners/NorthEnemySpawner/SpawnTimer" to="GameMap/EnemySpawners/NorthEnemySpawner" method="_on_spawn_timer_timeout"]
-[connection signal="enemy_spawned" from="GameMap/EnemySpawners/SouthEnemySpawner" to="GameMap" method="_on_enemy_spawned"]
-[connection signal="timeout" from="GameMap/EnemySpawners/SouthEnemySpawner/SpawnTimer" to="GameMap/EnemySpawners/SouthEnemySpawner" method="_on_spawn_timer_timeout"]
-[connection signal="enemy_spawned" from="GameMap/EnemySpawners/EastEnemySpawner" to="GameMap" method="_on_enemy_spawned"]
-[connection signal="timeout" from="GameMap/EnemySpawners/EastEnemySpawner/SpawnTimer" to="GameMap/EnemySpawners/EastEnemySpawner" method="_on_spawn_timer_timeout"]
-[connection signal="enemy_spawned" from="GameMap/EnemySpawners/WestEnemySpawner" to="GameMap" method="_on_enemy_spawned"]
-[connection signal="timeout" from="GameMap/EnemySpawners/WestEnemySpawner/SpawnTimer" to="GameMap/EnemySpawners/WestEnemySpawner" method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="GameMap/WaveTimer" to="GameMap" method="_on_wave_timer_timeout"]

@@ -1,0 +1,101 @@
+[gd_scene load_steps=9 format=3 uid="uid://btex0cib7sk1l"]
+
+[ext_resource type="Script" uid="uid://slrq46ve4m1n" path="res://src/enemies/enemy_spawner.gd" id="1_qcisi"]
+[ext_resource type="PackedScene" uid="uid://cgpkr8nvf4qyk" path="res://src/enemies/enemy.tscn" id="2_x3sdb"]
+[ext_resource type="Script" uid="uid://hbxxlijgke2g" path="res://src/enemies/resources/enemy_type.gd" id="3_i7okj"]
+[ext_resource type="Resource" uid="uid://bdblhdo83ukl6" path="res://src/enemies/resources/enemy_types/test_enemy.tres" id="4_qyhhd"]
+[ext_resource type="Resource" uid="uid://iqgd0ysoad7f" path="res://src/enemies/resources/enemy_types/basic_enemy.tres" id="5_i2msn"]
+[ext_resource type="Resource" uid="uid://b7ujvifag7ksk" path="res://src/enemies/resources/enemy_types/fast_enemy.tres" id="6_o4grx"]
+[ext_resource type="Resource" uid="uid://crf6ltt5cmtey" path="res://src/enemies/resources/enemy_types/heavy_enemy.tres" id="7_s21of"]
+[ext_resource type="Texture2D" uid="uid://nsl84b5jq2rn" path="res://assets/art/testing/white.png" id="8_mbemv"]
+
+[node name="EnemySpawners" type="Node2D"]
+
+[node name="CentralEnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("target_node")]
+script = ExtResource("1_qcisi")
+enemy_scene = ExtResource("2_x3sdb")
+current_enemy_types = Array[ExtResource("3_i7okj")]([ExtResource("4_qyhhd"), ExtResource("5_i2msn"), ExtResource("6_o4grx"), ExtResource("7_s21of")])
+enemy_type_weights = Array[float]([5.0, 3.0, 1.0, 0.5])
+spawn_count = 10
+enemy_pack_count = 3
+spawn_radius = 1200.0
+spawn_interval = 2.5
+target_node = NodePath("")
+
+[node name="White" type="Sprite2D" parent="CentralEnemySpawner"]
+visible = false
+rotation = 0.7853982
+texture = ExtResource("8_mbemv")
+
+[node name="SpawnTimer" type="Timer" parent="CentralEnemySpawner"]
+wait_time = 2.0
+
+[node name="NorthEnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("target_node")]
+position = Vector2(2, -797)
+script = ExtResource("1_qcisi")
+enemy_scene = ExtResource("2_x3sdb")
+current_enemy_types = Array[ExtResource("3_i7okj")]([ExtResource("4_qyhhd"), ExtResource("5_i2msn"), ExtResource("6_o4grx"), ExtResource("7_s21of")])
+enemy_type_weights = Array[float]([5.0, 3.0, 1.0, 0.5])
+spawn_count = 0
+target_node = NodePath("")
+
+[node name="White" type="Sprite2D" parent="NorthEnemySpawner"]
+rotation = 0.7853982
+texture = ExtResource("8_mbemv")
+
+[node name="SpawnTimer" type="Timer" parent="NorthEnemySpawner"]
+wait_time = 2.0
+
+[node name="SouthEnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("target_node")]
+position = Vector2(-4, 835)
+script = ExtResource("1_qcisi")
+enemy_scene = ExtResource("2_x3sdb")
+current_enemy_types = Array[ExtResource("3_i7okj")]([ExtResource("4_qyhhd"), ExtResource("5_i2msn"), ExtResource("6_o4grx"), ExtResource("7_s21of")])
+enemy_type_weights = Array[float]([5.0, 3.0, 1.0, 0.5])
+spawn_count = 0
+target_node = NodePath("")
+
+[node name="White" type="Sprite2D" parent="SouthEnemySpawner"]
+rotation = 0.7853982
+texture = ExtResource("8_mbemv")
+
+[node name="SpawnTimer" type="Timer" parent="SouthEnemySpawner"]
+wait_time = 2.0
+
+[node name="EastEnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("target_node")]
+position = Vector2(1036, 4)
+script = ExtResource("1_qcisi")
+enemy_scene = ExtResource("2_x3sdb")
+current_enemy_types = Array[ExtResource("3_i7okj")]([ExtResource("4_qyhhd"), ExtResource("5_i2msn"), ExtResource("6_o4grx"), ExtResource("7_s21of")])
+enemy_type_weights = Array[float]([5.0, 3.0, 1.0, 0.5])
+spawn_count = 0
+target_node = NodePath("")
+
+[node name="White" type="Sprite2D" parent="EastEnemySpawner"]
+rotation = 0.7853982
+texture = ExtResource("8_mbemv")
+
+[node name="SpawnTimer" type="Timer" parent="EastEnemySpawner"]
+wait_time = 2.0
+
+[node name="WestEnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("target_node")]
+position = Vector2(-1040, 2)
+script = ExtResource("1_qcisi")
+enemy_scene = ExtResource("2_x3sdb")
+current_enemy_types = Array[ExtResource("3_i7okj")]([ExtResource("4_qyhhd"), ExtResource("5_i2msn"), ExtResource("6_o4grx"), ExtResource("7_s21of")])
+enemy_type_weights = Array[float]([5.0, 3.0, 1.0, 0.5])
+spawn_count = 0
+target_node = NodePath("")
+
+[node name="White" type="Sprite2D" parent="WestEnemySpawner"]
+rotation = 0.7853982
+texture = ExtResource("8_mbemv")
+
+[node name="SpawnTimer" type="Timer" parent="WestEnemySpawner"]
+wait_time = 2.0
+
+[connection signal="timeout" from="CentralEnemySpawner/SpawnTimer" to="CentralEnemySpawner" method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="NorthEnemySpawner/SpawnTimer" to="NorthEnemySpawner" method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="SouthEnemySpawner/SpawnTimer" to="SouthEnemySpawner" method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="EastEnemySpawner/SpawnTimer" to="EastEnemySpawner" method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="WestEnemySpawner/SpawnTimer" to="WestEnemySpawner" method="_on_spawn_timer_timeout"]
