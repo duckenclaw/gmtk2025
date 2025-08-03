@@ -42,6 +42,10 @@ var selected_action_index: int = 0
 func _ready() -> void:
 	pass
 
+func _process(delta: float) -> void:
+	# FOR DEBUG!!
+	exp += delta * 3.0
+
 func start_loop():
 	var tween = create_tween()
 	tween.set_loops()

@@ -18,18 +18,26 @@ custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 
 [node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 48
 text = "Upgrade title"
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
 
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+size_flags_vertical = 3
 text = "Description"
+horizontal_alignment = 1
+vertical_alignment = 2
 autowrap_mode = 3
 
 [node name="MousePressedListener" type="Node" parent="."]

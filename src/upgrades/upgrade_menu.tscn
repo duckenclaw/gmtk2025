@@ -11,7 +11,7 @@ offset_left = -36.0
 offset_top = -28.0
 offset_right = 1998.0
 offset_bottom = 1130.0
-color = Color(0, 0, 0, 0.105882354)
+color = Color(0, 0, 0, 0.47843137)
 
 [node name="CenterContainer2" type="CenterContainer" parent="."]
 anchors_preset = 10
