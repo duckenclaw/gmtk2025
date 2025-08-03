@@ -17,3 +17,6 @@ var is_copy: bool = false
 
 @export var black_hole_damage: float = 5.0
 @export var black_hole_radius: float = 100.0
+
+@export var rock_damage: float = 25.0
+@export var rock_impulse: float = 20.0

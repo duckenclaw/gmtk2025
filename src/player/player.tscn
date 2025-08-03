@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cni2a6p1fkqef"]
+[gd_scene load_steps=23 format=3 uid="uid://cni2a6p1fkqef"]
 
 [ext_resource type="Script" uid="uid://cwhyfhc6c1nya" path="res://src/player/player.gd" id="1_4anbu"]
 [ext_resource type="Texture2D" uid="uid://u2xov25lfo1c" path="res://assets/art/player/player_front.PNG" id="2_o822w"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://hdqpwg5uj86i" path="res://src/player/pick_up_area.gd" id="6_jiejy"]
 [ext_resource type="Script" uid="uid://qqqwdbse05x" path="res://src/player/actions/laser/laser_action.gd" id="6_x42xx"]
 [ext_resource type="Texture2D" uid="uid://ckiy646s583to" path="res://assets/art/particles/fire_small.png" id="8_cwolq"]
+[ext_resource type="Texture2D" uid="uid://xt5j8d7gro4y" path="res://assets/art/particles/light_small.png" id="11_rl62b"]
 [ext_resource type="Script" uid="uid://bts6tdk106l68" path="res://src/player/actions/rock/rock_action.gd" id="12_2smqc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5f2sf"]
@@ -35,6 +36,10 @@ radius = 200.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jiejy"]
 size = Vector2(800, 40)
+
+[sub_resource type="Gradient" id="Gradient_2smqc"]
+offsets = PackedFloat32Array(0, 0, 1)
+colors = PackedColorArray(0.95485264, 0.90792507, 0.65027493, 1, 0.9411765, 0.92941177, 0.8862745, 1, 0.92941177, 0.8862745, 0.7411765, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jiejy"]
 radius = 100.0
@@ -150,12 +155,52 @@ scale = Vector2(2, 2)
 script = ExtResource("6_x42xx")
 
 [node name="LaserArea" type="Area2D" parent="Actions/LaserAction"]
+position = Vector2(20, 0)
 collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actions/LaserAction/LaserArea"]
-position = Vector2(420, 0)
+position = Vector2(400, 0)
 shape = SubResource("RectangleShape2D_jiejy")
+
+[node name="Line2D" type="Line2D" parent="Actions/LaserAction/LaserArea"]
+points = PackedVector2Array(0, 0, 800, 0)
+width = 40.0
+gradient = SubResource("Gradient_2smqc")
+
+[node name="CastingParticles" type="CPUParticles2D" parent="Actions/LaserAction/LaserArea"]
+position = Vector2(10, 0)
+texture = ExtResource("11_rl62b")
+lifetime = 0.5
+explosiveness = 0.5
+randomness = 0.25
+spread = 120.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+
+[node name="LineParticles" type="CPUParticles2D" parent="Actions/LaserAction/LaserArea"]
+position = Vector2(10, 0)
+amount = 20
+texture = ExtResource("11_rl62b")
+lifetime = 2.0
+speed_scale = 2.0
+spread = 3.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 400.0
+initial_velocity_max = 400.0
+
+[node name="CollisionParticles" type="CPUParticles2D" parent="Actions/LaserAction/LaserArea"]
+position = Vector2(790, 0)
+texture = ExtResource("11_rl62b")
+lifetime = 0.3
+explosiveness = 0.5
+randomness = 0.25
+direction = Vector2(-1, 0)
+spread = 120.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
 
 [node name="WaveAction" type="Node2D" parent="Actions"]
 script = ExtResource("5_jiejy")

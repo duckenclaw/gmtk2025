@@ -45,7 +45,7 @@ func explode():
 	for area in get_overlapping_areas():
 		if area.is_in_group("enemy"):
 			area.take_damage(player_config.rock_damage)
-			area.take_impulse(direction * player_config.rock_impulse)
+			area.take_impulse(global_position.direction_to(area.global_position) * player_config.rock_impulse)
 	
 	 # Create explosion particles if available
 	if has_node("CPUParticles2D"):
