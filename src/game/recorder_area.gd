@@ -81,7 +81,7 @@ func remove_path(id: String):
 		lines.erase(id)
 
 func save_recording(player: Player, id: int):
-	print("Added new recording")
+	print("Added new recording " + str(id))
 	var copied_config: PlayerConfig = player.player_config.duplicate()
 	copied_config.is_copy = true
 	var record = Record.new(
@@ -93,6 +93,15 @@ func save_recording(player: Player, id: int):
 		get_record_color(id)
 		)
 	State.records.append(record)
+
+func remove_recording(record: Record, copy: Player):
+	print("Removed recording")
+	State.records.erase(record)
+	State.copies.erase(record.id)
+	if is_instance_valid(copy):
+		copy.die()
+		copy.queue_free()
+	
 
 func get_record_color(index: int) -> Color:
 	return Random.color(0.5, 1.0)

@@ -82,10 +82,13 @@ autostart = true
 [node name="ParticleLayer" type="Node2D" parent="."]
 
 [node name="UpgradeMenu" parent="." instance=ExtResource("21_x1f1g")]
+layer = 2
 visible = false
 
-[node name="RewriteCopyMenu" parent="." instance=ExtResource("15_xniy2")]
+[node name="RewriteCopyMenu" parent="." node_paths=PackedStringArray("recorder") instance=ExtResource("15_xniy2")]
+layer = 2
 visible = false
+recorder = NodePath("../RecorderArea")
 
 [connection signal="wave_completed" from="GameMap" to="GameMap" method="_on_wave_completed"]
 [connection signal="timeout" from="GameMap/WaveTimer" to="GameMap" method="_on_wave_timer_timeout"]

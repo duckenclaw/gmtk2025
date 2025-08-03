@@ -28,6 +28,12 @@ func _ready() -> void:
 	
 	State.loop_restarted.connect(update_current_action)
 	State.start_loop()
+	
+	(create_tween()
+		.tween_property(camera, "zoom", Vector2(1.35, 1.35), 5.0)
+		.from(Vector2(4, 4))
+		)
+	
 
 func spawn_player():
 	player = PLAYER.instantiate()
@@ -36,7 +42,10 @@ func spawn_player():
 	player.player_died.connect(on_player_died)
 
 func on_player_died():
-	pass
+	get_tree().paused = true
+	rewrite_copy_menu.open_remove_copy_on_death(player)
+	await State.loop_restarted
+	spawn_player()
 
 func _process(delta: float) -> void:
 	update_camera(delta)
@@ -82,4 +91,4 @@ func save_record() -> void:
 		recorder_area.save_recording(player, State.all_time_copies)
 	else:
 		get_tree().paused = true
-		rewrite_copy_menu.rewrite_copy(player)
+		rewrite_copy_menu.open_rewrite_copy(player)

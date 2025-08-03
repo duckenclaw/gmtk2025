@@ -102,7 +102,7 @@ offset_left = 1400.0
 offset_top = 81.0
 offset_right = 1900.0
 offset_bottom = 186.0
-text = "Press \"R\" near the end of the cycle to create a shadow from one of your 9 lives"
+text = "Press \"E\" near the end of the cycle to create a shadow from one of your 9 lives"
 horizontal_alignment = 2
 autowrap_mode = 3
 
