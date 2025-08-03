@@ -7,7 +7,7 @@
 script = ExtResource("1_11dtg")
 name = "Heavy Enemy"
 texture = ExtResource("2_8mwt3")
-speed = 25.0
+speed = 35.0
 max_health = 1200.0
 damage = 15.0
 metadata/_custom_type_script = "uid://hbxxlijgke2g"

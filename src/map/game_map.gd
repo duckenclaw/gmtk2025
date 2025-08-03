@@ -184,8 +184,8 @@ func start_next_wave() -> bool:
 		return false
 	
 	# Disable current wave (remove to start all waves every time)
-	if active_waves.size() > 1:
-		stop_wave(active_waves[1])
+	if active_waves.size() > 0:
+		stop_wave(active_waves[0])
 	
 	var success = start_wave(current_wave_index)
 	print("started wave with index " + str(current_wave_index))
