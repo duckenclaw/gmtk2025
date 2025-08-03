@@ -20,6 +20,7 @@ func _ready() -> void:
 		description_label.text = "Multiplier: " + str(upgrade.mult)
 	else:
 		description_label.text = upgrade.desctiption
+	
 
 func _on_mouse_pressed_listener_mouse_pressed() -> void:
 	upgrade.action.call()
