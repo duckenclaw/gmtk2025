@@ -2,11 +2,11 @@ extends Node2D
 class_name GameMap
 
 # ========== SPAWNER REFERENCES ==========
-@export var central_spawner: EnemySpawner
-@export var north_spawner: EnemySpawner
-@export var south_spawner: EnemySpawner
-@export var west_spawner: EnemySpawner
-@export var east_spawner: EnemySpawner
+@onready var central_spawner: EnemySpawner = $EnemySpawners/CentralEnemySpawner
+@onready var north_spawner: EnemySpawner = $EnemySpawners/NorthEnemySpawner
+@onready var south_spawner: EnemySpawner = $EnemySpawners/SouthEnemySpawner
+@onready var west_spawner: EnemySpawner = $EnemySpawners/WestEnemySpawner
+@onready var east_spawner: EnemySpawner = $EnemySpawners/EastEnemySpawner
 
 # ========== WAVE CONFIGURATION ==========
 @export var wave_configs: Array[WaveConfig] = []
@@ -184,8 +184,8 @@ func start_next_wave() -> bool:
 		return false
 	
 	# Disable current wave (remove to start all waves every time)
-	if active_waves.size() > 0:
-		stop_wave(active_waves[0])
+	if active_waves.size() > 1:
+		stop_wave(active_waves[1])
 	
 	var success = start_wave(current_wave_index)
 	print("started wave with index " + str(current_wave_index))

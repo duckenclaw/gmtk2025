@@ -51,14 +51,9 @@ modulate = Color(1, 1, 1, 0.21568628)
 
 [node name="Timer" type="Timer" parent="RecorderArea"]
 
-[node name="GameMap" type="Node2D" parent="." node_paths=PackedStringArray("central_spawner", "north_spawner", "south_spawner", "west_spawner", "east_spawner")]
+[node name="GameMap" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("4_x1f1g")
-central_spawner = NodePath("")
-north_spawner = NodePath("")
-south_spawner = NodePath("")
-west_spawner = NodePath("")
-east_spawner = NodePath("")
 wave_configs = Array[ExtResource("5_72t65")]([ExtResource("6_xowm4"), ExtResource("7_eveok"), ExtResource("8_evl7j"), ExtResource("9_6m1pf")])
 
 [node name="Player" parent="GameMap" instance=ExtResource("10_ov5gv")]
