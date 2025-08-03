@@ -25,6 +25,7 @@ var current_action: Action
 @export var selected_action_index: int = 0
 
 var is_dead: bool = false
+var invinsibility_start: float = 0.0
 var health: float = 0.0
 var velocity: Vector2
 
@@ -48,7 +49,8 @@ var velocity: Vector2
 @onready var right_hand_front_top: Sprite2D = $HandsTopFront/RightHandFront
 
 
-
+@onready var pick_up_area: PickUpArea = $PickUpArea
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 func _ready() -> void:
 	if !is_copy:
@@ -67,11 +69,16 @@ func _ready() -> void:
 	State.loop_restarted.connect(loop_restarted)
 
 func loop_restarted():
+	global_position = State.PLAYER_SPAWN_POINT
+	
 	if is_copy: return
+	
+	if is_dead:
+		queue_free()
+		return
 	
 	selected_action_index = State.pending_selected_action_index
 	set_action(actions[selected_action_index])
-	global_position = State.PLAYER_SPAWN_POINT
 	stop_recording()
 	start_recording()
 
@@ -89,6 +96,9 @@ func _process(delta: float) -> void:
 	update_visuals()
 
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		return
+	
 	global_position += velocity * delta
 	velocity = Drag.drag(velocity)
 	
@@ -111,6 +121,9 @@ func _physics_process(delta: float) -> void:
 		position_history.append(global_position)
 
 func accept_command(command: Command): 
+	if is_dead:
+		return
+	
 	if is_recording:
 		var since_start = get_ticks_sec() - start_of_recording
 		history.append(SavedCommand.new(since_start, command))
@@ -122,15 +135,26 @@ func accept_command(command: Command):
 		position += command.direction * command.delta * player_config.speed
 
 func take_damage(damage: float):
+	if Time.get_ticks_msec() / 1000.0 - invinsibility_start < player_config.invinsibility_time:
+		return
+	if is_dead:
+		return 
+	
 	health -= damage
+	invinsibility_start = Time.get_ticks_msec() / 1000.0
+	
+	ParticlePool.spawn_number_particle(
+		global_position, 
+		ParticlePool.ParticleType.PLAYER_TAKES_DAMAGE, 
+		damage
+		)
+	
 	if health <= 0.0:
 		health = 0.0
-		if not is_copy:
-			player_health_changed.emit(health)
-			die()
-	else:
-		if not is_copy:
-			player_health_changed.emit(health)
+	if not is_copy:
+		player_health_changed.emit(health)
+	if health == 0.0:
+		die()
 
 func take_impulse(impulse: Vector2):
 	velocity += impulse * Drag.COMMON_IMPULSE_MULTIPLIER
@@ -150,12 +174,19 @@ func stop_recording():
 func die():
 	is_dead = true
 	stop_recording()
+	
+	actions_node.queue_free()
+	
 	hands_bottom_back.hide()
 	hands_bottom_front.hide()
 	hands_top_back.hide()
 	hands_top_front.hide()
 	player_sprite.hide()
 	dead_sprite.show()
+	
+	collision_shape_2d.queue_free()
+	pick_up_area.queue_free()
+	
 	player_died.emit()
 
 func get_ticks_sec() -> float:

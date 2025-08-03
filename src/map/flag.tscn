@@ -21,7 +21,10 @@ position = Vector2(1, -36)
 shape = SubResource("CircleShape2D_ljfuh")
 
 [node name="InvincibilityTimer" type="Timer" parent="."]
-wait_time = 0.001
 one_shot = true
 
+[node name="RegenTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]
+[connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]

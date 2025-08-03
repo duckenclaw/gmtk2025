@@ -13,13 +13,13 @@ const NUMBER_CHANGE_PARTICLE = preload("res://src/ui/numbers/number_change_parti
 
 var stashed_change_particles: Array[NumberChangeParticle]
 
-func spawn_number_particle(g_pos: Vector2, res: ParticleType, amount: float):
+func spawn_number_particle(g_pos: Vector2, type: ParticleType, amount: float):
 	if stashed_change_particles.is_empty():
-		stashed_change_particles.append(create_number_particle(res, amount))
+		stashed_change_particles.append(create_number_particle(type, amount))
 		#print("created new particle")
 	
 	var particle: NumberChangeParticle = stashed_change_particles.pop_back()
-	particle.setup(g_pos, res, amount)
+	particle.setup(g_pos, type, amount)
 
 func create_number_particle(res: ParticleType, amount: float) -> NumberChangeParticle:
 	var particle: NumberChangeParticle = NUMBER_CHANGE_PARTICLE.instantiate()

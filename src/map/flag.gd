@@ -14,10 +14,6 @@ func _on_invincibility_timer_timeout():
 	#print("flag not invincible")
 	is_invincible = false
 
-func _process(delta: float) -> void:
-	current_health += State.flag_regen * delta
-	origin_health_changed.emit(current_health)
-
 func take_damage(incoming_damage: float):
 	if is_invincible:
 		return false
@@ -35,6 +31,17 @@ func take_damage(incoming_damage: float):
 		ParticlePool.ParticleType.FLAG_TAKES_DAMAGE, 
 		incoming_damage
 		)
-	
 
+
+
+func _on_regen_timer_timeout() -> void:
+	var regen = State.flag_regen
+	if current_health < State.flag_max_health:
+		ParticlePool.spawn_number_particle(
+			global_position, 
+			ParticlePool.ParticleType.FLAG_HEAL, 
+			regen
+			)
+		current_health += regen
 	
+	origin_health_changed.emit(current_health)

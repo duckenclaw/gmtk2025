@@ -1,13 +1,14 @@
 extends Node2D
 class_name Game
 
+const PLAYER = preload("uid://cni2a6p1fkqef")
 
+var player: Player
 
 @onready var game_map: GameMap = $GameMap
 @onready var game_ui: GameUi = $GameUi
 @onready var camera: Camera2D = $Camera2D
 
-@onready var player: Player = $GameMap/Player
 @onready var flag: Area2D = $GameMap/Flag
 
 @onready var recorder_area: RecorderArea = $RecorderArea
@@ -19,15 +20,22 @@ class_name Game
 func _ready() -> void:
 	Ref.particle_layer = particle_layer
 	Ref.recorder = recorder_area
+	spawn_player()
 	
-	player.player_health_changed.connect(game_ui.player_health_changed)
-	player.player_died
 	
 	flag.origin_health_changed.connect(game_ui.flag_health_changed)
 	
 	State.loop_restarted.connect(update_current_action)
 	State.start_loop()
 
+func spawn_player():
+	player = PLAYER.instantiate()
+	game_map.add_child(player)
+	player.player_health_changed.connect(game_ui.player_health_changed)
+	player.player_died.connect(on_player_died)
+
+func on_player_died():
+	pass
 
 func _process(delta: float) -> void:
 	update_camera(delta)
@@ -51,6 +59,9 @@ func check_next_lvl():
 		upgrade_menu.entrance()
 
 func update_camera(delta: float):
+	if not is_instance_valid(player):
+		return
+		
 	var target = player.global_position / 2.0
 	var distance = target.distance_to(camera.global_position)
 	camera.global_position = lerp(camera.global_position, target, 0.1 * delta * distance)

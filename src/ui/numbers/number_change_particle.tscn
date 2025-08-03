@@ -4,6 +4,7 @@
 
 [node name="NumberChangeParticle" type="CenterContainer"]
 custom_minimum_size = Vector2(200, 0)
+anchors_preset = -1
 offset_right = 1.0
 offset_bottom = 23.0
 mouse_filter = 2

@@ -7,6 +7,7 @@ process_mode = 3
 script = ExtResource("1_ughgq")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = -1
 offset_left = -36.0
 offset_top = -28.0
 offset_right = 1998.0
@@ -14,7 +15,7 @@ offset_bottom = 1130.0
 color = Color(0, 0, 0, 0.47843137)
 
 [node name="CenterContainer2" type="CenterContainer" parent="."]
-anchors_preset = 10
+anchors_preset = -1
 anchor_right = 1.0
 offset_left = 7.0
 offset_top = 123.0
@@ -32,7 +33,9 @@ horizontal_alignment = 1
 
 [node name="HintLabel" type="Label" parent="CenterContainer2/VBoxContainer"]
 layout_mode = 2
-text = "Attention! Upgrades are applied only to you and your NEW shadows"
+text = "Attention! Upgrades are applied only to you and your NEW shadows!
+Replace your old shadows to be more effective"
+horizontal_alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = 15

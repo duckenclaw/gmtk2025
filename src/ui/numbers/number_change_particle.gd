@@ -11,8 +11,16 @@ var stashed: bool = false
 var cumulative_delta: float = 0.0
 
 
-func setup(g_pos: Vector2, res: ParticlePool.ParticleType, amount: float):
+func setup(g_pos: Vector2, type: ParticlePool.ParticleType, amount: float):
 	$Label.text = str(int(amount))
+	
+	var color = Color.WHITE
+	if type == ParticlePool.ParticleType.PLAYER_TAKES_DAMAGE or type == ParticlePool.ParticleType.FLAG_TAKES_DAMAGE:
+		color = Color.DARK_RED
+	if type == ParticlePool.ParticleType.PLAYER_HEAL or type == ParticlePool.ParticleType.FLAG_HEAL:
+		color = Color.DARK_GREEN
+	
+	$Label.set("theme_override_colors/font_color", color)
 	
 	global_position = g_pos
 	position.x -= 100

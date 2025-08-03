@@ -3,6 +3,7 @@ class_name PlayerConfig
 
 var is_copy: bool = false
 
+@export var invinsibility_time: float = 0.3
 @export var max_health: float = 100.0
 @export var speed: float = 300.0
 @export var damage_mult: float = 1.0

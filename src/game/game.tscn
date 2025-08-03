@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c0sene84p44ry"]
+[gd_scene load_steps=16 format=3 uid="uid://c0sene84p44ry"]
 
 [ext_resource type="Script" uid="uid://mk37pv18gbuy" path="res://src/game/game.gd" id="1_7uq6d"]
 [ext_resource type="Texture2D" uid="uid://o5i0rhqd2ooq" path="res://assets/art/background.JPG" id="3_72t65"]
@@ -10,7 +10,6 @@
 [ext_resource type="Resource" uid="uid://bktkemr278g2d" path="res://src/enemies/resources/waves/wave_heavy.tres" id="7_eveok"]
 [ext_resource type="Resource" uid="uid://bmlldxi7p35u5" path="res://src/enemies/resources/waves/wave_fast.tres" id="8_evl7j"]
 [ext_resource type="Resource" uid="uid://b0f6p300g2kgj" path="res://src/enemies/resources/waves/wave_mixed.tres" id="9_6m1pf"]
-[ext_resource type="PackedScene" uid="uid://cni2a6p1fkqef" path="res://src/player/player.tscn" id="10_ov5gv"]
 [ext_resource type="PackedScene" uid="uid://btex0cib7sk1l" path="res://src/map/enemy_spawners.tscn" id="13_xniy2"]
 [ext_resource type="PackedScene" uid="uid://cov5v1yloo3ev" path="res://src/map/flag.tscn" id="20_nhcde"]
 [ext_resource type="Script" uid="uid://bjena0veuadfu" path="res://src/game/recorder_area.gd" id="21_7liwe"]
@@ -55,9 +54,6 @@ modulate = Color(1, 1, 1, 0.21568628)
 y_sort_enabled = true
 script = ExtResource("4_x1f1g")
 wave_configs = Array[ExtResource("5_72t65")]([ExtResource("6_xowm4"), ExtResource("7_eveok"), ExtResource("8_evl7j"), ExtResource("9_6m1pf")])
-
-[node name="Player" parent="GameMap" instance=ExtResource("10_ov5gv")]
-position = Vector2(79, -3)
 
 [node name="EnemySpawners" parent="GameMap" instance=ExtResource("13_xniy2")]
 
