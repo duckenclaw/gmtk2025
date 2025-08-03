@@ -13,6 +13,7 @@ class_name EnemySpawner
 @export var spawn_count: int = 5
 @export var enemy_pack_count: int = 1
 @export var spawn_radius: float = 60.0
+@export var spawn_radius_max: float = 80.0
 @export var spawn_interval: float = 1.0
 
 # Target for enemies to move towards
@@ -61,7 +62,7 @@ func _check_wave_complete():
 # Spawn a pack of enemies in circular formation
 func _spawn_enemy_pack():
 	var spawn_angle = randf() * TAU
-	var spawn_distance = Random.f_range(spawn_radius, spawn_radius * 1.5)
+	var spawn_distance = Random.f_range(spawn_radius, spawn_radius_max)
 	var pack_center = global_position + Random.point_on_radius(spawn_distance)
 	
 	var enemy_type = _get_weighted_random_enemy_type()

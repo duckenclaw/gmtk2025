@@ -19,6 +19,7 @@ enemy_type_weights = Array[float]([5.0, 3.0, 1.0, 0.5])
 spawn_count = 10
 enemy_pack_count = 3
 spawn_radius = 1200.0
+spawn_radius_max = 1300.0
 spawn_interval = 2.5
 target_node = NodePath(".")
 

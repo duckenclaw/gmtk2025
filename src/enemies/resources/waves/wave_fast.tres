@@ -7,12 +7,12 @@
 [resource]
 script = ExtResource("3_srpif")
 wave_name = "Wave fast all sides"
-wave_number = 3
+wave_number = 6
 spawner_directions = Array[String](["north", "south", "west", "east"])
 enemy_types = Array[ExtResource("1_mrme8")]([ExtResource("2_j3kf6")])
 enemy_type_weights = Array[float]([1.0])
 spawn_interval = 10.0
-total_enemies = 100
+total_enemies = 20
 enemies_per_spawner = 2
-enemy_pack_count = 5
+enemy_pack_count = 3
 metadata/_custom_type_script = "uid://vkq5h0d44gc8"

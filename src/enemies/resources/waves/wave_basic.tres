@@ -15,6 +15,5 @@ enemy_type_weights = Array[float]([5.0, 3.0, 2.0])
 spawn_interval = 1.0
 total_enemies = 10
 enemies_per_spawner = 10
-is_repeating = true
 repeat_interval = 10.0
 metadata/_custom_type_script = "uid://vkq5h0d44gc8"

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="WaveConfig" load_steps=6 format=3 uid="uid://7pyf6b6ngrch"]
+
+[ext_resource type="Script" uid="uid://hbxxlijgke2g" path="res://src/enemies/resources/enemy_type.gd" id="1_0otmw"]
+[ext_resource type="Resource" uid="uid://iqgd0ysoad7f" path="res://src/enemies/resources/enemy_types/basic_enemy.tres" id="2_li2jq"]
+[ext_resource type="Resource" uid="uid://b7ujvifag7ksk" path="res://src/enemies/resources/enemy_types/fast_enemy.tres" id="3_pdqvy"]
+[ext_resource type="Resource" uid="uid://crf6ltt5cmtey" path="res://src/enemies/resources/enemy_types/heavy_enemy.tres" id="4_e467n"]
+[ext_resource type="Script" uid="uid://vkq5h0d44gc8" path="res://src/enemies/resources/wave_config.gd" id="5_pb1o8"]
+
+[resource]
+script = ExtResource("5_pb1o8")
+wave_name = "Wave circular 2"
+wave_number = 3
+spawner_directions = Array[String](["central"])
+enemy_types = Array[ExtResource("1_0otmw")]([ExtResource("2_li2jq"), ExtResource("3_pdqvy"), ExtResource("4_e467n")])
+enemy_type_weights = Array[float]([4.0, 3.0, 2.0])
+spawn_interval = 1.0
+total_enemies = 30
+enemies_per_spawner = 30
+repeat_interval = 10.0
+metadata/_custom_type_script = "uid://vkq5h0d44gc8"
