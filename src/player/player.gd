@@ -127,7 +127,7 @@ func take_damage(damage: float):
 		health = 0.0
 		if not is_copy:
 			player_health_changed.emit(health)
-			player_died.emit()
+			die()
 	else:
 		if not is_copy:
 			player_health_changed.emit(health)
@@ -156,7 +156,7 @@ func die():
 	hands_top_front.hide()
 	player_sprite.hide()
 	dead_sprite.show()
-	
+	player_died.emit()
 
 func get_ticks_sec() -> float:
 	return Time.get_ticks_msec() / 1000.0
