@@ -8,7 +8,7 @@ extends Control
 func _on_start_button_pressed():
 	print("start")
 	get_tree().change_scene_to_packed(start_scene)
-	
+
 func _on_options_button_pressed():
 	toggle_options()
 	print("options")
