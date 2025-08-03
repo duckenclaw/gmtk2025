@@ -138,6 +138,15 @@ static func get_upgrade_list() -> Array[Upgrade]:
         upgrade.action = func(): State.player_config.damage_mult *= 1.1
         
         list.append(upgrade)
+        
+    for i in 3:
+        var upgrade: Upgrade = Upgrade.new()
+        
+        upgrade.title = "More flag HP!"
+        upgrade.mult = 1.5
+        upgrade.action = func(): State.flag_max_health *= 1.5
+        
+        list.append(upgrade)
     
     for i in 10:
         var upgrade: Upgrade = Upgrade.new()
