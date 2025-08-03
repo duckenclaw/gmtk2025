@@ -14,7 +14,6 @@ func accept_command(command: Command):
 	if command is CommandMouse:
 		preview_area.visible = not is_reloading()
 		preview_area.global_position = command.mouse_position
-		preview_area.radius = player_config.rock_radius
 	if command is CommandMouseReleased:
 		var direction = global_position.direction_to(command.mouse_position)
 		if is_reloading():

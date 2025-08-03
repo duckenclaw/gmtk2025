@@ -9,6 +9,7 @@ var damaged_enemies: Array[Area2D] = []
 
 func _ready() -> void:
 	rotation = direction.angle()
+	Sound.play_water()
 	
 	# Set up collision shape based on player config
 	$CollisionShape2D.shape.size = Vector2(player_config.wave_width / 5.0, player_config.wave_width)

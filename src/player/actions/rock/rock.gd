@@ -17,7 +17,6 @@ var total_distance: float
 
 func start():
 	visible = false
-	collision_shape_2d.shape.radius = player_config.rock_radius
 	start_position = global_position
 	total_distance = start_position.distance_to(target_position)
 	total_time = total_distance / ROCK_SPEED
@@ -55,6 +54,7 @@ func explode():
 		tween.tween_property($Sprite2D, "modulate:a", 0.0, 0.3)
 
 	await get_tree().process_frame
+	Sound.play_rock()
 	for area in get_overlapping_areas():
 		if area.is_in_group("enemy"):
 			area.take_damage(player_config.rock_damage)

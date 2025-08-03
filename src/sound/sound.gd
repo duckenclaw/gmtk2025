@@ -13,7 +13,13 @@ func _ready():
 	start_soundtrack()
 
 func play_fire():
-	play_sfx("res://assets/sfx/slap.mp3")
+	play_sfx("res://assets/sfx/fire.mp3")
+	
+func play_rock():
+	play_sfx("res://assets/sfx/rock.mp3")
+	
+func play_black_hole():
+	play_sfx("res://assets/sfx/black_hole.mp3")
 
 func play_laser():
 	play_sfx("res://assets/sfx/light.mp3")
