@@ -15,9 +15,9 @@ static func get_upgrade_list() -> Array[Upgrade]:
 		
 		upgrade.title = "More fire damage!"
 		upgrade.texture = FIRE_BIG
-		upgrade.mult = 2.0
+		upgrade.mult = 1.5
 		upgrade.condition = func(): return State.fire_available
-		upgrade.action = func(): State.player_config.fire_damage *= 1.4
+		upgrade.action = func(): State.player_config.fire_damage *= upgrade.mult
 		
 		list.append(upgrade)
 	
@@ -42,7 +42,7 @@ static func get_upgrade_list() -> Array[Upgrade]:
 		upgrade.texture = DARK_BIG
 		upgrade.mult = 1.5
 		upgrade.condition = func(): return State.black_hole_available
-		upgrade.action = func(): State.player_config.black_hole_radius *= 1.5
+		upgrade.action = func(): State.player_config.black_hole_radius *= upgrade.mult
 		
 		list.append(upgrade)
 	
@@ -66,7 +66,7 @@ static func get_upgrade_list() -> Array[Upgrade]:
 		upgrade.texture = WATER_BIG
 		upgrade.mult = 1.5
 		upgrade.condition = func(): return State.wave_available
-		upgrade.action = func(): State.player_config.wave_width *= 1.5
+		upgrade.action = func(): State.player_config.wave_width *= upgrade.mult
 		
 		list.append(upgrade)
 	
@@ -89,9 +89,9 @@ static func get_upgrade_list() -> Array[Upgrade]:
 		
 		upgrade.title = "More laser damage!"
 		upgrade.texture = LIGHT_BIG
-		upgrade.mult = 2.0
+		upgrade.mult = 1.5
 		upgrade.condition = func(): return State.laser_available
-		upgrade.action = func(): State.player_config.wave_width *= 1.4
+		upgrade.action = func(): State.player_config.laser_available *= upgrade.mult
 		
 		list.append(upgrade)
 	
@@ -114,9 +114,9 @@ static func get_upgrade_list() -> Array[Upgrade]:
 		
 		upgrade.title = "Even deadlier rock!"
 		upgrade.texture = ROCK_BIG
-		upgrade.mult = 2.5
+		upgrade.mult = 1.5
 		upgrade.condition = func(): return State.rock_available
-		upgrade.action = func(): State.player_config.wave_width *= 1.4
+		upgrade.action = func(): State.player_config.wave_width *= upgrade.mult
 		
 		list.append(upgrade)
 	
@@ -126,7 +126,7 @@ static func get_upgrade_list() -> Array[Upgrade]:
 		
 		upgrade.title = "More health!"
 		upgrade.mult = 1.2
-		upgrade.action = func(): State.player_config.max_health *= 1.2
+		upgrade.action = func(): State.player_config.max_health *= upgrade.mult
 		
 		list.append(upgrade)
 	
@@ -134,8 +134,8 @@ static func get_upgrade_list() -> Array[Upgrade]:
 		var upgrade: Upgrade = Upgrade.new()
 		
 		upgrade.title = "More overall damage!"
-		upgrade.mult = 1.1
-		upgrade.action = func(): State.player_config.damage_mult *= 1.1
+		upgrade.mult = 1.2
+		upgrade.action = func(): State.player_config.damage_mult *= upgrade.mult
 		
 		list.append(upgrade)
 		
@@ -144,7 +144,7 @@ static func get_upgrade_list() -> Array[Upgrade]:
 		
 		upgrade.title = "More flag HP!"
 		upgrade.mult = 1.5
-		upgrade.action = func(): State.flag_max_health *= 1.5
+		upgrade.action = func(): State.flag_max_health *= upgrade.mult
 		
 		list.append(upgrade)
 	

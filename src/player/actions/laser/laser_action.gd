@@ -30,7 +30,7 @@ func accept_command(command: Command):
 		if is_laser_active:
 			if Time.get_ticks_msec() - last_damage_time < DAMAGE_TIMEOUT: return
 			for enemy in targets_in_area:
-				enemy.take_damage(player_config.laser_damage)
+				enemy.take_damage(player_config.laser_damage * player_config.damage_mult)
 
 func is_reloading() -> bool:
 	return Time.get_ticks_msec() - last_damage_time < DAMAGE_TIMEOUT
