@@ -3,6 +3,7 @@ extends Action
 const BLACK_HOLE = preload("uid://c4xsb2ohggau7")
 
 const DAMAGE_TIMEOUT: float = 2000 # msec
+const MIN_DISTANCE_FROM_CENTER: float = 100.0
 
 var last_damage_time: float = -100.0
 
@@ -14,12 +15,13 @@ var last_damage_time: float = -100.0
 
 func accept_command(command: Command):
 	if command is CommandMouse:
-		preview_area.visible = not is_reloading()
+		preview_area.visible = not is_reloading() and is_far_enough(command.mouse_position)
 		preview_area.global_position = command.mouse_position
 		preview_area.radius = player_config.black_hole_radius
 		
+		
 	if command is CommandMouseReleased:
-		if is_reloading():
+		if is_reloading() || not is_far_enough(command.mouse_position):
 			return
 		last_damage_time = Time.get_ticks_msec()
 		
@@ -31,3 +33,6 @@ func accept_command(command: Command):
 
 func is_reloading() -> bool:
 	return Time.get_ticks_msec() - last_damage_time < DAMAGE_TIMEOUT
+
+func is_far_enough(pos: Vector2) -> bool:
+	return pos.length() > MIN_DISTANCE_FROM_CENTER

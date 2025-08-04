@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://btex0cib7sk1l"]
+[gd_scene load_steps=10 format=3 uid="uid://btex0cib7sk1l"]
 
 [ext_resource type="Script" uid="uid://slrq46ve4m1n" path="res://src/enemies/enemy_spawner.gd" id="1_qcisi"]
+[ext_resource type="Script" uid="uid://d3gcim5oi5f5m" path="res://src/map/endless_spawner.gd" id="1_x3sdb"]
 [ext_resource type="PackedScene" uid="uid://cgpkr8nvf4qyk" path="res://src/enemies/enemy.tscn" id="2_x3sdb"]
 [ext_resource type="Script" uid="uid://hbxxlijgke2g" path="res://src/enemies/resources/enemy_type.gd" id="3_i7okj"]
 [ext_resource type="Resource" uid="uid://bdblhdo83ukl6" path="res://src/enemies/resources/enemy_types/test_enemy.tres" id="4_qyhhd"]
@@ -10,6 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://nsl84b5jq2rn" path="res://assets/art/testing/white.png" id="8_mbemv"]
 
 [node name="EnemySpawners" type="Node2D"]
+
+[node name="EndlessSpawner" type="Node2D" parent="."]
+script = ExtResource("1_x3sdb")
+enemy_type = ExtResource("5_i2msn")
 
 [node name="CentralEnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("target_node")]
 script = ExtResource("1_qcisi")

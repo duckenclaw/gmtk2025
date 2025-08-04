@@ -10,7 +10,7 @@ func _process(delta: float) -> void:
 
 func collect(area: Area2D):
 	area.queue_free()
-	State.exp += 1
+	State.exp += 2
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("collectable"):

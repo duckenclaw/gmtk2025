@@ -172,6 +172,8 @@ func stop_recording():
 	is_recording = false
 
 func die():
+	if is_dead:
+		return
 	is_dead = true
 	stop_recording()
 	

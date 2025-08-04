@@ -132,8 +132,12 @@ func _on_detection_area_entered(area):
 
 
 func _on_disinterest_timer_timeout():
+	if main_target == null or not is_instance_valid(main_target):
+		push_error("Enemy main target is null somehos")
+	
 	target = main_target
-	await WaitUtil.wait(0.5)
+	# after waiting target can change already
+	#await WaitUtil.wait(0.5)
 	set_target_position(target.global_position)
 
 

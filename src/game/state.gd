@@ -5,7 +5,7 @@ const TOTAL_MAX_COPIES: int = 8
 const INITIAL_NEXT_LVL_EXP: float = 10.0
 const NEXT_LVL_MULTIPLIER: float = 1.2
 const LOOP_TIME: float = 10.0
-const PLAYER_SPAWN_POINT: Vector2 = Vector2(50, 100)
+const PLAYER_SPAWN_POINT: Vector2 = Vector2(0, 50)
 
 signal loop_restarted
 signal loop_progress(value: float, seconds: float) # 0 to 1
@@ -45,7 +45,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	# FOR DEBUG!!
-	#exp += delta * 1.0
+	#exp += delta * 2.0
 	pass
 
 func start_loop():
