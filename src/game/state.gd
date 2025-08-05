@@ -45,7 +45,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	# FOR DEBUG!!
-	#exp += delta * 2.0
+	exp += delta * 3.0
 	pass
 
 func start_loop():

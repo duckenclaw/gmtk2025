@@ -4,8 +4,8 @@ class_name CopyButton
 const AIR_BIG = preload("uid://crsjay82i3ldi")
 const FIRE_BIG = preload("uid://chby0tlyn6ij0")
 const ROCK_BIG = preload("uid://c1x4td4yx8npc")
-const SNAKE_BIG = preload("uid://dxc2ckt53loo0")
 const WATER_BIG = preload("uid://dhx4fp48nt5ty")
+const DARK_BIG = preload("uid://xwiulgb2olth")
 
 signal clicked
 
@@ -50,7 +50,7 @@ func get_action_texture() -> CompressedTexture2D:
 		0:
 			return FIRE_BIG
 		1:
-			return SNAKE_BIG
+			return DARK_BIG
 		2:
 			return AIR_BIG
 		3:

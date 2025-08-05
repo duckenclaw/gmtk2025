@@ -93,7 +93,6 @@ func set_action(action: Action):
 func _process(delta: float) -> void:
 	if is_recording and not is_copy:
 		Ref.recorder.display_path(position_history, Color.WEB_MAROON, "player")
-	update_visuals()
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -133,6 +132,9 @@ func accept_command(command: Command):
 	if command is CommandMove:
 		velocity += command.direction * command.delta * player_config.speed * 2.0
 		position += command.direction * command.delta * player_config.speed
+	
+	if command is CommandMouse or command is CommandMouseReleased:
+		update_visuals(command.mouse_position)
 
 func take_damage(damage: float):
 	if Time.get_ticks_msec() / 1000.0 - invinsibility_start < player_config.invinsibility_time:
@@ -208,8 +210,8 @@ func _on_area_exited(area: Area2D) -> void:
 func set_shadow_colors():
 	pass
 
-func update_visuals():
-	var mouse_direction: Vector2 = (get_global_mouse_position() - hands_top_front.global_position).normalized()
+func update_visuals(mouse_position: Vector2):
+	var mouse_direction: Vector2 = (mouse_position - hands_top_front.global_position).normalized()
 	
 	hands_bottom_back.rotation = mouse_direction.angle() + PI / 2
 	hands_top_back.rotation = mouse_direction.angle() + PI / 2
