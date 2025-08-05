@@ -30,7 +30,7 @@ metadata/_custom_type_script = "uid://dxfm5loc1yh5u"
 shape = SubResource("RectangleShape2D_hvvyj")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-amount = 100
+amount = 200
 texture = ExtResource("2_e3kf2")
 speed_scale = 2.56
 randomness = 0.15

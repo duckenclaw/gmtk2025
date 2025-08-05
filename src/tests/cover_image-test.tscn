@@ -1,0 +1,138 @@
+[gd_scene load_steps=15 format=3 uid="uid://h62qawcq68ua"]
+
+[ext_resource type="Texture2D" uid="uid://o5i0rhqd2ooq" path="res://assets/art/background.JPG" id="1_7n5h5"]
+[ext_resource type="Texture2D" uid="uid://dwte6vd08orav" path="res://assets/art/center.PNG" id="2_3ngnq"]
+[ext_resource type="PackedScene" uid="uid://cni2a6p1fkqef" path="res://src/player/player.tscn" id="2_rbnst"]
+[ext_resource type="Texture2D" uid="uid://chby0tlyn6ij0" path="res://assets/art/particles/fire_big.PNG" id="4_3ngnq"]
+[ext_resource type="Texture2D" uid="uid://cctwth2haff43" path="res://assets/art/particles/light_big.PNG" id="4_itgts"]
+[ext_resource type="Texture2D" uid="uid://ckiy646s583to" path="res://assets/art/particles/fire_small.png" id="4_o452x"]
+[ext_resource type="Texture2D" uid="uid://dhx4fp48nt5ty" path="res://assets/art/particles/water_big.PNG" id="5_nh0wc"]
+[ext_resource type="Texture2D" uid="uid://xwiulgb2olth" path="res://assets/art/particles/dark_big.PNG" id="5_q787s"]
+[ext_resource type="Texture2D" uid="uid://c1x4td4yx8npc" path="res://assets/art/particles/rock_big.PNG" id="7_irg7i"]
+[ext_resource type="Texture2D" uid="uid://cc0f02alg2ll8" path="res://assets/art/enemies/pig.PNG" id="8_sdqud"]
+[ext_resource type="Texture2D" uid="uid://b5e3470g348nu" path="res://assets/art/enemies/wolf.PNG" id="9_sdqud"]
+[ext_resource type="Texture2D" uid="uid://bj2w4l1fubpg3" path="res://assets/art/enemies/mad.PNG" id="10_0qg80"]
+
+[sub_resource type="Curve" id="Curve_ttbsj"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 100), 0.0, 0.0, 0, 0, Vector2(0.98120296, 100), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_r4h6x"]
+_data = [Vector2(0.016917288, 0), 0.0, 0.0, 0, 0, Vector2(0.035714284, 0), 0.0, 0.0, 0, 0, Vector2(0.08834587, 0.46504617), 0.0, 0.0, 0, 0, Vector2(0.6917293, 0.64646006), 0.0, 0.0, 0, 0, Vector2(0.87781954, 0.5931328), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[node name="CoverImageTest" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.49354547, 0.49354553, 0.49354553, 1)
+texture = ExtResource("1_7n5h5")
+
+[node name="Center" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_3ngnq")
+
+[node name="Elements" type="Node2D" parent="."]
+position = Vector2(-3, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Elements"]
+position = Vector2(-2.9999998, -86)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_3ngnq")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Elements"]
+position = Vector2(-70.00001, -73)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_itgts")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Elements"]
+position = Vector2(-100, -21)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_nh0wc")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Elements"]
+position = Vector2(72.00001, -73)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_q787s")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Elements"]
+position = Vector2(113, -21)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_irg7i")
+
+[node name="Player" parent="." instance=ExtResource("2_rbnst")]
+position = Vector2(-78, 80)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player"]
+position = Vector2(0, -51)
+rotation = 0.567232
+amount = 80
+texture = ExtResource("4_o452x")
+lifetime = 0.95
+speed_scale = 3.01
+randomness = 0.29
+spread = 18.09
+gravity = Vector2(0, -200)
+initial_velocity_min = 885.02
+initial_velocity_max = 885.02
+angular_velocity_min = 393.86
+angular_velocity_max = 654.77
+damping_min = 24.634
+damping_max = 24.634
+damping_curve = SubResource("Curve_ttbsj")
+angle_min = -35.1
+angle_max = -35.1
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_r4h6x")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="."]
+position = Vector2(30, -59)
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies"]
+position = Vector2(66.99999, 113.99999)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("8_sdqud")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Enemies"]
+position = Vector2(40.000008, 138)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("9_sdqud")
+flip_h = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="Enemies"]
+position = Vector2(67, 161.00002)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("10_0qg80")
+flip_h = true
+
+[node name="Player double" type="Node2D" parent="."]
+position = Vector2(-78, 80)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player double"]
+position = Vector2(0, -51)
+rotation = 0.567232
+amount = 10
+texture = ExtResource("4_o452x")
+lifetime = 0.95
+speed_scale = 3.01
+randomness = 0.29
+spread = 18.09
+gravity = Vector2(0, -200)
+initial_velocity_min = 885.02
+initial_velocity_max = 885.02
+angular_velocity_min = 393.86
+angular_velocity_max = 654.77
+damping_min = 24.634
+damping_max = 24.634
+damping_curve = SubResource("Curve_ttbsj")
+angle_min = -35.1
+angle_max = -35.1
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_r4h6x")

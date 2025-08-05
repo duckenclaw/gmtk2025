@@ -128,15 +128,17 @@ collision_mask = 4
 shape = SubResource("ConvexPolygonShape2D_rxibo")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Actions/FireAction/Area2D"]
-amount = 70
+amount = 100
 texture = ExtResource("8_cwolq")
 lifetime = 0.95
 speed_scale = 3.01
+randomness = 0.29
 spread = 18.09
-gravity = Vector2(0, 10)
+gravity = Vector2(0, -200)
 initial_velocity_min = 885.02
 initial_velocity_max = 885.02
-angular_velocity_max = 720.0
+angular_velocity_min = 393.86
+angular_velocity_max = 654.77
 damping_min = 24.634
 damping_max = 24.634
 damping_curve = SubResource("Curve_jiejy")
